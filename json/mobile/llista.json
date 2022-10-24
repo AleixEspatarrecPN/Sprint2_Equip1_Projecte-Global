@@ -1,0 +1,30 @@
+[
+    {
+        "id": 0,
+        "username": "aleix",
+        "empresa": "Apple",
+        "email": "aleixescrihuela@iesmontsia.org",
+        "role": "admin"
+    },
+    {
+        "id": 1,
+        "username": "aleixenrich",
+        "empresa": "Google",
+        "email": "aleixenrich@iesmontsia.org",
+        "role": "standard"
+    },
+    {
+        "id": 2,
+        "username": "andrei",
+        "empresa": "Amazon",
+        "email": "eduardandreizahorneanu@iesmontsia.org",
+        "role": "admin"
+    },
+    {
+        "id": 3,
+        "username": "julia",
+        "empresa": "Meta",
+        "email": "juliakrukonis@iesmontsia.org",
+        "role": "standard"
+    }
+]

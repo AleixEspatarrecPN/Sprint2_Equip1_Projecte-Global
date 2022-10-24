@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+    apache-php:
+        image: php:8.1-apache
+        links:
+            - 'mariadb:db'
+        ports:
+            - 83:80
+        volumes:
+            - "./DocumentRoot:/var/www/html"
+    nodejs:
+        image: node
+        ports: 
+            - 80:8083
+        tty: true
+        
+    mariadb:
+        image: mariadb:10.5.2
+        volumes: 
+            - "./database:/var/lib/mysql"
+        environment:
+            TZ: "Europe/Madrid"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: 'rootpsw'
+            MYSQL_USER: 'r00t'
+            MYSQL_PASSWORD: 'r00t'
+            MYSQL_DATABASE: 'pymeralias2'
+
+    phpmyadmin:
+        image: phpmyadmin
+        links: 
+            - 'mariadb:db'
+        ports:
+            - 8084:80
