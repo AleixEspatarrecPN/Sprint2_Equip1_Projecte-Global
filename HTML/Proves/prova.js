@@ -1,2 +1,1 @@
-var $  = require( 'jquery' );
-var dt = require( 'datatables.net' )();
+alert('hola mundo');
