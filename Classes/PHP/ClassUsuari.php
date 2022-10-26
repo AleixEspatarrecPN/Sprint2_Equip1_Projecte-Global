@@ -101,18 +101,18 @@
             $this -> idEmpresa = $IdEmpresa;
 
             }
-        public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
+            public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+                $this -> id = $id;
+                $this -> DNI = $dni;
+                $this -> nom = $nom;
+                $this -> cognom = $cognom;
+                $this -> email = $email;
+                $this -> insignies = $insignies;
+                $this -> NomUsuaris = $Nomusuaris;
+                $this -> TipusUsuari = $TipusUsuari;
+                $this -> idEmpresa = $IdEmpresa;
 
-            }
+                }
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }
