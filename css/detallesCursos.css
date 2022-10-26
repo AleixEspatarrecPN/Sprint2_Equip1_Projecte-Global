@@ -1,0 +1,54 @@
+#Button {
+    background-color: #FF6720;
+    color: black;
+    padding: 1px 17px 1px 16px;
+    margin-top: 5%;
+    font-size: 16px;
+    border-radius: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    justify-content: start;
+    align-items: start;
+    display: flex;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+}
+
+
+
+#Button2 {
+    background-color: #FF6720;
+    color: black;
+    padding: 1px 17px 1px 16px;
+    font-size: 16px;
+    border-radius: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    justify-content: end;
+    align-items: end;
+    display: flex;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+}
+
+#outer {
+    width: 100%;
+}
+
+.inner {
+    display: inline-block;
+    margin-left: 25%;
+}
+
+#video {
+    margin: auto;
+    max-width: 100%
+}
+
+main {
+    padding: 20px;
+}
