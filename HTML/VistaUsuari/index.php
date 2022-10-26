@@ -16,7 +16,7 @@
     <header class="header">
         <img src="../../assets/logo.svg"/>
         <h1>PymeShield</h1>
-        <a class="button-user" href="../Perfil/index.html"><i class="fa fa-user"></i></a>
+        <a class="button-user" href="../Perfil/index.php"><i class="fa fa-user"></i></a>
     </header>
 
     <nav class="navbar">
@@ -25,14 +25,9 @@
         <a href="#">Qüestionari</a>
         <a href="#">Informes</a>
     </nav>
-
     <div id="perfil-container">
         <div id="basic-info">
-<<<<<<< HEAD
             <img src="../../demo_img/bot.png" alt="profile image" id="profile-img">
-=======
-            <img src="../..//demo_img/bot.png" alt="profile image" id="profile-img">
->>>>>>> 9e09978abb79c614a480072f53c5cc878753b33a
             <span id="name">name</span>
             <span id="last-name">last name</span>
             <span id="dni">dni</span>
@@ -66,34 +61,9 @@
                     <button id="cancel-phone" class="button-cancel"><i class="fa fa-xmark"></i></button>
                 </div>
                 <button id="change-data" class="button-change">Guardar canvis</button>
-            </div>
-    
-            <div id="password-container">
-                <h3>CANVIAR CONTRASENYA</h3>
-                <div id="original-password-container">
-                    <div class="input-container">
-                        <label for="original-password">Contrasenya original</label>
-                        <input type="password" name="original-password" id="original-password">
-                    </div>
-                </div>
-                <div id="new-password-container">
-                    <div class="input-container">
-                        <label for="new-password">Nova contrasenya</label>
-                        <input type="password" name="new-password" id="new-password">
-                    </div>
-                </div>
-                <div id="confirm-password-container">
-                    <div class="input-container">
-                        <label for="confirm-password">Confirmació de la nova contrasenya</label>
-                        <input type="password" name="confirm-password" id="confirm-password">
-                    </div>
-                </div>
-                <button id="change-password" class="button-change">Canvia la contrasenya</button>
-            </div>
-    
+            </div>    
         </div>
     </div>
-
 
     <script src="./script.js"></script>
 </body>

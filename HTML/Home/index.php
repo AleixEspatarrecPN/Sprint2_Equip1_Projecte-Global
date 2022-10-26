@@ -16,7 +16,7 @@
     <header class="header">
       <img src="../../assets/logo.svg"/>
       <h1>PymeShield</h1>
-      <a class="button-user" href="../Perfil/index.html"><i class="fa fa-user"></i></a>
+      <a class="button-user" href="../Perfil/index.php"><i class="fa fa-user"></i></a>
   </header>
 
   <nav class="navbar">
