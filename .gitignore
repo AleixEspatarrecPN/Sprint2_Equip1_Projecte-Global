@@ -2,3 +2,5 @@
 /database/
 #Ingora directori del ides que pertanyen a JetBrains
 /.idea/
+#Ignora node_modules
+/DocumentRoot/node_modules/

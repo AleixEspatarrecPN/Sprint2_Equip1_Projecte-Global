@@ -46,11 +46,11 @@
         font-size: 2em;
     }
 
-    .header img {
+.header img {
         margin-left: 1em;
     }
-    
-    .header button {
+
+.header button {
         margin-right: 1em;
     }
 }
