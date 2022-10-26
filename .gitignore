@@ -1,1 +1,4 @@
+#Ignora el directori amb la base de dades
 /database/
+#Ingora directori del ides que pertanyen a JetBrains
+/.idea/
