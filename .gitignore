@@ -1,7 +1,7 @@
 #Ignora el directori amb la base de dades
 /database/
-#Ignora directori del ides que pertanyen a JetBrains
+#Ingora directori del ides que pertanyen a JetBrains
 /.idea/
-/Proves/
-#Ignora directori del ides que pertanyen a Bootstrap
-css/CoolAdmin-master/
+#Ignora node_modules
+/DocumentRoot/node_modules/
+/css/CoolAdmin-master/

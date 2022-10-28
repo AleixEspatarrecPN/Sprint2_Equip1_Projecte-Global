@@ -110,6 +110,7 @@ class Usuari{
         $this -> idEmpresa = $IdEmpresa;
     
     }
+
     public function update($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
         $this -> id = $id;
         $this -> DNI = $dni;
@@ -122,6 +123,7 @@ class Usuari{
         $this -> idEmpresa = $IdEmpresa;
     
     }
+    
     public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
         $this -> id = $id;
         $this -> DNI = $dni;
