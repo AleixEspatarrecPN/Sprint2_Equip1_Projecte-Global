@@ -1,0 +1,85 @@
+MDScreen:
+
+    MDBottomNavigation:
+        selected_color_background: "orange"
+        text_color_active: "black"
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Kanban'
+            icon: 'clipboard-check-multiple'
+
+            MDLabel:
+                text: 'Kanban'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Gantt'
+            icon: 'calendar-multiple'
+
+            MDLabel:
+                text: 'Gantt'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Tasca'
+            icon: 'checkbox-marked-circle-plus-outline'
+
+            MDLabel:
+                text: 'Acceptar Tasques'
+                halign: 'center'
+            
+
+#menu desplegable
+    MDNavigationLayout:
+
+        MDScreenManager:
+
+            MDScreen:
+
+                MDTopAppBar:
+                    title: "PymeShield"
+                    elevation: 4
+                    pos_hint: {"top": 1}
+                    md_bg_color: "#ff6720"
+                    specific_text_color: "black"
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+
+                Image:
+                    source: '../Img/PymeShieldLiteTransparent.png'
+
+                MDLabel:
+                    text: '     PymeShield'
+                    font_style: 'Subtitle1'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDLabel:
+                    text: '     pymeshield@gmail.com'
+                    font_style: 'Caption'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                ScrollView:
+                    MDList:
+                        OneLineListItem:
+                            text: 'Menu'
+                        OneLineListItem:
+                            text: 'Kanban'
+                        OneLineListItem:
+                            text: 'Gantt'
+                        OneLineListItem:
+                            text: 'Contacte'
+                        OneLineListItem:
+                            text: 'Tanca Sessio'
