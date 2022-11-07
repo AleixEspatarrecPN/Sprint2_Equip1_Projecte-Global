@@ -25,7 +25,6 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 20vw;
 }
 
@@ -35,7 +34,7 @@ h3 {
     justify-content: flex-start;
     align-items: flex-start;
 
-    width: 70vw;
+    width: 100vw;
 
     background: white;
 
@@ -45,14 +44,12 @@ h3 {
 }
 
 #full-info > #dades-container {
-    width: 50%;
-    
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     
     padding: 0 2em;
-    
-    border-right: #828282 3px solid;
 }
 
 #full-info > #password-container {
@@ -191,7 +188,6 @@ h3 {
         border: none;
         padding: 0 0 2em 0;
         margin: 0 2em;
-        border-bottom: #828282 3px solid;
     }
 
     #full-info #password-container {
@@ -219,3 +215,11 @@ h3 {
         min-width: 90vw;
     }
 }
+
+    #foto-perfil{
+        align-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 2em;
+    }

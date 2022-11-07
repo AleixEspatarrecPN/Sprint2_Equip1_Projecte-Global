@@ -15,7 +15,7 @@
 </head>
 <body>
 <header class="header">
-    <img src="../../assets/logo.svg"/>
+    <img src="../../assets/logo.svg" alt="Pymeshield"/>
     <h1>PymeShield</h1>
     <a class="button-user" href="../Perfil/index.php"><i class="fa fa-user"></i></a>
 </header>
@@ -25,7 +25,7 @@
     <a href="#">Qüestionari</a>
     <a href="#">Informes</a>
 </nav>
-<div id="perfil-container">
+<div id="foto-perfil">
     <div id="basic-info">
         <img src="../../demo_img/bot.png" alt="profile image" id="profile-img">
         <span id="name">name</span>
@@ -33,6 +33,8 @@
         <span id="dni">dni</span>
         <span id="empresa">empresa</span>
     </div>
+</div>
+<div id="perfil-container">
     <div id="full-info">
         <div id="dades-container">
             <h3>DADES</h3>
@@ -41,50 +43,25 @@
                     <label for="username">Nom d'usuari</label>
                     <input type="text" name="username" id="username" value="my username" disabled>
                 </div>
-                <button id="edit-username" class="button-edit"><i class="fa fa-pencil"></i></button>
-                <button id="cancel-username" class="button-cancel"><i class="fa fa-xmark"></i></button>
             </div>
             <div id="email-container">
                 <div class="input-container">
                     <label for="email">Correu electrònic</label>
                     <input type="email" name="email" id="email" value="myemail@from.me" disabled>
                 </div>
-                <button id="edit-email" class="button-edit"><i class="fa fa-pencil"></i></button>
-                <button id="cancel-email" class="button-cancel"><i class="fa fa-xmark"></i></button>
             </div>
             <div id="phone-container">
                 <div class="input-container">
                     <label for="phone">Telèfon</label>
                     <input type="text" name="phone" id="phone" value="643543456" disabled>
                 </div>
-                <button id="edit-phone" class="button-edit"><i class="fa fa-pencil"></i></button>
-                <button id="cancel-phone" class="button-cancel"><i class="fa fa-xmark"></i></button>
             </div>
-            <button id="change-data" class="button-change">Guardar canvis</button>
+            <div>
+                <button id="change-data" class="button-change">Editar Perfil</button>
+                <button id="change-data" class="button-change">Canvia Contrasenya</button>
+            </div>
         </div>
 
-        <div id="password-container">
-            <h3>CANVIAR CONTRASENYA</h3>
-            <div id="original-password-container">
-                <div class="input-container">
-                    <label for="original-password">Contrasenya original</label>
-                    <input type="password" name="original-password" id="original-password">
-                </div>
-            </div>
-            <div id="new-password-container">
-                <div class="input-container">
-                    <label for="new-password">Nova contrasenya</label>
-                    <input type="password" name="new-password" id="new-password">
-                </div>
-            </div>
-            <div id="confirm-password-container">
-                <div class="input-container">
-                    <label for="confirm-password">Confirmació de la nova contrasenya</label>
-                    <input type="password" name="confirm-password" id="confirm-password">
-                </div>
-            </div>
-            <button id="change-password" class="button-change">Canvia la contrasenya</button>
-        </div>
 
     </div>
 </div>
