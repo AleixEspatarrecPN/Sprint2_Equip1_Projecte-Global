@@ -1,5 +1,5 @@
 <?php
-
+include_once 'dbconf.php';
     class User {
         #Propietats
         private $Id;
@@ -111,11 +111,11 @@
                 $this -> NomUsuaris = $Nomusuaris;
                 $this -> TipusUsuari = $TipusUsuari;
                 $this -> idEmpresa = $IdEmpresa;
-
+                
                 }
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }
-            
-}
+
+
 ?>
