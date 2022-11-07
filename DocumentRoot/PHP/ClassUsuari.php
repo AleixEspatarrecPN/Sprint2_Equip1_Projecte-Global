@@ -116,5 +116,6 @@
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }
+            
 }
 ?>
