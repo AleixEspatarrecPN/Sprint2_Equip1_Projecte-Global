@@ -88,7 +88,7 @@
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
                 <h3 id="title-footer">DADES USUARI</h3>
-    <div class="card " style="background-color: #dcdcdc">
+    <div class="card border-0" style="background-color: #dcdcdc">
         <div class="d-flex justify-content-around" id="title-footer">
                     <div class="d-flex align-items-center" >
                         <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
@@ -121,8 +121,8 @@
                 </div>
         </div>
         <div class="p-2">
-            <button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Editar Perfil</button>
-            <button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Canvia Contrasenya</button>
+            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Editar Perfil</button></a>
+            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Canvia Contrasenya</button></a>
         </div>
     </div>
 </div>
@@ -167,7 +167,6 @@
                         <li>
                             <a class="text-light" href="#"><i class="fa-brands fa-tiktok"></i></a>
                             <a class="text-light" href="#"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
                         </li>
                         <li>
                             <a class="text-light" href="#"><i class="fa-brands fa-instagram"></i></a>
