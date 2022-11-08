@@ -1,5 +1,5 @@
 <?php
-include_once 'dbconn.php';
+include_once 'dbconf.php';
     class User {
         #Propietats
         private $Id;
@@ -113,11 +113,10 @@ include_once 'dbconn.php';
                 $this -> TipusUsuari = $TipusUsuari;
                 $this -> idEmpresa = $IdEmpresa;
                 
-                $eliminar = "DELETE FROM Usuaris WHERE id = '$id'";
-                
                 }
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }
-        }
+
+
 ?>
