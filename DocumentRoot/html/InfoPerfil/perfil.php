@@ -87,41 +87,46 @@
 </header>
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
+                <h3 id="title-footer">DADES USUARI</h3>
+    <div class="card " style="background-color: #dcdcdc">
+        <div class="d-flex justify-content-around" id="title-footer">
+                    <div class="d-flex align-items-center" >
+                        <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
+                    </div>
+                    <div  class=" d-flex align-items-start flex-column">
+                        <span class="p-lg-3" >Nom:</span>
+                        <span class="p-lg-3">Cognoms:</span>
+                        <span class="p-lg-3">DNI:</span>
+                        <span class="p-lg-3">Empresa: </span>
+                    </div>
+                    <div class=" d-flex align-items-start flex-column">
+                        <span class="p-lg-3" id="name"> Sergio</span>
+                        <span class="p-lg-3" id="last-name">Blanco Tena</span>
+                        <span class="p-lg-3" id="dni">98765432H</span>
+                        <span class="p-lg-3" id="empresa">DripSuply</span>
+                    </div>
 
-                <h3>DADES</h3>
-                <div>
-                    <div class="d-flex align-items-start">
-                        <img src="../../demo_img/bot.png" style="height: 75px; width: 75px">
-                        <span id="name">name</span>
-                        <span id="last-name">last name</span>
-                        <span id="dni">dni</span>
-                        <span id="empresa">empresa</span>
+                    <div class="vr"></div>
+
+                    <div class=" d-flex align-items-start flex-column">
+                            <span class="p-lg-3">Nom d'usuari:</span>
+                            <span class="p-lg-3">Correu electrònic:</span>
+                            <span class="p-lg-3">Telèfon:</span>
+                    </div>
+                    <div class=" d-flex align-items-start flex-column">
+                            <span class="p-lg-3" name="username" id="username">Mdeserg </span>
+                            <span class="p-lg-3"  name="email" id="email">sergioblanco@iesmontsia.org </span>
+                            <span class="p-lg-3" type="text" name="phone" id="phone">654317543 </span>
                     </div>
                 </div>
-                <div class="">
-                    <div >
-                        <label for="username">Nom d'usuari</label>
-                        <input type="text" name="username" id="username" value="my username" disabled>
-                    </div>
-                </div>
-                <div >
-                    <div class="">
-                        <label for="email">Correu electrònic</label>
-                        <input type="email" name="email" id="email" value="myemail@from.me" disabled>
-                    </div>
-                </div>
-                <div >
-                    <div class="">
-                        <label for="phone">Telèfon</label>
-                        <input type="text" name="phone" id="phone" value="643543456" disabled>
-                    </div>
-                </div>
-                <div class="">
-                    <button id="change-data" class="button-change">Editar Perfil</button>
-                    <button id="change-data" class="button-change">Canvia Contrasenya</button>
-                </div>
+        </div>
+        <div class="p-2">
+            <button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Editar Perfil</button>
+            <button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Canvia Contrasenya</button>
+        </div>
     </div>
 </div>
+
 
 
 <footer class="bg-black text-center text-lg-center mt-auto">
