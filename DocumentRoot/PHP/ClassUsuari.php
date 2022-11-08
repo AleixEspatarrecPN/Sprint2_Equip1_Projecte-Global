@@ -1,5 +1,6 @@
 <?php
 include_once 'dbconf.php';
+
     class User {
         #Propietats
         private $Id;
@@ -102,7 +103,6 @@ include_once 'dbconf.php';
 
             }
             public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-                include_once 'dbconn.php'; // Connexió a la BBDD  
                 $this -> id = $id;
                 $this -> DNI = $dni;
                 $this -> nom = $nom;

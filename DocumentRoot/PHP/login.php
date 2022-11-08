@@ -22,14 +22,41 @@ if ($result -> num_rows > 0){
     $row = $result -> fetch_assoc();
     $email_db = $row["Email"];
     $pass_db = $row["Contrasenya"];
+    //condicionar l'inci si l'usuari està ocult
 
     if(password_verify($pass, $pass_db) && $login == $email_db){
+
+        header("Location: Home/index.php");
+        die();
+        
         //redirecció d'usuaris a les diferents pagines segons el seu tipus
-        if($row["Tipus_usuari"]=="Alumne"){
+        //en aquest moment està deshabilitat ja la pagina d'inici de moment tots tenen la mateixa
+        // if($row["TipusUsuari"]=="Admin"){
 
-        }
-
-
+        //     header("Location: adminMain.php");
+        //     die();
+        // }
+        // elseif($row["TipusUsuari"]=="Treballador"){
+        //     header("Location: treballadorMain.php")
+        //     die();
+        // }
+        // else{
+        //     header("Location: index.html");
+        //     die();
+        // }
     }
+    
+}
+    else{
+        header("Location: Login/index.html");
+        die();
+    }
+
+    $conn -> close();
+}
+else{
+    //redirecció al login al introduir credencials incorrectes
+    header("Location: Login/index.html");
+    die();
 }
 ?>
