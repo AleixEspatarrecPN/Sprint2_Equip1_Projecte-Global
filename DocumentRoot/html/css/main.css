@@ -69,3 +69,8 @@ a:hover {
     font-size: 18px;
   }
 }
+
+.btn{
+  background-color: #FF6720;
+  border-color:#ffffff;
+}

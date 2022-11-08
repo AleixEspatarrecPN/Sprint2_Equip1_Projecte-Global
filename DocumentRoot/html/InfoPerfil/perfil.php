@@ -121,8 +121,8 @@
                 </div>
         </div>
         <div class="p-2">
-            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Editar Perfil</button></a>
-            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn" style="border-color:#ffffff; background-color: #FF6720">Canvia Contrasenya</button></a>
+            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn">Editar Perfil</button></a>
+            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn">Canvia Contrasenya</button></a>
         </div>
     </div>
 </div>
