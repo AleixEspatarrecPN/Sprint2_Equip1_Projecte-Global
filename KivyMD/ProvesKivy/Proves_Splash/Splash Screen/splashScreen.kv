@@ -1,0 +1,77 @@
+########################################################################
+## SPLASH SCREEN
+########################################################################
+MDScreen:
+    # Set sc screen name
+    name: "SplashScreen"
+    # Start the progress bar animation when the screen is active
+    on_enter: self.ids.progress.start()
+    MDBoxLayout:
+        # Add float layout
+        MDFloatLayout:
+            # Add Gif image
+            Image:
+                source:'assets/loveandjoy.gif'
+                allow_stretch: True
+                anim_delay: 0
+                # anim_loop: 1
+                anim_reset: True
+
+            # Add box layout
+            BoxLayout:
+                # Set box position
+                pos_hint:{'center_y':.3, 'center_x':.5}
+                padding: "10dp"
+                # set width to 70%
+                size_hint_x: .7
+                
+                # Add progress bar
+                MDProgressBar:
+                    # Set progress id
+                    id: progress
+                    # Set orientation
+                    orientation: "horizontal"
+                    # Set progress type
+                    type: "indeterminate"
+                    # Progress duratio
+                    running_duration: 1
+                    # Catching duration
+                    catching_duration: 1
+                
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

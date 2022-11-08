@@ -1,8 +1,8 @@
 <?php
 //Funció que permetrà la connexió a la BD
 function conn(){
-    $db_host='mariadb'; //nom base de dades
-    $db= "pymeralias2";
+    $db_host='mariadb';
+    $db= "pymeralias2";  //nom base de dades
     $user="root"; // usuari
     $pass="rootpwd"; //contrasenya
 

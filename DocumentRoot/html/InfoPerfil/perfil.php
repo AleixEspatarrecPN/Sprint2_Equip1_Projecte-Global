@@ -16,7 +16,7 @@
     <script src="../scripts/checkbox.js"></script>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" style="background-color:#dcdcdc">
 <header class="sticky-top">
     <div class="navbar navbar-expand-sm p-0" id="header-logo">
         <div class="container-fluid d-flex flex-row justify-content-between navbar-nav ">
@@ -85,46 +85,41 @@
     <!--Header Menu-->
 
 </header>
-<div class="container overflow-hidden text-center py-3">
-    <div id="foto-perfil">
-        <div id="basic-info">
-            <img src="../../demo_img/bot.png" alt="profile image" id="profile-img">
-            <span id="name">name</span>
-            <span id="last-name">last name</span>
-            <span id="dni">dni</span>
-            <span id="empresa">empresa</span>
-        </div>
-    </div>
-    <div id="perfil-container">
-        <div id="full-info">
-            <div id="dades-container">
+<div class="container overflow-hidden text-center col-lg-12" >
+    <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
+
                 <h3>DADES</h3>
-                <div id="username-container">
-                    <div class="input-container">
+                <div>
+                    <div class="d-flex align-items-start">
+                        <img src="../../demo_img/bot.png" style="height: 75px; width: 75px">
+                        <span id="name">name</span>
+                        <span id="last-name">last name</span>
+                        <span id="dni">dni</span>
+                        <span id="empresa">empresa</span>
+                    </div>
+                </div>
+                <div class="">
+                    <div >
                         <label for="username">Nom d'usuari</label>
                         <input type="text" name="username" id="username" value="my username" disabled>
                     </div>
                 </div>
-                <div id="email-container">
-                    <div class="input-container">
+                <div >
+                    <div class="">
                         <label for="email">Correu electrònic</label>
                         <input type="email" name="email" id="email" value="myemail@from.me" disabled>
                     </div>
                 </div>
-                <div id="phone-container">
-                    <div class="input-container">
+                <div >
+                    <div class="">
                         <label for="phone">Telèfon</label>
                         <input type="text" name="phone" id="phone" value="643543456" disabled>
                     </div>
                 </div>
-                <div>
+                <div class="">
                     <button id="change-data" class="button-change">Editar Perfil</button>
                     <button id="change-data" class="button-change">Canvia Contrasenya</button>
                 </div>
-            </div>
-
-
-        </div>
     </div>
 </div>
 

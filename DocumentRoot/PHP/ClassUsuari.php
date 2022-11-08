@@ -1,5 +1,5 @@
 <?php
-
+include_once 'dbconf.php';
     class User {
         #Propietats
         private $Id;
@@ -102,6 +102,7 @@
 
             }
             public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+                include_once 'dbconn.php'; // Connexió a la BBDD  
                 $this -> id = $id;
                 $this -> DNI = $dni;
                 $this -> nom = $nom;
@@ -111,11 +112,11 @@
                 $this -> NomUsuaris = $Nomusuaris;
                 $this -> TipusUsuari = $TipusUsuari;
                 $this -> idEmpresa = $IdEmpresa;
-
+                
                 }
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }
-            
-}
+
+
 ?>

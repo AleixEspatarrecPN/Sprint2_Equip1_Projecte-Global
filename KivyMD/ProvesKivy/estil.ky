@@ -1,0 +1,51 @@
+import images_path kivymd.images_path
+import get_color_from_hex kivy.utils.get_color_from_hex
+
+<CardScreenLabel@MDLabel>
+    adaptive_height: True
+    color: "#1e4974"
+    font_name: f"{os.environ['KITCHEN_SINK_ASSETS']}/fonts/nasalization.ttf"
+
+
+<CardScreenView>
+
+    FitImage:
+        source: 'shield.jpg'
+            
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "12dp"
+
+        MDBoxLayout:
+            adaptive_size: True
+            spacing: "12dp"
+            padding: 0, "12dp", 0, 0
+
+            MDBoxLayout:
+                id: card_box
+                orientation: "vertical"
+                adaptive_size: True
+                spacing: "12dp"
+
+                CardProfile:
+                    name_user: "Usuari 1"
+                    radius: [int(self.height / 2),]
+                    md_bg_color: get_color_from_hex("#1e4974")
+                    source: 'shield.jpg'
+
+
+               
+
+            CardMessage:
+                size_hint_y: None
+                height: card_box.height
+                name_user: "Monica Geller"
+                message: "I`m making a lasagna for dinner"
+                date: "1 hour ago"
+                radius: [int(self.height / 10),]
+                padding: "12dp"
+                md_bg_color: get_color_from_hex("#3b7fad")
+                path_to_avatar:
+                    f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                    f"images/card_screen/avatar-message.jpg"
