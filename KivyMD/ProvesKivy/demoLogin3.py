@@ -3,11 +3,11 @@ from kivymd.uix.screen import Screen
 from kivymd.uix.textfield import MDTextField
 from kivy.lang import Builder
 from helpers import username_input
-from kivymd.uix.button import MDRectangleFlatButton
+from kivymd.uix.button import MDRectangleFlatButton, MDFlatButton
 from helpers import contrasenya_input
+from kivymd.uix.dialog import MDDialog
 
-
-class demoLogin2(MDApp):
+class demoLogin3(MDApp):
 
     def build(self):
         screen = Screen()
@@ -29,6 +29,23 @@ class demoLogin2(MDApp):
         return screen
 
     def show_data(self,obj):
-        print(self.username.text) #Mostrarà per pantalla el que s'ha escrit al username
+    #Estructura de control per comprovar que la informació és correcta
+        if self.username.text is "":
+            check_string = "Si us plau, posa un usuari."
+        else:
+            check_string = self.username.text + " no existeix"
+            
+        close_button = MDFlatButton(text='Tancar', on_release = self.close_dialog)
+        more_button = MDFlatButton(text='Més')
 
-demoLogin2().run()
+        #Ens sortirà un pop-up del que hem posat (dialog)
+        self.dialog = MDDialog(title='Usuari', text=check_string, 
+                          buttons=[close_button, more_button])
+
+        self.dialog.open()
+
+    def close_dialog(self,obj):
+        self.dialog.dismiss()
+
+            
+demoLogin3().run()
