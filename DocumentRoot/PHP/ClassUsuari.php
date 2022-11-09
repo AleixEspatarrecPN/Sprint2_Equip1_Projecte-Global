@@ -78,14 +78,23 @@ include_once 'dbconf.php';
             $this -> idEmpresa = $IdEmpresa;
 
             }
+
         public function mostrarUsr($){
             
             }
+
         public function updateUsr($){
+            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
             
 
             }
         
+        public function changePass($){
+            
+            
+
+            }
+
         public function deleteUsr($){
                 
                 
