@@ -66,7 +66,7 @@ include_once 'dbconf.php';
 
         
         #Preparació de les funcions
-        public function create($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+        public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
             $this -> id = $id;
             $this -> DNI = $dni;
             $this -> nom = $nom;
@@ -78,42 +78,19 @@ include_once 'dbconf.php';
             $this -> idEmpresa = $IdEmpresa;
 
             }
-        public function mostrar($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
+        public function mostrarUsr($){
+            
+            }
+        public function updateUsr($){
+            
 
             }
-        public function update($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
-
-            }
-            public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-                $this -> id = $id;
-                $this -> DNI = $dni;
-                $this -> nom = $nom;
-                $this -> cognom = $cognom;
-                $this -> email = $email;
-                $this -> insignies = $insignies;
-                $this -> NomUsuaris = $Nomusuaris;
-                $this -> TipusUsuari = $TipusUsuari;
-                $this -> idEmpresa = $IdEmpresa;
+        
+        public function deleteUsr($){
                 
-                }
+                
+            }
+
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }

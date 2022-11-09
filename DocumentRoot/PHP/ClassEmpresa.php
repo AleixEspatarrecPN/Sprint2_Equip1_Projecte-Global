@@ -29,5 +29,25 @@ class Class_Empresa {
     function setEmail($email) { $this->email = $email; }
     function setTelefon($telefon) { $this->telefon = $telefon; }
     function setCIF($CIF) { $this->CIF = $CIF; }
+
+    #Preparació de les funcions
+    public function createEmp( ){
+
+    }
+
+    public function mostrarEmp( ){
+        
+    }
+
+    public function updateEmp( ){
+        
+    }
+
+    public function deleteEmp( ){
+        
+    }
+
+    
+
 }
 ?>
