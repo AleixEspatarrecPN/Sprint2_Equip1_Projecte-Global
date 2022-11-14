@@ -1,5 +1,5 @@
 <?php
-include_once 'dbconf.php';
+include_once '../PHP_metodes/dbconn.php';
 
     class User {
         #Propietats
@@ -137,10 +137,27 @@ include_once 'dbconf.php';
 
             }
 
-        public function deleteUsr($){
+        public function OcultarUsuari(){
+        include_once '../php_metodes/dbconn.php';
                 
-                
-            }
+        
+        // Check connection
+        if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        }
+          
+        $sql = "UPDATE Usuaris SET Ocult=1 WHERE id=1";
+          
+        if (mysqli_query($conn, $sql)) {
+            echo "updated successfully";
+        } else {
+            echo "Error updating record: " . mysqli_error($conn);
+        }
+          
+        mysqli_close($conn);
+        }
+    }
+
 
 
 
