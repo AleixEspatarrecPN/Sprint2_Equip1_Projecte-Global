@@ -1,3 +1,6 @@
+<?php
+//include('../../php/ClassUsuari.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +17,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
+
 <header class="header">
     <img src="../../assets/logo.svg" alt="Pymeshield"/>
     <h1>PymeShield</h1>
@@ -34,6 +38,24 @@
         <span id="empresa">empresa</span>
     </div>
 </div>
+
+<div>
+    <?php
+    
+include_once('../../php/MostrarUsuari.php');
+
+    if($sql = MostrarUsuari()){
+        if($sql->num_rows > 0){
+            while($obj = $sql->fetch_object()){
+            echo "<p> $obj->Nom </p>";
+           }
+        }
+    }?>
+</div>
+
+
+
+
 <div id="perfil-container">
     <div id="full-info">
         <div id="dades-container">
