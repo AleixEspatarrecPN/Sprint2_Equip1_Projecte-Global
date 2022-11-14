@@ -1,7 +1,6 @@
 <?php
-include_once '../PHP_metodes/dbconn.php';
 
-    class User {
+class User {
         #Propietats
         private $Id;
         private $DNI;
@@ -66,7 +65,7 @@ include_once '../PHP_metodes/dbconn.php';
 
         
         #Preparació de les funcions
-        public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+        public function create($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
             $this -> id = $id;
             $this -> DNI = $dni;
             $this -> nom = $nom;
@@ -78,101 +77,64 @@ include_once '../PHP_metodes/dbconn.php';
             $this -> idEmpresa = $IdEmpresa;
 
             }
+        public function mostrar($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+            $this -> id = $id;
+            $this -> DNI = $dni;
+            $this -> nom = $nom;
+            $this -> cognom = $cognom;
+            $this -> email = $email;
+            $this -> insignies = $insignies;
+            $this -> NomUsuaris = $Nomusuaris;
+            $this -> TipusUsuari = $TipusUsuari; 
+            $this -> idEmpresa = $IdEmpresa;
 
-        public function mostrarUsr($){
-            
             }
+        public function update($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+            $this -> id = $id;
+            $this -> DNI = $dni;
+            $this -> nom = $nom;
+            $this -> cognom = $cognom;
+            $this -> email = $email;
+            $this -> insignies = $insignies;
+            $this -> NomUsuaris = $Nomusuaris;
+            $this -> TipusUsuari = $TipusUsuari; 
+            $this -> idEmpresa = $IdEmpresa;
 
-        public function updateUsr($){
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            
-
-        }
-        
-        public function login(){
-            session_start();
-
-            //comprovació entrada de dades.
-            if (isset($_POST["login"]) && isset($_POST["pass"])) {
-
-            $login = $_POST["login"];
-            $pass = $_POST["pass"];
-            //utilització de la funció password_hash per a encriptar la contrasenya.
-            $cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
-
-            //es guarda a la variable global $_SESSION el correu de l'usuari.
-            $_SESSION['correu_sessio'] = $login;
-
-            //es guarda la consulta sql en una variable per fer la consulta.
-            $sql = "SELECT Email, Contrasenya, TipusUsuari FROM Usuaris WHERE Email='$login'";
-            $result = mysqli_query($conn, $sql);
-
-            if ($result -> num_rows > 0){
-
-                $row = $result -> fetch_assoc();
-                $email_db = $row["Email"];
-                $pass_db = $row["Contrasenya"];
-                //condicionar l'inci si l'usuari està ocult
-
-                if(password_verify($pass, $pass_db) && $login == $email_db){
-
-                    header("Location: Home/index.php");
-                    die();
-
-                }
-    
             }
-                else{
-                    header("Location: Login/index.html");
-                    die();
-                }
-            
-                $conn -> close();
-            }
-            
-            else{
-                //redirecció al login al introduir credencials incorrectes
-                header("Location: Login/index.html");
-                die();
-            }
-
-        }
-        
-        public function changePass(){
-            
-            $currentUser = //id usuari actual
-            $sql = "SELECT email FROM Usuaris WHERE id_user='$currentUser'";
-            $emailUser = mysqli_query(conn, $sql);
-
-            if($_POST['emailOG']== $emailUser && $_POST['emailNew'] == $_POST['emailNewConf'] ){
+            public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+                include_once 'dbconn.php'; // Connexió a la BBDD  
+                $this -> id = $id;
+                $this -> DNI = $dni;
+                $this -> nom = $nom;
+                $this -> cognom = $cognom;
+                $this -> email = $email;
+                $this -> insignies = $insignies;
+                $this -> NomUsuaris = $Nomusuaris;
+                $this -> TipusUsuari = $TipusUsuari;
+                $this -> idEmpresa = $IdEmpresa;
                 
             }
-
+        public function sendConfirmationMail($email){
+            $this -> email = $email;    
             }
-
-        public function OcultarUsuari(){
-        include_once '../php_metodes/dbconn.php';
-                    }
-
-        
-        // Check connection
-        if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        }
-          
-        $sql = "UPDATE Usuaris SET Ocult=1 WHERE id=1";
-          
-        if (mysqli_query($conn, $sql)) {
-            echo "updated successfully";
-        } else {
-            echo "Error updating record: " . mysqli_error($conn);
-        }
-          
-        mysqli_close($conn);
+//Métode
+public function MostrarUsuari(){
+    include_once 'dbconn.php'; 
+    $conn = conn();           
+    $sql = "SELECT * FROM `Usuaris` WHERE 1";
+    $result = mysqli_query($conn, $sql);
+    $conn->close();
+    echo 'Hola!';
+    if($sql = MostrarUsuari()){
+      if($sql->num_rows > 0){
+          while($obj = $sql->fetch_object()){
+          echo "<p> $obj->Nom </p>";
+          }
         }
     }
+    return $result;
+  
+  }
 
-
-
-
+    }
 ?>

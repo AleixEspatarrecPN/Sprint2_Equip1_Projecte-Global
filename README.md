@@ -1,5 +1,6 @@
 # SPRINT1_GRUP1_Projecte_Globalitzat
-Repositori del primer sprint del Projecte Globalitzat, grup 1, DAW2. 
+Repositori del primer sprint del Projecte Globalitzat, grup 1, DAW2.
+(IMPORTANT!)Hem utilitzat com a referència el repositori de l'anterior sprint del grup 1
 
 ## Què hi ha en aquest repositori?
 - Classes -> aquest directori conté les diferents classes necessàries per al nostre equip (en PHP)
@@ -17,5 +18,4 @@ Repositori del primer sprint del Projecte Globalitzat, grup 1, DAW2.
 - Icones: FontAwesome 
 `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />` -> HTML
 
-## Finalment...
-Molta sort! Això és el que hem fet fins ara. Qualsevol dubte, pregunteu!
+
