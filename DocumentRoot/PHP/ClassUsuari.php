@@ -15,19 +15,9 @@ include_once 'dbconn.php';
         private $TipusUsuari;
         private $IdEmpresa;
 
-        #Creem el constructor, per crear l'usuari.
-        function __construct( $Id, $DNI, $Nom, $Cognom, $Telefon, $Email, $Insignies, $NomUsuaris, $PassUsuari, $TipusUsuari, $IdEmpresa) {
-            $this->Id = $Id;
-            $this->DNI = $DNI;
-            $this->Nom = $Nom;
-            $this->Cognom = $Cognom;
-            $this->Telefon = $Telefon;
-            $this->Email = $Email;
-            $this->Insignies = $Insignies;
-            $this->NomUsuaris = $NomUsuaris;
-            $this->PassUsuari = $PassUsuari;
-            $this->TipusUsuari = $TipusUsuari;
-            $this->IdEmpresa = $TipusUsuari;
+        #Creem el constructor
+        function __construct() {
+            
         }
 
         #Getters i Setters
@@ -66,15 +56,57 @@ include_once 'dbconn.php';
 
         
         #Preparació de les funcions
-        public function mostrarUsr(){
-            
+        public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
+            $this->id = $id;
+            $this->DNI = $dni;
+            $this->nom = $nom;
+            $this->cognom = $cognom;
+            $this->email = $email;
+            $this->insignies = $insignies;
+            $this->NomUsuaris = $Nomusuaris;
+            $this->TipusUsuari = $TipusUsuari; 
+            $this->idEmpresa = $IdEmpresa;
+
+            }
+
+            public function mostrarUsr(){
+                include_once 'dbconn.php';
+                $query = "SELECT * FROM `Usuaris` WHERE `email` =  $this->email";
+                $result = mysqli_query($conn,$query) or trigger_error("Consulta SQL fallida!: $query - Error: " . mysqli_error($conn), E_USER_ERROR);
+                $row = $result -> fetch_assoc();
+    
+                    echo '<div  class=" d-flex align-items-start flex-column">',
+                            '<span class="p-lg-3" >Nom:</span>',
+                            '<span class="p-lg-3">Cognoms:</span>',
+                            '<span class="p-lg-3">DNI:</span>',
+                            '<span class="p-lg-3">Empresa: </span>',
+                        '</div>';
+                    echo '<div class=" d-flex align-items-start flex-column">',
+                            '<span class="p-lg-3" id="name">' . $row['name_user'] . '</span>',
+                            '<span class="p-lg-3" id="last-name">' . $row['last_name'] . '</span>',
+                            '<span class="p-lg-3" id="dni">' . $row['dni'] . '</span>',
+                            '<span class="p-lg-3" id="empresa">' . $row['id_company'] . '</span>',
+                        '</div>';
+    
+                    echo '<div class="vr"></div>';
+    
+                    echo '<div class=" d-flex align-items-start flex-column">',
+                                '<span class="p-lg-3">Nom de usuari:</span>',
+                                '<span class="p-lg-3">Correu electrònic:</span>',
+                                '<span class="p-lg-3">Telèfon:</span>',
+                        '</div>';
+                    echo '<div class=" d-flex align-items-start flex-column">',
+                                '<span class="p-lg-3" name="username" id="username">' . $row['nick_name'] . '</span>',
+                                '<span class="p-lg-3"  name="email" id="email">' . $row['email'] . '</span>',
+                                '<span class="p-lg-3" type="text" name="phone" id="phone">' . $row['phone_number'] . '</span>',
+                        '</div>';    
             }
 
         public function updateUsr(){
             //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
             
 
-            }
+        }
         
         public function login(){
             session_start();
@@ -85,7 +117,7 @@ include_once 'dbconn.php';
             $login = $_POST["login"];
             $pass = $_POST["pass"];
             //utilització de la funció password_hash per a encriptar la contrasenya.
-            $cryptPass = password_hash($pass, PASSWORD_BCRYPT); 
+            $cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
 
             //es guarda a la variable global $_SESSION el correu de l'usuari.
             $_SESSION['correu_sessio'] = $login;
@@ -103,14 +135,14 @@ include_once 'dbconn.php';
 
                 if(password_verify($pass, $pass_db) && $login == $email_db){
 
-                    header("Location: Home/index.php");
+                    header("Location: home/index.php");
                     die();
 
                 }
     
             }
                 else{
-                    header("Location: Login/index.html");
+                    header("Location: login/index.php");
                     die();
                 }
             
@@ -119,7 +151,7 @@ include_once 'dbconn.php';
             
             else{
                 //redirecció al login al introduir credencials incorrectes
-                header("Location: Login/index.html");
+                header("Location: login/index.php");
                 die();
             }
 
@@ -129,7 +161,7 @@ include_once 'dbconn.php';
             
             $currentUser = //id usuari actual
             $sql = "SELECT email FROM Usuaris WHERE id_user='$currentUser'";
-            $emailUser = mysqli_query($conn, $sql);
+            $emailUser = mysqli_query(conn, $sql);
 
             if($_POST['emailOG']== $emailUser && $_POST['emailNew'] == $_POST['emailNewConf'] ){
                 
@@ -138,8 +170,12 @@ include_once 'dbconn.php';
             }
 
         public function OcultarUsuari(){
+<<<<<<< HEAD
         include_once '../php_metodes/dbconn.php';
         
+=======
+        include_once '../php/dbconn.php';
+>>>>>>> 21255dd0735433317969158b674d4e8042601482
         // Check connection
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -153,6 +189,7 @@ include_once 'dbconn.php';
             echo "Error updating record: " . mysqli_error($conn);
         }
         mysqli_close($conn);
+        
         }
     }
 ?>
