@@ -1,5 +1,5 @@
 <?php
-include_once 'dbconf.php';
+include_once 'dbconn.php';
 
     class User {
         #Propietats
@@ -16,18 +16,8 @@ include_once 'dbconf.php';
         private $IdEmpresa;
 
         #Creem el constructor
-        function __construct( $Id, $DNI, $Nom, $Cognom, $Telefon, $Email, $Insignies, $NomUsuaris, $PassUsuari, $TipusUsuari, $IdEmpresa) {
-            $this->Id = $Id;
-            $this->DNI = $DNI;
-            $this->Nom = $Nom;
-            $this->Cognom = $Cognom;
-            $this->Telefon = $Telefon;
-            $this->Email = $Email;
-            $this->Insignies = $Insignies;
-            $this->NomUsuaris = $NomUsuaris;
-            $this->PassUsuari = $PassUsuari;
-            $this->TipusUsuari = $TipusUsuari;
-            $this->IdEmpresa = $TipusUsuari;
+        function __construct() {
+            
         }
 
         #Getters i Setters
@@ -67,35 +57,64 @@ include_once 'dbconf.php';
         
         #Preparació de les funcions
         public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
+            $this->id = $id;
+            $this->DNI = $dni;
+            $this->nom = $nom;
+            $this->cognom = $cognom;
+            $this->email = $email;
+            $this->insignies = $insignies;
+            $this->NomUsuaris = $Nomusuaris;
+            $this->TipusUsuari = $TipusUsuari; 
+            $this->idEmpresa = $IdEmpresa;
 
             }
 
-        public function mostrarUsr($){
-            
-            }
+        public function mostrarUsr(){
+            include_once 'dbconn.php';
+            $query = "SELECT * FROM `Usuaris` WHERE `email` =  $this->email";
+            $result = mysqli_query($conn,$query) or trigger_error("Consulta SQL fallida!: $query - Error: " . mysqli_error($conn), E_USER_ERROR);
+            $row = $result -> fetch_assoc();
 
-        public function updateUsr($){
+                echo '<div  class=" d-flex align-items-start flex-column">',
+                        '<span class="p-lg-3" >Nom:</span>',
+                        '<span class="p-lg-3">Cognoms:</span>',
+                        '<span class="p-lg-3">DNI:</span>',
+                        '<span class="p-lg-3">Empresa: </span>',
+                    '</div>';
+                echo '<div class=" d-flex align-items-start flex-column">',
+                        '<span class="p-lg-3" id="name">' . $row['name_user'] . '</span>',
+                        '<span class="p-lg-3" id="last-name">' . $row['last_name'] . '</span>',
+                        '<span class="p-lg-3" id="dni">' . $row['dni'] . '</span>',
+                        '<span class="p-lg-3" id="empresa">' . $row['id_company'] . '</span>',
+                    '</div>';
+
+                echo '<div class="vr"></div>';
+
+                echo '<div class=" d-flex align-items-start flex-column">',
+                            '<span class="p-lg-3">Nom de usuari:</span>',
+                            '<span class="p-lg-3">Correu electrònic:</span>',
+                            '<span class="p-lg-3">Telèfon:</span>',
+                    '</div>';
+                echo '<div class=" d-flex align-items-start flex-column">',
+                            '<span class="p-lg-3" name="username" id="username">' . $row['nick_name'] . '</span>',
+                            '<span class="p-lg-3"  name="email" id="email">' . $row['email'] . '</span>',
+                            '<span class="p-lg-3" type="text" name="phone" id="phone">' . $row['phone_number'] . '</span>',
+                    '</div>';    
+        }
+
+        public function updateUsr(){
             //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
             
 
-            }
+        }
         
-        public function changePass($){
+        public function changePass(){
             
             
 
             }
 
-        public function deleteUsr($){
+        public function deleteUsr(){
                 
                 
             }
@@ -103,6 +122,7 @@ include_once 'dbconf.php';
         public function sendConfirmationMail($email){
             $this -> email = $email;    
             }
+    }
 
 
 ?>

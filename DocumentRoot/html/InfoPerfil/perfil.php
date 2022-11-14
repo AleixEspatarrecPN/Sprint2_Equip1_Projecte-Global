@@ -93,33 +93,15 @@
                     <div class="d-flex align-items-center" >
                         <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
                     </div>
-                    <div  class=" d-flex align-items-start flex-column">
-                        <span class="p-lg-3" >Nom:</span>
-                        <span class="p-lg-3">Cognoms:</span>
-                        <span class="p-lg-3">DNI:</span>
-                        <span class="p-lg-3">Empresa: </span>
-                    </div>
-                    <div class=" d-flex align-items-start flex-column">
-                        <span class="p-lg-3" id="name"> Sergio</span>
-                        <span class="p-lg-3" id="last-name">Blanco Tena</span>
-                        <span class="p-lg-3" id="dni">98765432H</span>
-                        <span class="p-lg-3" id="empresa">DripSuply</span>
-                    </div>
 
-                    <div class="vr"></div>
+                    <?php
+                    include_once'../../PHP/ClassUsuari.php';
+                    $user = new User();
+                    $user->mostrarUsr();
+                    ?>
 
-                    <div class=" d-flex align-items-start flex-column">
-                            <span class="p-lg-3">Nom d'usuari:</span>
-                            <span class="p-lg-3">Correu electrònic:</span>
-                            <span class="p-lg-3">Telèfon:</span>
-                    </div>
-                    <div class=" d-flex align-items-start flex-column">
-                            <span class="p-lg-3" name="username" id="username">Mdeserg </span>
-                            <span class="p-lg-3"  name="email" id="email">sergioblanco@iesmontsia.org </span>
-                            <span class="p-lg-3" type="text" name="phone" id="phone">654317543 </span>
-                    </div>
-                </div>
         </div>
+    </div>
         <div class="p-2">
             <a href="../UpdatePerfil/updateperfil.php"><button  class="btn">Editar Perfil</button></a>
             <a href="../UpdatePerfil/updateperfil.php"><button  class="btn">Canvia Contrasenya</button></a>
