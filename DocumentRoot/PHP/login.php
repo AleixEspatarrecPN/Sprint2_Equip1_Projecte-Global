@@ -26,7 +26,7 @@ if ($result -> num_rows > 0){
 
     if(password_verify($pass, $pass_db) && $login == $email_db){
 
-        header("Location: Home/index.php");
+        header("Location: home/index.php");
         die();
         
         //redirecció d'usuaris a les diferents pagines segons el seu tipus
@@ -41,14 +41,14 @@ if ($result -> num_rows > 0){
         //     die();
         // }
         // else{
-        //     header("Location: index.html");
+        //     header("Location: index.php");
         //     die();
         // }
     }
     
 }
     else{
-        header("Location: Login/index.html");
+        header("Location: login/index.php");
         die();
     }
 
@@ -56,7 +56,7 @@ if ($result -> num_rows > 0){
 }
 else{
     //redirecció al login al introduir credencials incorrectes
-    header("Location: Login/index.html");
+    header("Location: login/index.php");
     die();
 }
 ?>

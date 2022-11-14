@@ -29,7 +29,7 @@
                     <input type="password" name="pass" id="contra" placeholder="Contrasenya" /><br><br>
                     <input type="checkbox" name="recordar" id="recordar"><label for="recordar">Recorda'm</label>
                     <br><br>
-                    <input class="button-change" type="button" value="Entra" onclick="document.location.href = '/HTML/Home/index.php'"/>
+                    <input class="button-change" type="button" value="Entra" onclick="document.location.href = '../home/index.php'"/>
                 </div>
             </div>
         </div>
