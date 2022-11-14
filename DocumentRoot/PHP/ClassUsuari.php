@@ -1,5 +1,5 @@
 <?php
-include_once '../PHP_metodes/dbconn.php';
+include_once 'dbconn.php';
 
     class User {
         #Propietats
@@ -139,7 +139,6 @@ include_once '../PHP_metodes/dbconn.php';
 
         public function OcultarUsuari(){
         include_once '../php_metodes/dbconn.php';
-                
         
         // Check connection
         if (!$conn) {
@@ -153,12 +152,7 @@ include_once '../PHP_metodes/dbconn.php';
         } else {
             echo "Error updating record: " . mysqli_error($conn);
         }
-          
         mysqli_close($conn);
         }
     }
-
-
-
-
 ?>
