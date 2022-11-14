@@ -5,3 +5,4 @@
 #Ignora node_modulesgg
 /DocumentRoot/node_modules/
 /css/CoolAdmin-master/
+.vscode/
