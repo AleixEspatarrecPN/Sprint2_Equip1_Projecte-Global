@@ -1,18 +1,18 @@
-version: '3.5'
+version: '3.7'
 
 services:
     apache-php:
-        image: php:8.1-apache
         links:
             - 'mariadb:db'
         ports:
             - 83:80
+        build: .
         volumes:
             - "./DocumentRoot:/var/www/html"
     nodejs:
         image: node
         ports: 
-            - 8085:80
+            - 80:8083
         tty: true
         
     mariadb:

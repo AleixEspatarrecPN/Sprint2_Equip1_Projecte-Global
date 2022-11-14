@@ -1,5 +1,5 @@
 <?php
-include_once '../PHP_metodes/dbconn.php';
+//include_once '../PHP_metodes/dbconn.php';
 
     class User {
         #Propietats
@@ -16,8 +16,8 @@ include_once '../PHP_metodes/dbconn.php';
         private $IdEmpresa;
 
         #Creem el constructor
-        function __construct() {
-            
+        function __construct($email) {
+            $this->Email = $email;
         }
 
         #Getters i Setters
@@ -61,7 +61,7 @@ include_once '../PHP_metodes/dbconn.php';
             $this->DNI = $dni;
             $this->nom = $nom;
             $this->cognom = $cognom;
-            $this->email = $email;
+            $this->email = "joanpasqualalmudeve@iesmontsia.org";
             $this->insignies = $insignies;
             $this->NomUsuaris = $Nomusuaris;
             $this->TipusUsuari = $TipusUsuari; 
@@ -71,7 +71,8 @@ include_once '../PHP_metodes/dbconn.php';
 
             public function mostrarUsr(){
                 include_once 'dbconn.php';
-                $query = "SELECT * FROM `Usuaris` WHERE `email` =  $this->email";
+                $conn = conn();
+                $query = "SELECT * FROM `users` WHERE `email` =  '. $this->Email .'";
                 $result = mysqli_query($conn,$query) or trigger_error("Consulta SQL fallida!: $query - Error: " . mysqli_error($conn), E_USER_ERROR);
                 $row = $result -> fetch_assoc();
     
