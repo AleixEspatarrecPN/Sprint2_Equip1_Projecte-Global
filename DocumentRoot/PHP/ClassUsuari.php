@@ -136,14 +136,14 @@
 
                 if(password_verify($pass, $pass_db) && $login == $email_db){
 
-                    header("Location: Home/index.php");
+                    header("Location: home/index.php");
                     die();
 
                 }
     
             }
                 else{
-                    header("Location: Login/index.html");
+                    header("Location: login/index.php");
                     die();
                 }
             
@@ -152,7 +152,7 @@
             
             else{
                 //redirecció al login al introduir credencials incorrectes
-                header("Location: Login/index.html");
+                header("Location: login/index.php");
                 die();
             }
 
@@ -171,7 +171,12 @@
             }
 
         public function OcultarUsuari(){
-        include_once '../php_metodes/dbconn.php';        
+<<<<<<< HEAD
+        include_once '../php_metodes/dbconn.php';
+        
+=======
+        include_once '../php/dbconn.php';
+>>>>>>> 21255dd0735433317969158b674d4e8042601482
         // Check connection
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -184,7 +189,6 @@
         } else {
             echo "Error updating record: " . mysqli_error($conn);
         }
-          
         mysqli_close($conn);
         
         }

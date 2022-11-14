@@ -1,5 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./KivyMD/ProvesKivy" //Podrem crear imports dels nostres propis arxius, optimitzem l'espai
-    ]
-}

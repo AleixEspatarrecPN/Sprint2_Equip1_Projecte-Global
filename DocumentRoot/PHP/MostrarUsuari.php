@@ -6,28 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 <?php
 
 //Métode
 function MostrarUsuari(){
   include_once 'dbconn.php'; 
-  $conn = conn();           
-  $sql = "SELECT * FROM `Usuaris` WHERE 1";
-  $result = mysqli_query($conn, $sql);
-  $conn->close();
-  echo 'Hola!';
-  if($sql = MostrarUsuari()){
-    if($sql->num_rows > 0){
-        while($obj = $sql->fetch_object()){
-        echo "<p> $obj->Nom </p>";
-        }
+  include_once 'ClassUsuari.php'
+  $consulta2 =  "SELECT * FROM Usuari WHERE id= 1";
+
+  if ($result = $connexioDB->query($consulta)) {
+      if ($result->num_rows > 0) {
+          while ($obj = $result->fetch_object()) {
+              echo "<tr>";
+              echo "<td> $obj->Id </td>";
+              echo "<td> $obj->DataPublicacio </td>";
+              echo "</tr>";
+          }
       }
   }
+
   return $result;
 
 }
-
+$usuari = new User(1);
+$usuari->MostrarUsuari(1); 
 
 ?>
 </body>

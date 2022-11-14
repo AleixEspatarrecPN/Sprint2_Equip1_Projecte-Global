@@ -43,12 +43,12 @@
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
                                 </li>
                                 <li><a class="dropdown-item" href="#"><i
-                                            class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                                                class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="../cliente/index.html"><i
-                                            class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
+                                                class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
                             </ul>
                         </li>
                 </div>
@@ -70,14 +70,14 @@
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Inicio</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fa-solid fa-clipboard"></i>Questionarios</a></li>
+                                    class="fa-solid fa-clipboard"></i>Questionarios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-book"></i>Informes</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fa-solid fa-graduation-cap"></i>Formación</a>
+                                    class="fa-solid fa-graduation-cap"></i>Formación</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fa-solid fa-address-book"></i>Contacto</a>
+                                    class="fa-solid fa-address-book"></i>Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -85,6 +85,7 @@
     <!--Header Menu-->
 
 </header>
+<<<<<<< HEAD:DocumentRoot/html/InfoPerfil/perfil.php
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
                 <h3 id="title-footer">DADES USUARI</h3>
@@ -99,17 +100,53 @@
                     $user = new User('joanpasqualalmudeve@iesmontsia.org');
                     $user->mostrarUsr();
                     ?>
+=======
+>>>>>>> 0236aa3709cc03177df2073a0ffc2175017cb56d:DocumentRoot/html/vistaUsuari/index.php
 
-        </div>
-    </div>
-        <div class="p-2">
-            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn">Editar Perfil</button></a>
-            <a href="../UpdatePerfil/updateperfil.php"><button  class="btn">Canvia Contrasenya</button></a>
+<div class="container overflow-hidden text-center col-lg-9" >
+    <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
+        <div class="d-flex justify-content-around">
+            <table class="table">
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Nom usuari</th>
+                    <th>Nom empresa</th>
+                    <th>Correu</th>
+                    <th>Tipus d'usuari</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="../vistaUsuari/">Eduard Andrei</a></td>
+                    <td>Google</td>
+                    <td>eduardandrei@google.com</td>
+                    <td>Admin</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="../vistaUsuari/">Aleix Escrihuela</a></td>
+                    <td>Facebook</td>
+                    <td>alexiescrihuela@facebook.com</td>
+                    <td>Admin</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="../vistaUsuari/">Julia Krukonis</a></td>
+                    <td>Telepizza</td>
+                    <td>juliakrukonis@telepizza.es</td>
+                    <td>Admin</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
-
-
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
@@ -141,7 +178,7 @@
                 <div class="col-6 col-md-3">
                     <h6 id="title-footer">Contacto</h6>
                     <p><i class="fa-solid fa-phone"></i>682849274 <br> <i
-                            class="fa-solid fa-envelope"></i>support@pymeralia.com</p>
+                                class="fa-solid fa-envelope"></i>support@pymeralia.com</p>
                 </div>
                 <div class="col-6 col-md-3">
                     <h6 id="title-footer">RRSS</h6>
