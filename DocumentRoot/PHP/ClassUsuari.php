@@ -15,7 +15,7 @@ include_once 'dbconf.php';
         private $TipusUsuari;
         private $IdEmpresa;
 
-        #Creem el constructor
+        #Creem el constructor, per crear l'usuari.
         function __construct( $Id, $DNI, $Nom, $Cognom, $Telefon, $Email, $Insignies, $NomUsuaris, $PassUsuari, $TipusUsuari, $IdEmpresa) {
             $this->Id = $Id;
             $this->DNI = $DNI;
@@ -66,32 +66,74 @@ include_once 'dbconf.php';
 
         
         #Preparació de les funcions
-        public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
-
-            }
-
-        public function mostrarUsr($){
+        public function mostrarUsr(){
             
             }
 
-        public function updateUsr($){
+        public function updateUsr(){
             //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
             
 
             }
         
-        public function changePass($){
+        public function login(){
+            session_start();
+
+            //comprovació entrada de dades.
+            if (isset($_POST["login"]) && isset($_POST["pass"])) {
+
+            $login = $_POST["login"];
+            $pass = $_POST["pass"];
+            //utilització de la funció password_hash per a encriptar la contrasenya.
+            $cryptPass = password_hash($pass, PASSWORD_BCRYPT); 
+
+            //es guarda a la variable global $_SESSION el correu de l'usuari.
+            $_SESSION['correu_sessio'] = $login;
+
+            //es guarda la consulta sql en una variable per fer la consulta.
+            $sql = "SELECT Email, Contrasenya, TipusUsuari FROM Usuaris WHERE Email='$login'";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result -> num_rows > 0){
+
+                $row = $result -> fetch_assoc();
+                $email_db = $row["Email"];
+                $pass_db = $row["Contrasenya"];
+                //condicionar l'inci si l'usuari està ocult
+
+                if(password_verify($pass, $pass_db) && $login == $email_db){
+
+                    header("Location: Home/index.php");
+                    die();
+
+                }
+    
+            }
+                else{
+                    header("Location: Login/index.html");
+                    die();
+                }
             
+                $conn -> close();
+            }
             
+            else{
+                //redirecció al login al introduir credencials incorrectes
+                header("Location: Login/index.html");
+                die();
+            }
+
+        }
+        
+        public function changePass(){
+            
+            $currentUser = //id usuari actual
+            $sql = "SELECT email FROM Usuaris WHERE id_user='$currentUser'";
+            $emailUser = mysqli_query($conn, $sql);
+
+            if($_POST['emailOG']== $emailUser && $_POST['emailNew'] == $_POST['emailNewConf'] ){
+                
+            }
 
             }
 
@@ -100,9 +142,6 @@ include_once 'dbconf.php';
                 
             }
 
-        public function sendConfirmationMail($email){
-            $this -> email = $email;    
-            }
 
 
 ?>
