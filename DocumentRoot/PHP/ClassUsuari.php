@@ -146,6 +146,8 @@ include_once('dbconn.php');
         //PARTE DE SERGIO
         public function updateUsr(){
             //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
+            session_start();
+
 
         }
 
@@ -230,7 +232,12 @@ include_once('dbconn.php');
 
         //PARTE JULIA
         public function OcultarUsuari(){
+<<<<<<< HEAD
         include_once '../php_metodes/dbconn.php';
+        
+=======
+        include_once '../php/dbconn.php';
+>>>>>>> 21255dd0735433317969158b674d4e8042601482
         // Check connection
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
