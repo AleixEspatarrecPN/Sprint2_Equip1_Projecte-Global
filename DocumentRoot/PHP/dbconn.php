@@ -8,7 +8,7 @@ function conn(){
 
     $conn = mysqli_connect($db_host, $user, $pass, $db);
     if ($conn->connect_error) {
-        die("Connexió fallida: " . $connexioDB->connect_error);
+        die("Connexió fallida: " . $conn->connect_error);
     }
   return $conn;
 }

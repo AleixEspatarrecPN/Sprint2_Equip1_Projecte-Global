@@ -12,8 +12,8 @@
 
 //Métode
 function MostrarUsuari(){
-  include_once 'dbconn.php'; 
-  include_once 'ClassUsuari.php'
+  include_once 'dbconn.php';
+    include_once 'ClassUsuari.php'
   $consulta2 =  "SELECT * FROM Usuari WHERE id= 1";
 
   if ($result = $connexioDB->query($consulta)) {
