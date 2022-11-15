@@ -25,20 +25,18 @@
                 <div class="login2" align="center">
 
                     <H2 id="title">Inicia sessió</H2><br />
+                    <form action="./validar.php" method="post">
                     <input type="text" name="login" id="correu" placeholder="Usuari" /><br><br>
                     <input type="password" name="pass" id="contra" placeholder="Contrasenya" /><br><br>
                     <input type="checkbox" name="recordar" id="recordar"><label for="recordar">Recorda'm</label>
                     <br><br>
-                    <input class="button-change" type="button" value="Entra" onclick="document.location.href = '../home/index.php'"/>
+                    <input class="button-change" type="submit" value="Entra" />
+                    </form>
                 </div>
             </div>
         </div>
     <!--    <script src="javascript.js"></script> -->
-    <?php
-    
-
-    ?>
-
+    <!-- Redirecció pagina: document.location.href = '../home/index.php' -->
 </body>
 
 </html>

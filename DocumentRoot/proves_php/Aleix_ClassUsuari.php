@@ -153,19 +153,23 @@ include_once('dbconn.php');
 
         //PARTE DE ALEIX
         public function login($login, $pass){
+            include_once 'dbconn.php';
+
+
             session_start();
 
             //comprovació entrada de dades.
             if (isset ($login) && isset($pass)) {
 
             //utilització de la funció password_hash per a encriptar la contrasenya.
-            $cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
+            //$cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
 
             //es guarda a la variable global $_SESSION el correu de l'usuari.
             $_SESSION['mail_session'] = $login;
 
             //es guarda la consulta sql en una variable per fer la consulta.
             $sql = "SELECT id_user, email, `password`, type_user, `hidden` FROM users WHERE email='$login'";
+            $conn = conn();
             $result = mysqli_query($conn, $sql);
 
             if ($result -> num_rows > 0){
@@ -185,15 +189,18 @@ include_once('dbconn.php');
 
 
                 //condicionar l'inci si l'usuari està ocult
-                if(password_verify($pass, $pass_db) && $login == $email_db){
+                //verificació de contrassenya quan l'encriptem:
+                    //(password_verify($pass, $pass_db) && $login == $email_db)
+                if($pass == $pass_db && $login == $email_db){
 
-                    header("Location: Home/index.php");
+                    header("Location: ../home/index.php");
                     die();
 
                 }
 
                 else{
-                    header("Location: login/index.php");
+                    header("Location: index.php");
+                    return ("<a>No s'han omplert els camps nescessaris</a>");
                     die();
                 }
             
@@ -202,14 +209,17 @@ include_once('dbconn.php');
             
             else{
                 //redirecció al login al introduir credencials incorrectes
-                header("Location: login/index.php");
+                header("Location: index.php");
+                return ("<a>Les crendencials introduides són incorrectes</a>");
                 die();
             }
         }
 
+    }
+
 
         //PARTE DE ALEIX
-        public function logut()
+        public function logout()
         {
             session_start();
 
@@ -224,35 +234,37 @@ include_once('dbconn.php');
         }
 
         //PARTE ALEIX
-        public function changePass($emailOld, $emailNew, $emailNewConf){
+        public function changePass($passOld, $passNew, $passNewConf){
             
             $currentUser = $_SESSION["idUSR"];
 
-            $sql = "SELECT email FROM Usuaris WHERE id_user='$currentUser'";
+            $sql = "SELECT `password` FROM Usuaris WHERE id_user='$currentUser'";
 
-            $emailUser = mysqli_query($conn, $sql);
+            $conn = conn();
+
+            $passUser = mysqli_query($conn, $sql);
 
 
-            if($emailOld == $emailUser && $mail_session == $emailUser){
+            if($passOld == $passUser && $mail_session == $passUser){
 
-                if($emailNew == $emailNewConf){
+                if($passNew == $passNewConf && $passNew != $passUser){
 
-                    $sqlPass = "UPDATE Users SET `password`= $emailNew WHERE id_usr = $currentUser";
+                    $sqlPass = "UPDATE Users SET `password`= $passNew WHERE id_usr = $currentUser";
 
                     if (mysqli_query($conn, $sqlPass)) {
-                        echo'<a>Canvi aplicat amb exit</a>';
+                        return('<a>Canvi aplicat amb exit</a>');
                     } else {
-                        echo "Error updating record: " . mysqli_error($conn);
+                        return("Error updating record: " . mysqli_error($conn));
                     }
                     mysqli_close($conn);
                 }
                 else{
-                    echo'<a>Les contrassenyes no coincideixen</a>'
+                    return('<a>Les contrassenyes no coincideixen</a>');
                 }   
             }
             else{
-                echo'<a>La contrassenya no coincideix amb la del usuari</a>'
-            }
+                return('<a>La contrassenya no coincideix amb la del usuari</a>');
+        }
 
             $conn->close();
 
@@ -278,4 +290,5 @@ include_once('dbconn.php');
         
         }
     }
+
 ?>
