@@ -239,7 +239,7 @@
         die("Connection failed: " . mysqli_connect_error());
         }
           
-        $sql = "UPDATE Usuaris SET Ocult=0 WHERE id=1";
+        $sql = "UPDATE `users` SET `hidden` = '2022-11-15' WHERE `users`.`id_user` = 1";
           
         if (mysqli_query($conn, $sql)) {
             echo "updated successfully";
@@ -249,8 +249,28 @@
         mysqli_close($conn);
         
         }
+        public function MostrarUsuari(){
+            include_once 'dbconn.php';
+    
+            $conn = conn();
+            // Check connection
+            if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+            }
+              
+            $sql = "UPDATE `users` SET `hidden` = NULL WHERE `users`.`id_user` = 1";
+              
+            if (mysqli_query($conn, $sql)) {
+                echo "updated successfully";
+            } else {
+                echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
+            }
+            mysqli_close($conn);
+            
+            }
     }
+
 $usuari = new User();
-$usuari->OcultarUsuari(1); 
+$usuari->MostrarUsuari(1); 
 
 ?>
