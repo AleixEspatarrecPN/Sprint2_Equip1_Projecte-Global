@@ -1,3 +1,6 @@
+<?php
+include_once "../../proves_php/Sergio_ClassUsuari.php"
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,7 +25,8 @@
         <div class="container-fluid d-flex flex-row justify-content-between navbar-nav ">
             <div class="p-2" id="logo">
                 <li class="nav-item"><a class="nav-link" href="#"><img src="../images/logo_pymeshield.png"
-                                                                       alt="Logo" class="d-inline-block align-text-middle">
+                                                                       alt="Logo"
+                                                                       class="d-inline-block align-text-middle">
                         pymeshield</a></li>
             </div>
 
@@ -85,64 +89,42 @@
     <!--Header Menu-->
 
 </header>
-<<<<<<< HEAD:DocumentRoot/html/InfoPerfil/perfil.php
-<div class="container overflow-hidden text-center col-lg-12" >
-    <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
-                <h3 id="title-footer">DADES USUARI</h3>
-    <div class="card border-0" style="background-color: #dcdcdc">
-        <div class="d-flex justify-content-around" id="title-footer">
-                    <div class="d-flex align-items-center" >
-                        <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
-                    </div>
-
-                    <?php
-                    include_once'../../PHP/ClassUsuari.php';
-                    $user = new User('joanpasqualalmudeve@iesmontsia.org');
-                    $user->mostrarUsr();
-                    ?>
-=======
->>>>>>> 0236aa3709cc03177df2073a0ffc2175017cb56d:DocumentRoot/html/vistaUsuari/index.php
-
-<div class="container overflow-hidden text-center col-lg-9" >
+<div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-around">
             <table class="table">
-                <tr>
-                    <th><input type="checkbox"></th>
-                    <th>Nom usuari</th>
-                    <th>Nom empresa</th>
-                    <th>Correu</th>
-                    <th>Tipus d'usuari</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><a href="../vistaUsuari/">Eduard Andrei</a></td>
-                    <td>Google</td>
-                    <td>eduardandrei@google.com</td>
-                    <td>Admin</td>
-                    <td>Editar</td>
-                    <td>Eliminar</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><a href="../vistaUsuari/">Aleix Escrihuela</a></td>
-                    <td>Facebook</td>
-                    <td>alexiescrihuela@facebook.com</td>
-                    <td>Admin</td>
-                    <td>Editar</td>
-                    <td>Eliminar</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><a href="../vistaUsuari/">Julia Krukonis</a></td>
-                    <td>Telepizza</td>
-                    <td>juliakrukonis@telepizza.es</td>
-                    <td>Admin</td>
-                    <td>Editar</td>
-                    <td>Eliminar</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>Nom usuari</th>
+                        <th>Nom empresa</th>
+                        <th>Correu</th>
+                        <th>Tipus d'usuari</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $result = User::llistatUsr();
+                        while($mostrar = mysqli_fetch_array($result)){
+
+                    ?>
+                    <tr>
+                        <th scope="row" ><input type="checkbox"></th>
+                        <td id="nick_name"><?php echo $mostrar['nick_name'] ?></td>
+                        <td id="id_company"><?php echo $mostrar['name_company'] ?></td>
+                        <td id="email"><?php echo $mostrar['email'] ?></td>
+                        <td id="type_user"><?php echo $mostrar['type_user'] ?></td>
+                        <td id=""><?php echo 'Editar' ?></td>
+                        <td id=""><?php echo 'Eliminar' ?></td>
+
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+
             </table>
         </div>
     </div>
@@ -155,7 +137,8 @@
                 <div id="logo-footer" class="col-6 col-md-3">
                     <a class="text-light" href="index.html"><img src="../images/logo_pymeshield_black.png"
                                                                  alt="Logo" width="50px" style="margin-right: 5px;"
-                                                                 class="d-inline-block align-text-middle"><i class="fa-solid fa-copyright"></i>pymeshield
+                                                                 class="d-inline-block align-text-middle"><i
+                                class="fa-solid fa-copyright"></i>pymeshield
                         by Pymeralia</a>
                 </div>
                 <div class="col-6 col-md-3">
