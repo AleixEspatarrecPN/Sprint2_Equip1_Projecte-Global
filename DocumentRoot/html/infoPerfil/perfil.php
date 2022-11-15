@@ -95,8 +95,8 @@
                     </div>
 
                     <?php
-                    include_once'../../PHP/ClassUsuari.php';
-                    $user = new User(1);
+                    include_once'../../php/ClassUsuari.php';
+                    $user = new User("joanpasqualalmudeve@iesmontsia.org");
                     $user->mostrarUsr();
                     ?>
 
