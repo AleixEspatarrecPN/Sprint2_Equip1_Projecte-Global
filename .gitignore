@@ -6,3 +6,4 @@
 /DocumentRoot/node_modules/
 /css/CoolAdmin-master/
 .vscode/
+docker-compose.yml
