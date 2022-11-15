@@ -85,23 +85,6 @@
     <!--Header Menu-->
 
 </header>
-<<<<<<< HEAD:DocumentRoot/html/InfoPerfil/perfil.php
-<div class="container overflow-hidden text-center col-lg-12" >
-    <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
-                <h3 id="title-footer">DADES USUARI</h3>
-    <div class="card border-0" style="background-color: #dcdcdc">
-        <div class="d-flex justify-content-around" id="title-footer">
-                    <div class="d-flex align-items-center" >
-                        <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
-                    </div>
-
-                    <?php
-                    include_once'../../PHP/ClassUsuari.php';
-                    $user = new User('joanpasqualalmudeve@iesmontsia.org');
-                    $user->mostrarUsr();
-                    ?>
-=======
->>>>>>> 0236aa3709cc03177df2073a0ffc2175017cb56d:DocumentRoot/html/vistaUsuari/index.php
 
 <div class="container overflow-hidden text-center col-lg-9" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
