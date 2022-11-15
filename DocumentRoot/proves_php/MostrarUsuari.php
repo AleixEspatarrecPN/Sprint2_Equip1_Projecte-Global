@@ -19,7 +19,7 @@ function MostrarUsuari(){
   include_once 'ClassUsuari.php'
  $consulta =  "SELECT * FROM Publicacio WHERE id=1";
 
-        if ($result = $connexioDB->query($consulta)) {
+        if ($result = $conn->query($consulta)) {
             if ($result->num_rows > 0) {
                 while ($obj = $result->fetch_object()) {
                     echo "<tr>";
