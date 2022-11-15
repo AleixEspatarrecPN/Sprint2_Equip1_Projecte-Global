@@ -270,7 +270,7 @@
             }
     }
 
-$usuari = new User();
+$usuari = new User(); 
 $usuari->MostrarUsuari(1); 
 
 ?>
