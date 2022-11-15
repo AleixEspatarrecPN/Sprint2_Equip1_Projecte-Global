@@ -1,140 +1,256 @@
 <?php
 
-class User {
+    class User {
         #Propietats
-        private $Id;
-        private $DNI;
-        private $Nom;
-        private $Cognom;
-        private $Telefon;
-        private $Email;
-        private $Insignies;
-        private $NomUsuaris;
-        private $PassUsuari;
-        private $TipusUsuari;
-        private $IdEmpresa;
+        private $id;
+        private $dni;
+        private $nom;
+        private $cognom;
+        private $telefon;
+        private $email;
+        private $insignies;
+        private $nomUsuari;
+        private $passUsuari;
+        private $tipusUsuari;
+        private $idEmpresa;
 
         #Creem el constructor
-        function __construct( $Id, $DNI, $Nom, $Cognom, $Telefon, $Email, $Insignies, $NomUsuaris, $PassUsuari, $TipusUsuari, $IdEmpresa) {
-            $this->Id = $Id;
-            $this->DNI = $DNI;
-            $this->Nom = $Nom;
-            $this->Cognom = $Cognom;
-            $this->Telefon = $Telefon;
-            $this->Email = $Email;
-            $this->Insignies = $Insignies;
-            $this->NomUsuaris = $NomUsuaris;
-            $this->PassUsuari = $PassUsuari;
-            $this->TipusUsuari = $TipusUsuari;
-            $this->IdEmpresa = $TipusUsuari;
+        function __construct()
+        {
+            //obtengo un array con los parámetros enviados a la función
+            $params = func_get_args();
+            //saco el número de parámetros que estoy recibiendo
+            $num_params = func_num_args();
+            //cada constructor de un número dado de parámtros tendrá un nombre de función
+            //atendiendo al siguiente modelo __construct1() __construct2()...
+            $funcion_constructor ='__construct'.$num_params;
+            //compruebo si hay un constructor con ese número de parámetros
+            if (method_exists($this,$funcion_constructor)) {
+                //si existía esa función, la invoco, reenviando los parámetros que recibí en el constructor original
+                call_user_func_array(array($this,$funcion_constructor),$params);
+            }
         }
 
+        //ahora declaro una serie de métodos constructores que aceptan diversos números de parámetros
+        function __construct0()
+        {
+            $this->__construct1("Anónimo");
+        }
+
+        function __construct1($email)
+        {
+            $this->email = $email;
+        }
+
+        function __construct8($dni,$nom,$cognom,$telefon,$email,$nomUsuari,$passUsuari,$tipusUsuari)
+        {
+            $this->dni = $dni;
+            $this->nom = $nom;
+            $this->cognom = $cognom;
+            $this->telefon = $telefon;
+            $this->email = $email;
+            $this->nomUsuari = $nomUsuari;
+            $this->passUsuari = $passUsuari;
+            $this->tipusUsuari = $tipusUsuari;
+        }
+
+
+
         #Getters i Setters
-        function getId() { return $this -> Id; }
-        function setId($Id) { $this -> Id = $Id; }
+        function getId() { return $this->id; }
+        function setId($id) { $this->id = $id; }
 
-        function getDNI() { return $this -> DNI; }
-        function setDNI($DNI) { $this -> DNI = $DNI; }
+        function getDNI() { return $this->dni; }
+        function setDNI($dni) { $this->dni = $dni; }
 
-        function getNom() { return $this -> Nom; }
-        function setNom($Nom) { $this -> Nom = $Nom; }
+        function getNom() { return $this->nom; }
+        function setNom($nom) { $this->nom = $nom; }
 
-        function getCognom() { return $this -> Cognom; }
-        function setCognom($Cognom) { $this -> Cognom = $Cognom; }
+        function getCognom() { return $this->cognom; }
+        function setCognom($cognom) { $this->cognom = $cognom; }
+        function getTelefon() { return $this->telefon; }
+        function setTelefon($telefon) { $this->telefon = $telefon; }
 
-        function getTelefon() { return $this -> Telefon; }
-        function setTelefon($Telefon) { $this -> Telefon = $Telefon; }
+        function getEmail() { return $this->email; }
+        function setEmail($email) { $this->email = $email; }
 
-        function getEmail() { return $this -> Email; }
-        function setEmail($Email) { $this -> Email = $Email; }
+        function getInsignies() { return $this->insignies; }
+        function setInsignies($insignies) { $this->insignies = $insignies; }
 
-        function getInsignies() { return $this -> Insignies; }
-        function setInsignies($Insignies) { $this -> Insignies = $Insignies; }
+        function getNomUsuari() { return $this->nomUsuari; }
+        function setNomUsuari($nomUsuari) { $this->nomUsuari = $nomUsuari; }
 
-        function getNomUsuaris() { return $this -> NomUsuaris; }
-        function setNomUsuaris($NomUsuaris) { $this -> NomUsuaris = $NomUsuaris; }
+        function getPassUsuari() { return $this->passUsuari; }
+        function setPassUsuari($passUsuari) { $this->passUsuari = $passUsuari; }
 
-        function getPassUsuari() { return $this -> PassUsuari; }
-        function setPassUsuari($PassUsuari) { $this -> PassUsuari = $PassUsuari; }
+        function getTipusUsuari() { return $this->tipusUsuari; }
+        function setTipusUsuari($tipusUsuari) { $this->tipusUsuari = $tipusUsuari; }
 
-        function getTipusUsuari() { return $this -> TipusUsuari; }
-        function setTipusUsuari($TipusUsuari) { $this -> TipusUsuari = $TipusUsuari; }
-
-        function getIdEmpresa() { return $this -> IdEmpresa; }
-        function setIdEmpresa($IdEmpresa) { $this -> IdEmpresa = $IdEmpresa; }
+        function getIdEmpresa() { return $this->idEmpresa; }
+        function setIdEmpresa($idEmpresa) { $this->idEmpresa = $idEmpresa; }
 
         
         #Preparació de les funcions
-        public function create($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
+        public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $nomusuari,$tipusUsuari, $idEmpresa){
+            $this->id = $id;
+            $this->DNI = $dni;
+            $this->nom = $nom;
+            $this->cognom = $cognom;
+            $this->telefon = $telefon;
+            $this->email = "joanpasqualalmudeve@iesmontsia.org";
+            $this->insignies = $insignies;
+            $this->nomUsuari = $nomusuari;
+            $this->tipusUsuari = $tipusUsuari;
+            $this->idEmpresa = $idEmpresa;
 
             }
-        public function mostrar($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
 
+            //PARTE DE JAN
+            public function mostrarUsr(){
+                include_once 'dbconn.php';
+                $conn = conn();
+                $query = "SELECT * FROM `users` WHERE `email` =  '. $this->email .'";
+                $result = mysqli_query($conn,$query) or trigger_error("Consulta SQL fallida!: $query - Error: " . mysqli_error($conn), E_USER_ERROR);
+                $row = $result -> fetch_assoc();
+    
+                    echo '<div  class=" d-flex align-items-start flex-column">',
+                            '<span class="p-lg-3" >Nom:</span>',
+                            '<span class="p-lg-3">Cognoms:</span>',
+                            '<span class="p-lg-3">DNI:</span>',
+                            '<span class="p-lg-3">Empresa: </span>',
+                        '</div>';
+                    echo '<div class=" d-flex align-items-start flex-column">',
+                            '<span class="p-lg-3" id="name">' . $row['name_user'] . '</span>',
+                            '<span class="p-lg-3" id="last-name">' . $row['last_name'] . '</span>',
+                            '<span class="p-lg-3" id="dni">' . $row['dni'] . '</span>',
+                            '<span class="p-lg-3" id="empresa">' . $row['id_company'] . '</span>',
+                        '</div>';
+    
+                    echo '<div class="vr"></div>';
+    
+                    echo '<div class=" d-flex align-items-start flex-column">',
+                                '<span class="p-lg-3">Nom de usuari:</span>',
+                                '<span class="p-lg-3">Correu electrònic:</span>',
+                                '<span class="p-lg-3">Telèfon:</span>',
+                        '</div>';
+                    echo '<div class=" d-flex align-items-start flex-column">',
+                                '<span class="p-lg-3" name="username" id="username">' . $row['nick_name'] . '</span>',
+                                '<span class="p-lg-3"  name="email" id="email">' . $row['email'] . '</span>',
+                                '<span class="p-lg-3" type="text" name="phone" id="phone">' . $row['phone_number'] . '</span>',
+                        '</div>';    
             }
-        public function update($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-            $this -> id = $id;
-            $this -> DNI = $dni;
-            $this -> nom = $nom;
-            $this -> cognom = $cognom;
-            $this -> email = $email;
-            $this -> insignies = $insignies;
-            $this -> NomUsuaris = $Nomusuaris;
-            $this -> TipusUsuari = $TipusUsuari; 
-            $this -> idEmpresa = $IdEmpresa;
 
+
+
+        //PARTE DE SERGIO
+        public function updateUsr(){
+            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
+            session_start();
+
+
+        }
+
+        //PARTE DE ALEIX
+        public function login(){
+            session_start();
+            include_once('dbconn.php');
+
+            $conn = conn();
+            //comprovació entrada de dades.
+            if (isset($_POST["login"]) && isset($_POST["pass"])) {
+
+            $login = $_POST["login"];
+            $pass = $_POST["pass"];
+            //utilització de la funció password_hash per a encriptar la contrasenya.
+            $cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
+
+            //es guarda a la variable global $_SESSION el correu de l'usuari.
+            $_SESSION['correu_sessio'] = $login;
+
+            //es guarda la consulta sql en una variable per fer la consulta.
+            $sql = "SELECT email, Contrasenya, TipusUsuari FROM Usuaris WHERE email = '$login'";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result -> num_rows > 0){
+
+                $row = $result -> fetch_assoc();
+                $email_db = $row["email"];
+                $pass_db = $row["password"];
+                //condicionar l'inci si l'usuari està ocult
+
+                if(password_verify($pass, $pass_db) && $login == $email_db){
+
+                    header("Location: home/index.php");
+                    die();
+
+                }
+    
             }
-            public function delete($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $Nomusuaris,$TipusUsuari, $IdEmpresa){
-                include_once 'dbconn.php'; // Connexió a la BBDD  
-                $this -> id = $id;
-                $this -> DNI = $dni;
-                $this -> nom = $nom;
-                $this -> cognom = $cognom;
-                $this -> email = $email;
-                $this -> insignies = $insignies;
-                $this -> NomUsuaris = $Nomusuaris;
-                $this -> TipusUsuari = $TipusUsuari;
-                $this -> idEmpresa = $IdEmpresa;
+                else{
+                    header("Location: login/index.php");
+                    die();
+                }
+            
+                $conn -> close();
+            }
+            
+            else{
+                //redirecció al login al introduir credencials incorrectes
+                header("Location: login/index.php");
+                die();
+            }
+
+        }
+
+        //PARTE DE ALEIX
+        public function logOut()
+        {
+            session_start();
+
+            //buidem les dades de la sessió previament a la seva destrucció
+            session_unset();
+            session_destroy();
+
+            header("Location: login/index.php");
+            die();
+
+        }
+
+        //PARTE ALEIX
+        public function changePass(){
+            
+            $currentUser = //id usuari actual
+            $sql = "SELECT email FROM Usuaris WHERE id_user='$currentUser'";
+            $emailUser = mysqli_query(conn, $sql);
+
+            if($_POST['emailOG']== $emailUser && $_POST['emailNew'] == $_POST['emailNewConf'] ){
                 
             }
-        public function sendConfirmationMail($email){
-            $this -> email = $email;    
+
             }
-//Métode
-public function MostrarUsuari(){
-    include_once 'dbconn.php'; 
-    $conn = conn();           
-    $sql = "SELECT * FROM `Usuaris` WHERE 1";
-    $result = mysqli_query($conn, $sql);
-    $conn->close();
-    echo 'Hola!';
-    if($sql = MostrarUsuari()){
-      if($sql->num_rows > 0){
-          while($obj = $sql->fetch_object()){
-          echo "<p> $obj->Nom </p>";
-          }
+
+        //PARTE JULIA
+        public function OcultarUsuari(){
+        include_once 'dbconn.php';
+
+        $conn = conn();
+        // Check connection
+        if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        }
+          
+        $sql = "UPDATE Usuaris SET Ocult=0 WHERE id=1";
+          
+        if (mysqli_query($conn, $sql)) {
+            echo "updated successfully";
+        } else {
+            echo "Error updating record: " . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        
         }
     }
-    return $result;
-  
-  }
+$usuari = new User();
+$usuari->OcultarUsuari(1); 
 
-    }
 ?>
