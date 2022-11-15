@@ -271,6 +271,6 @@
     }
 
 $usuari = new User(); 
-$usuari->MostrarUsuari(1); 
+$usuari->OcultarUsuari(1); 
 
 ?>

@@ -89,12 +89,7 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     <!--Header Menu-->
 
 </header>
-<<<<<<< HEAD
 <div class="container overflow-hidden text-center col-lg-9">
-=======
-
-<div class="container overflow-hidden text-center col-lg-9" >
->>>>>>> e7d49cf10a0e226bc026d5b70fee83473d7907d0
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-around">
             <table class="table">
