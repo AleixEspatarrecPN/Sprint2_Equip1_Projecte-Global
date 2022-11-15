@@ -14,18 +14,18 @@
 function MostrarUsuari(){
   include_once 'dbconn.php'; 
   include_once 'ClassUsuari.php'
-  $consulta2 =  "SELECT * FROM Usuari WHERE id= 1";
+ $consulta =  "SELECT * FROM Publicacio WHERE id=1";
 
-  if ($result = $connexioDB->query($consulta)) {
-      if ($result->num_rows > 0) {
-          while ($obj = $result->fetch_object()) {
-              echo "<tr>";
-              echo "<td> $obj->Id </td>";
-              echo "<td> $obj->DataPublicacio </td>";
-              echo "</tr>";
-          }
-      }
-  }
+        if ($result = $connexioDB->query($consulta)) {
+            if ($result->num_rows > 0) {
+                while ($obj = $result->fetch_object()) {
+                    echo "<tr>";
+                    echo "<td> $obj->Id </td>";
+                    echo "<td> $obj-> </td>";
+                    echo "</tr>";
+                }
+            }
+        }
 
   return $result;
 
