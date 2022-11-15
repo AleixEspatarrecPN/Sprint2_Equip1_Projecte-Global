@@ -95,7 +95,7 @@
                     </div>
 
                     <?php
-                    include_once'../../PHP/ClassUsuari.php';
+                    include_once '../../PHP/ClassUsuari.php';
                     $user = new User(1);
                     $user->mostrarUsr();
                     ?>
