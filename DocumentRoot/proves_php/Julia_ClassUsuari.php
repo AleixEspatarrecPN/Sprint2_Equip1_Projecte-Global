@@ -268,7 +268,27 @@
             mysqli_close($conn);
             
             }
-    }
+        public function CrearUsuari(){
+            include_once 'dbconn.php';
+    
+            $conn = conn();
+            // Check connection
+            if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+            }
+            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('4', '43459076D', 'Nom', 'Cognom', '654778903', 'nom@correu.com', NULL, 'ExempleUsuari', 'contrasenya', NULL, NULL, 'client')";
+              
+            if (mysqli_query($conn, $sql)) {
+                echo "Added successfully";
+            } else {
+                echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
+            }
+            mysqli_close($conn);
+            
+            }
+           
+        }
+    
 
 $usuari = new User(); 
 $usuari->OcultarUsuari(1); 
