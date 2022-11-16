@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <link href="../css/brands.min.css" rel="stylesheet">
-    <link href="../css/espacio.css" rel="stylesheet">
-    <link href="../css/carousel.rtl.css" rel="stylesheet">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
-    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <script src="../scripts/checkbox.js"></script>
 </head>
@@ -86,31 +83,8 @@
             </div>
     </nav>
     <!--Cos de la pàgina-->
-    <div id="contenido">
-    </div>
- 
-    <div id="push"></div>
-    <div class="container">
-    &nbsp;
-    &nbsp;
-          <div class="carousel-caption text-start">
-            <h1>&nbsp;Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
 
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-      </div>
+
 
 
 
