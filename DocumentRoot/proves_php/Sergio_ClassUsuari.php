@@ -187,7 +187,7 @@ class User
     //PARTE DE SERGIO
     public static function llistatUsr()
     {
-        include 'dbconn.php';
+        include_once 'dbconn.php';
         //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
        // session_start();
 
@@ -210,38 +210,5 @@ class User
              //   }
         }
 
-    public function mostrarUsr(){
-        include_once 'dbconn.php';
-        $conn = conn();
-        $query = "SELECT * FROM users WHERE email = '$this->email'";
-        $result = mysqli_query($conn,$query) or trigger_error("Consulta SQL fallida!: $query - Error: " . mysqli_error($conn), E_USER_ERROR);
-        $row = $result -> fetch_assoc();
-
-        echo '<div  class=" d-flex align-items-start flex-column">',
-        '<span class="p-lg-3" >Nom:</span>',
-        '<span class="p-lg-3">Cognoms:</span>',
-        '<span class="p-lg-3">DNI:</span>',
-        '<span class="p-lg-3">Empresa: </span>',
-        '</div>';
-        echo '<div class=" d-flex align-items-start flex-column">',
-            '<span class="p-lg-3" id="name">' . $row['name_user'] . '</span>',
-            '<span class="p-lg-3" id="last-name">' . $row['last_name'] . '</span>',
-            '<span class="p-lg-3" id="dni">' . $row['dni'] . '</span>',
-            '<span class="p-lg-3" id="empresa">' . $row['id_company'] . '</span>',
-        '</div>';
-
-        echo '<div class="vr"></div>';
-
-        echo '<div class=" d-flex align-items-start flex-column">',
-        '<span class="p-lg-3">Nom de usuari:</span>',
-        '<span class="p-lg-3">Correu electrònic:</span>',
-        '<span class="p-lg-3">Telèfon:</span>',
-        '</div>';
-        echo '<div class=" d-flex align-items-start flex-column">',
-            '<span class="p-lg-3" name="username" id="username">' . $row['nick_name'] . '</span>',
-            '<span class="p-lg-3"  name="email" id="email">' . $row['email'] . '</span>',
-            '<span class="p-lg-3" type="text" name="phone" id="phone">' . $row['phone_number'] . '</span>',
-        '</div>';
-    }
 }
 ?>
