@@ -1,5 +1,5 @@
 <?php
-    include_once '../../proves_php/prova_login.php';
+    include_once '../../proves_php/Aleix_ClassUsuari.php';
 
     $login = $_POST[''];
     $pass = $_POST['pass'];
