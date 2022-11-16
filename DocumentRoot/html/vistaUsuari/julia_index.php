@@ -136,11 +136,11 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Afegeix usuari</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                         <div class="modal-body">
-                            <form>
+                            <form action='./validacio.php' method='post'>
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
                                     <input type="text" name="nick_name" class="form-control" id="nick_name">
@@ -157,12 +157,13 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                                     <label for="message-text" class="col-form-label">Tipus Usuari:</label>
                                     <input class="form-control" name="type_user" id="type_user">
                                 </div>
-                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
-                            <button type="button" class="btn btn-success">Guarda Canvis</button>
+                            <button type="submit" class="btn btn-success">Guarda Canvis</button>
                         </div>
+                        </form>
+
         </div>
     </div>
 </div>
@@ -171,7 +172,7 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Nou usuari</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <?php
@@ -214,7 +215,7 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
             <?php
             }
             }
-            }
+        }
             ?>
             ?>
         </div>
