@@ -89,14 +89,18 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     <!--Header Menu-->
 
 </header>
+
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou Usuari</button>
+        </div>
         <div class="d-flex justify-content-around">
             <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                 <thead>
-                    <tr class="align-content-">
+                    <tr class="">
                         <th><input type="checkbox"></th>
-                        <th>Nom usuari</th>
+                        <th class="">Nom usuari</th>
                         <th>Nom empresa</th>
                         <th>Correu</th>
                         <th>Tipus d'usuari</th>
@@ -116,14 +120,49 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                         <td id="id_company"><?php echo $mostrar['name_company'] ?></td>
                         <td id="email"><?php echo $mostrar['email'] ?></td>
                         <td id="type_user"><?php echo $mostrar['type_user'] ?></td>
-                        <td><button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#modal" >Editar</button></td>
-                        <td><button type="button" class="btn btn-danger ">Eliminar</button></td>
+                        <td><button type="button" class="btn btn-warning " data-bs-toggle="modal" data-bs-target="#modal" >Editar</button></td>
+                        <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                     </tr>
                     <?php
                         }
                     ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-nou-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
+                                    <input type="text" name="nick_name" class="form-control" id="nick_name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Nom Empresa:</label>
+                                    <input class="form-control" name="name_company" id="name_company">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Correu:</label>
+                                    <input class="form-control" name="email" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Tipus Usuari:</label>
+                                    <input class="form-control" name="type_user" id="type_user">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
+                            <button type="button" class="btn btn-success">Guarda Canvis</button>
+                        </div>
         </div>
     </div>
 </div>
@@ -135,30 +174,49 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <?php
+            include_once '../../php/dbconn.php';
+            $conn = conn();
+            $sql = "SELECT * FROM `users`;";
+            //Emmagatzema la consulta en una variable
+            if($result = $conn->query($sql)){
+            //Comprova que el resultat te almenys una linia
+            if ($result->num_rows > 0){
+
+            //Bucle que converteix result en un array d'objectes
+            //i guarda les files en obj, despres es mostra en
+            //columnes d'una taula
+            while ($obj = $result->fetch_object()){ ?>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
-                        <input type="text" class="form-control" id="recipient-actual-password">
+                        <input type="text" name="nick_name" class="form-control" id="nick_name" value="<?php echo $obj->nick_name;?>">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Nom Empresa:</label>
-                        <input class="form-control" id="new-password">
+                        <input class="form-control" name="name_company" id="name_company">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Correu:</label>
-                        <input class="form-control" id="new-password-confirmation">
+                        <input class="form-control" name="email" id="email">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Tipus Usuari:</label>
-                        <input class="form-control" id="new-password-confirmation">
+                        <input class="form-control" name="type_user" id="type_user">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" class="btn btn-primary">Guarda Canvis</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
+                <button type="button" class="btn btn-success">Guarda Canvis</button>
             </div>
+            <?php
+            }
+            }
+            }
+            ?>
+            ?>
         </div>
     </div>
 </div>
