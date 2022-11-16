@@ -9,6 +9,7 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista Informe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../scripts/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
@@ -17,6 +18,12 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     <link href="../css/solid.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <script src="../scripts/checkbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color:#dcdcdc">
@@ -116,11 +123,12 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                     ?>
                     <tr>
                         <th scope="row"><input type="checkbox"></th>
+                        <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
                         <td id="nick_name"><?php echo $mostrar['nick_name'] ?></td>
                         <td id="id_company"><?php echo $mostrar['name_company'] ?></td>
                         <td id="email"><?php echo $mostrar['email'] ?></td>
                         <td id="type_user"><?php echo $mostrar['type_user'] ?></td>
-                        <td><button type="button" class="btn btn-warning " data-bs-toggle="modal" data-bs-target="#modal" >Editar</button></td>
+                        <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
                         <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                     </tr>
                     <?php
@@ -132,97 +140,82 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     </div>
 </div>
 
-<div class="modal fade" id="modal-nou-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+
+
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
             </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
-                                    <input type="text" name="nick_name" class="form-control" id="nick_name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Nom Empresa:</label>
-                                    <input class="form-control" name="name_company" id="name_company">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Correu:</label>
-                                    <input class="form-control" name="email" id="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Tipus Usuari:</label>
-                                    <input class="form-control" name="type_user" id="type_user">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
-                            <button type="button" class="btn btn-success">Guarda Canvis</button>
-                        </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <?php
-            include_once '../../php/dbconn.php';
-            $conn = conn();
-            $sql = "SELECT * FROM `users`;";
-            //Emmagatzema la consulta en una variable
-            if($result = $conn->query($sql)){
-            //Comprova que el resultat te almenys una linia
-            if ($result->num_rows > 0){
+            <form action="updatecode.php" method="POST">
 
-            //Bucle que converteix result en un array d'objectes
-            //i guarda les files en obj, despres es mostra en
-            //columnes d'una taula
-            while ($obj = $result->fetch_object()){ ?>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
-                        <input type="text" name="nick_name" class="form-control" id="nick_name" value="<?php echo $obj->nick_name;?>">
+                <div class="modal-body">
+
+                    <input type="hidden" name="id_user" id="id">
+
+                    <div class="form-group">
+                        <label> Nom Usuari </label>
+                        <input type="text" name="nick_name" id="name" class="form-control"
+                               placeholder="Enter First Name">
                     </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Nom Empresa:</label>
-                        <input class="form-control" name="name_company" id="name_company">
+
+                    <div class="form-group">
+                        <label> Nom Empresa </label>
+                        <input type="text" name="name_company" id="company" class="form-control"
+                               placeholder="Enter Last Name">
                     </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Correu:</label>
-                        <input class="form-control" name="email" id="email">
+
+                    <div class="form-group">
+                        <label> Email </label>
+                        <input type="text" name="email" id="mail" class="form-control"
+                               placeholder="Enter Course">
                     </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Tipus Usuari:</label>
-                        <input class="form-control" name="type_user" id="type_user">
+
+                    <div class="form-group">
+                        <label> Tipus d'Usuari </label>
+                        <input type="text" name="type_user" id="type" class="form-control"
+                               placeholder="Enter Phone Number">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" class="btn btn-success">Guarda Canvis</button>
-            </div>
-            <?php
-            }
-            }
-            }
-            ?>
-            ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
+                    <button type="submit" name="updatedata" class="btn btn-success">Guarda Canvis</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
 
 
+<script>
+    $(document).ready(function () {
 
+        $('.editbtn').on('click', function () {
+
+            $('#editmodal').modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#id').val(data[0]);
+            $('#name').val(data[1]);
+            $('#company').val(data[2]);
+            $('#mail').val(data[3]);
+            $('#type').val(data[4]);
+        });
+    });
+</script>
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
@@ -275,6 +268,9 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
         </div>
     </div>
 </footer>
+
+
+
 </body>
 
 </html>
