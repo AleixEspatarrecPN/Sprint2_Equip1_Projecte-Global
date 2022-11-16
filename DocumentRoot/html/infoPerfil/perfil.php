@@ -171,28 +171,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id=form>
+                <form action="./validacio.php" method="post" id=form>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Contrasenya Actual:</label>
-                        <input type="password" class="form-control" id="recipient-actual-password" required maxlength="50" required minlength="8">
+                        <input type="password" name="passCurrent" class="form-control" id="recipient-actual-password" required maxlength="50" required minlength="8">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Nova Contrasenya:</label>
-                        <input type="password" class="form-control" id="new-password" required maxlength="50" required minlength="8">
+                        <input type="password" name="passNew" class="form-control" id="new-password" required maxlength="50" required minlength="8">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Confirma la Contrasenya:</label>
-                        <input type="password" class="form-control" id="new-password-confirmation" required maxlength="50" required minlength="8">
+                        <input type="password" nem="passNewConfirmation" class="form-control" id="new-password-confirmation" required maxlength="50" required minlength="8">
                     </div>
                         <span role="alert" id="passError" aria-hidden="true">
                             Perfavor ingresa la contrasenya.
                         </span>
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
                 <button type="button" id="submit" class="btn btn-primary">Guarda Canvis</button>
             </div>
+                </form>
         </div>
     </div>
 </div>
