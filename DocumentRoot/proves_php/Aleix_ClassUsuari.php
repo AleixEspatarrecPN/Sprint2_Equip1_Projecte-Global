@@ -235,38 +235,69 @@ include_once('dbconn.php');
 
         //PARTE ALEIX
         public function changePass($passOld, $passNew, $passNewConf){
-            
-            $currentUser = $_SESSION["idUSR"];
 
-            $sql = "SELECT `password` FROM Usuaris WHERE id_user='$currentUser'";
+            if (strlen($passNew)>8 || strlen($passNew)<20){
+                if (preg_match('~[0-9]+~', $passNew)){
+                    if (preg_match('/[\'^£$%&*().}{@#~?><>,|=_+¬-]/', $passNew)){
+                        if(preg_match('/[A-Z]/', $passNew)){
 
-            $conn = conn();
+                            $currentUser = $_SESSION["idUSR"];
 
-            $passUser = mysqli_query($conn, $sql);
+                            $sql = "SELECT `password` FROM Usuaris WHERE id_user='$currentUser'";
+                
+                            $conn = conn();
+                
+                            $passUser = mysqli_query($conn, $sql);
+                
+                            //desencriptar la contrassenya
+                
+                            if($passOld == $passUser){
+                
+                                if($passNew == $passNewConf && $passNew != $passUser){
+                
+                                    //encriptar contrassenya
+                
+                                    $sqlPass = "UPDATE Users SET `password`= $passNew WHERE id_usr = $currentUser";
+                
+                                    if (mysqli_query($conn, $sqlPass)) {
+                                        return('<a>Canvi aplicat amb exit</a>');
+                                        die();
+                                    } else {
+                                        return("Error updating record: " . mysqli_error($conn));
+                                        die();
+                                    }
+                                    mysqli_close($conn);
+                                }
+                                else{
+                                    return('<a>Les contrassenyes no coincideixen</a>');
+                                    die();
+                                }   
+                            }
+                            else{
+                                return('<a>La contrassenya no coincideix amb la del usuari</a>');
+                                die();
+                        }
+                
+                            $conn->close();
 
-
-            if($passOld == $passUser && $mail_session == $passUser){
-
-                if($passNew == $passNewConf && $passNew != $passUser){
-
-                    $sqlPass = "UPDATE Users SET `password`= $passNew WHERE id_usr = $currentUser";
-
-                    if (mysqli_query($conn, $sqlPass)) {
-                        return('<a>Canvi aplicat amb exit</a>');
-                    } else {
-                        return("Error updating record: " . mysqli_error($conn));
+                        }
+                        else{
+                            return ("La contrassenya ha d'incloure com a mínim una majuscula.");
+                        }
                     }
-                    mysqli_close($conn);
+                    else{
+                        return ("La contrassenya ha de contenir com a  mínim un caracter especial valid.");
+                    }
                 }
                 else{
-                    return('<a>Les contrassenyes no coincideixen</a>');
-                }   
+                    return ("La contrassenya com a mínim ha de tenir un numero.");
+                }
+
             }
             else{
-                return('<a>La contrassenya no coincideix amb la del usuari</a>');
-        }
-
-            $conn->close();
+                return ("La contrassenya ha de contenir entre 8 i 20 cracters.");
+            }
+            
 
             }
 
