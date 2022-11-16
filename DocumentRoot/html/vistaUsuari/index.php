@@ -92,9 +92,9 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-around">
-            <table class="table">
+            <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                 <thead>
-                    <tr>
+                    <tr class="align-content-">
                         <th><input type="checkbox"></th>
                         <th>Nom usuari</th>
                         <th>Nom empresa</th>
@@ -111,24 +111,60 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
 
                     ?>
                     <tr>
-                        <th scope="row" ><input type="checkbox"></th>
+                        <th scope="row"><input type="checkbox"></th>
                         <td id="nick_name"><?php echo $mostrar['nick_name'] ?></td>
                         <td id="id_company"><?php echo $mostrar['name_company'] ?></td>
                         <td id="email"><?php echo $mostrar['email'] ?></td>
                         <td id="type_user"><?php echo $mostrar['type_user'] ?></td>
-                        <td id=""><?php echo 'Editar' ?></td>
-                        <td id=""><?php echo 'Eliminar' ?></td>
-
+                        <td><button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#modal" >Editar</button></td>
+                        <td><button type="button" class="btn btn-danger ">Eliminar</button></td>
                     </tr>
                     <?php
                         }
                     ?>
                 </tbody>
-
             </table>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Canvia la Contrasenya</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
+                        <input type="text" class="form-control" id="recipient-actual-password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Nom Empresa:</label>
+                        <input class="form-control" id="new-password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Correu:</label>
+                        <input class="form-control" id="new-password-confirmation">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Tipus Usuari:</label>
+                        <input class="form-control" id="new-password-confirmation">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
+                <button type="button" class="btn btn-primary">Guarda Canvis</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
