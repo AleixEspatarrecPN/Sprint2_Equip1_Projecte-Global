@@ -54,6 +54,10 @@
             $this->tipusUsuari = $tipusUsuari;
         }
 
+        function __construct9(){
+
+        }
+
 
 
         #Getters i Setters
@@ -268,7 +272,7 @@
             mysqli_close($conn);
             
             }
-        public function CrearUsuari(){
+        public function CrearUsuari1($usuari, $email, $typeUsr){
             include_once 'dbconn.php';
     
             $conn = conn();
@@ -276,7 +280,7 @@
             if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
             }
-            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('4', '43459076D', 'Nom', 'Cognom', '654778903', 'nom@correu.com', NULL, 'ExempleUsuari', 'contrasenya', NULL, NULL, 'client')";
+            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('4', '43459076D', 'Nom', 'Cognom', '654778903',  '$email', NULL, '$usuari', 'contrasenya', NULL, NULL, '$typeUsr')";
               
             if (mysqli_query($conn, $sql)) {
                 echo "Added successfully";
@@ -286,11 +290,39 @@
             mysqli_close($conn);
             
             }
-           
+
+            public function CrearUsuari2(){
+                if(isset($_POST['enviar'])) { 
+                    if($_POST['usuario'] == '' or $_POST['password'] == '' or $_POST['repassword'] == '') { 
+                        echo 'Por favor llene todos los campos.'; 
+                    } else { 
+                        $sql = 'SELECT * FROM Users'; 
+                        $rec = mysql_query($sql); 
+                        $verificar_usuario = 0; 
+                        while($result = mysql_fetch_object($rec)) { 
+                            if($result->usuario == $_POST['usuario']) { 
+                                $verificar_usuario = 1; 
+                            } 
+                        } 
+                        if($verificar_usuario) { 
+                            if($_POST['password'] == $_POST['repassword']) { 
+                                $usuario = $_POST['usuario']; 
+                                $password = $_POST['password']; 
+                                $sql = "INSERT INTO usuarios (usuario,password) VALUES ('$usuario','$password')"; 
+                                mysql_query($sql); 
+                                echo 'Usted se ha registrado correctamente.'; 
+                            } else { 
+                                echo 'Las claves no son iguales, intente nuevamente.'; 
+                            } 
+                        } else {
+                            echo 'Este usuario ya ha sido registrado anteriormente.'; 
+                        } 
+                    } 
+                }
+                
+                }
         }
     
 
-$usuari = new User(); 
-$usuari->OcultarUsuari(1); 
 
 ?>
