@@ -14,6 +14,7 @@
     <link href="../css/solid.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <script src="../scripts/checkbox.js"></script>
+    
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color:#dcdcdc">
@@ -87,7 +88,12 @@
 </header>
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
-                <h3 id="title-footer">DADES USUARI</h3>
+            <h3 id="title-footer">DADES USUARI</h3>
+                <div class="p-2">
+                    <button id="editaPerfil" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
+                    <p></p>
+                    <button id="canviarContrasenya" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
+                </div>
     <div class="card border-0" style="background-color: #dcdcdc">
         <div class="d-flex justify-content-around" id="title-footer">
                     <div class="d-flex align-items-center" >
@@ -103,8 +109,7 @@
         </div>
     </div>
         <div class="p-2">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-perfil" >Editar Perfil</button>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-contrasenya" >Canvia Contrasenya</button>
+            
         </div>
     </div>
 </div>
@@ -166,24 +171,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id=form>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Contrasenya Actual:</label>
-                        <input type="text" class="form-control" id="recipient-actual-password">
+                        <input type="password" class="form-control" id="recipient-actual-password" required maxlength="50" required minlength="8">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Nova Contrasenya:</label>
-                        <input class="form-control" id="new-password">
+                        <input type="password" class="form-control" id="new-password" required maxlength="50" required minlength="8">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Confirma la Contrasenya:</label>
-                        <input class="form-control" id="new-password-confirmation">
+                        <input type="password" class="form-control" id="new-password-confirmation" required maxlength="50" required minlength="8">
                     </div>
+                        <span role="alert" id="passError" aria-hidden="true">
+                            Perfavor ingresa la contrasenya.
+                        </span>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" class="btn btn-primary">Guarda Canvis</button>
+                <button type="button" id="submit" class="btn btn-primary">Guarda Canvis</button>
             </div>
         </div>
     </div>
