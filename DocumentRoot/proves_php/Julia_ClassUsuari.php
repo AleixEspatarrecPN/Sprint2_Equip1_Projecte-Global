@@ -13,6 +13,7 @@
         private $passUsuari;
         private $tipusUsuari;
         private $idEmpresa;
+        private $ocult;
 
         #Creem el constructor
         function __construct()
@@ -52,6 +53,7 @@
             $this->nomUsuari = $nomUsuari;
             $this->passUsuari = $passUsuari;
             $this->tipusUsuari = $tipusUsuari;
+            $this->ocult = $ocult;
         }
 
         function __construct9(){
@@ -253,6 +255,7 @@
         mysqli_close($conn);
         
         }
+        
         public function MostrarUsuari(){
             include_once 'dbconn.php';
     
@@ -272,7 +275,8 @@
             mysqli_close($conn);
             
             }
-        public function CrearUsuari1($usuari, $email, $typeUsr){
+
+        public function CrearUsuari1($usuari, $email, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $insignies, $nomusuari, $idEmpresa, $ocult){
             include_once 'dbconn.php';
     
             $conn = conn();
@@ -280,7 +284,8 @@
             if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
             }
-            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('4', '43459076D', 'Nom', 'Cognom', '654778903',  '$email', NULL, '$usuari', 'contrasenya', NULL, NULL, '$typeUsr')";
+            
+            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$password', '$ocult', '$idEmpresa', '$typeUsr')";
               
             if (mysqli_query($conn, $sql)) {
                 echo "Added successfully";
