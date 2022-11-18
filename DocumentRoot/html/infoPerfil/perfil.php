@@ -187,18 +187,15 @@
                         <span role="alert" id="passError" aria-hidden="true">
                             Perfavor ingresa la contrasenya.
                         </span>
-                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" id="submit" class="btn btn-primary">Guarda Canvis</button>
+                <button type="button" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value)">Guarda Canvis</button>
             </div>
                 </form>
         </div>
     </div>
 </div>
-
-
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
