@@ -297,8 +297,6 @@ include_once('dbconn.php');
             else{
                 return ("La contrassenya ha de contenir entre 8 i 20 cracters.");
             }
-            
-
             }
 
         //PARTE JULIA
