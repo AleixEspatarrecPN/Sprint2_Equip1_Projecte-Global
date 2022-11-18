@@ -9,6 +9,7 @@
     <script src="../scripts/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="style.css">
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <link href="../css/brands.min.css" rel="stylesheet">
     <link href="../css/solid.min.css" rel="stylesheet">
@@ -89,10 +90,10 @@
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
             <h3 id="title-footer">DADES USUARI</h3>
-                <div class="p-2">
-                    <button id="editaPerfil" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
+                <div class="d-flex align-items-start flex-column">
+                    <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
                     <p></p>
-                    <button id="canviarContrasenya" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
+                    <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
                 </div>
     <div class="card border-0" style="background-color: #dcdcdc">
         <div class="d-flex justify-content-around" id="title-footer">
