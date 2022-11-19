@@ -109,8 +109,6 @@
 
     <div class="d-flex align-items-end flex-column">
                     <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
-                    <p></p>
-                    <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
                 </div>
         <div class="p-2">
             
@@ -176,7 +174,6 @@
             </div>
             <div class="modal-body">
                 <form action="./validacio.php" method="post" id=form>
-                <!-- Script JS per la validació del format de les crdencials -->
                 <script>
                     function validar(tx) 
                     { 
