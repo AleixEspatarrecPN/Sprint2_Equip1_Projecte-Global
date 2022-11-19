@@ -88,15 +88,11 @@
 
 </header>
 <div class="container overflow-hidden text-center col-lg-12" >
-    <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
+    <div class="overflow-hidden text-center m-4 p-2 rounded-3 row bg-light p-2" style="background-color:#ffffff">
             <h3 id="title-footer">DADES USUARI</h3>
-                <div class="d-flex align-items-start flex-column">
-                    <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
-                    <p></p>
-                    <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
-                </div>
-    <div class="card border-0" style="background-color: #dcdcdc">
-        <div class="d-flex justify-content-around" id="title-footer">
+
+    <div class="card border-0 " style="background-color: #dcdcdc">
+        <div class="d-flex justify-content-around " id="title-footer">
                     <div class="d-flex align-items-center" >
                         <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
                     </div>
@@ -106,9 +102,16 @@
                     $user = new User("joanpasqualalmudeve@iesmontsia.org");
                     $user->mostrarUsr();
                     ?>
+                    
 
         </div>
     </div>
+
+    <div class="d-flex align-items-end flex-column">
+                    <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
+                    <p></p>
+                    <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
+                </div>
         <div class="p-2">
             
         </div>

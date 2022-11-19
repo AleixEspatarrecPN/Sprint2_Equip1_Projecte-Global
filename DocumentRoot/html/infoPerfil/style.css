@@ -1,4 +1,14 @@
 
-.btn-default:hover {
+
+#editaPerfil {
     border-bottom: 1px solid black;
+    border-radius: 0px;
+    width: 20%;
 }
+
+#canviarContrasenya {
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    width: 20%;
+}
+
