@@ -249,5 +249,40 @@ include_once('dbconn.php');
         mysqli_close($conn);
         
         }
+
+        //SERGIO
+        public static function llistatUsr()
+        {
+            include_once 'dbconn.php';
+            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
+            // session_start();
+
+            $conn = conn();
+            //Consulta a la base de dades
+            $sql = "SELECT * FROM `users` WHERE users.hidden IS NULL";
+            $result = mysqli_query($conn, $sql);
+
+            return $result;
+
+        }
+
+        public static function llistatUsrUnhabilited()
+        {
+            include_once 'dbconn.php';
+            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
+            // session_start();
+
+            $conn = conn();
+            //Consulta a la base de dades
+            $sql = "SELECT * FROM `users` WHERE users.hidden IS NOT NULL";
+            $result = mysqli_query($conn, $sql);
+
+            return $result;
+
+        }
     }
+
+
+
+
 ?>

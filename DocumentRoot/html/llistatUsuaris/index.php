@@ -1,5 +1,5 @@
 <?php
-include_once "../../proves_php/Sergio_ClassUsuari.php"
+include_once "../../php/ClassUsuari.php"
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -100,17 +100,22 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou Usuari</button>
+            <button class="btn btn-dark mx-1" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou Usuari</button>
+            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">Usuaris Baixa</button>
         </div>
+
+
+
         <div class="d-flex justify-content-around">
             <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                 <thead>
                     <tr class="">
                         <th><input type="checkbox"></th>
-                        <th class="">Nom usuari</th>
-                        <th>Nom empresa</th>
+                        <th class="">Nom</th>
+                        <th>Cognom</th>
                         <th>Correu</th>
-                        <th>Tipus d'usuari</th>
+                        <th>Telefon</th>
+                        <th>Nom Usuari</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -124,12 +129,15 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                     <tr>
                         <th scope="row"><input type="checkbox"></th>
                         <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
-                        <td id="nick_name"><?php echo $mostrar['nick_name'] ?></td>
-                        <td id="id_company"><?php echo $mostrar['name_company'] ?></td>
+                        <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
+                        <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
                         <td id="email"><?php echo $mostrar['email'] ?></td>
-                        <td id="type_user"><?php echo $mostrar['type_user'] ?></td>
+                        <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
+                        <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
                         <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
-                        <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                        <form action="../../php/unhabiliteUsr.php" method="post">
+                            <td><a href="../../php/unhabiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-danger" value="<?= $mostrar['id_user'];?>">Eliminar</a></td>
+                        </form>
                     </tr>
                     <?php
                         }
@@ -140,8 +148,62 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     </div>
 </div>
 
+<!--MODAL USUARIOS DESHABILITADOS-->
+
+<div class="modal modal-lg fade " id="unhabilitedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="d-flex justify-content-around">
+                <table class="table table-striped align-middle container overflow-hidden text-center py-3">
+                    <thead>
+                    <tr class="">
+                        <th><input type="checkbox"></th>
+                        <th class="">Nom</th>
+                        <th>Cognom</th>
+                        <th>Correu</th>
+                        <th>Telefon</th>
+                        <th>Nom Usuari</th>
+                        <th>Editar</th>
+                        <th>Alta</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $result = User::llistatUsrUnhabilited();
+                    while($mostrar = mysqli_fetch_array($result)){
+
+                        ?>
+                        <tr>
+                            <th scope="row"><input type="checkbox"></th>
+                            <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
+                            <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
+                            <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
+                            <td id="email"><?php echo $mostrar['email'] ?></td>
+                            <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
+                            <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
+                            <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
+                            <form action="../../php/habiliteUsr.php" method="post">
+                                <td><a href="../../php/habiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-success" value="<?= $mostrar['id_user'];?>">Donar d'Alta</a></td>
+                            </form>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
+<!--MODAL EDIT-->
 <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -152,34 +214,40 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                 </button>
             </div>
 
-            <form action="updatecode.php" method="POST">
+            <form action="../../php/updateUser.php" method="POST">
 
                 <div class="modal-body">
 
                     <input type="hidden" name="id_user" id="id">
 
                     <div class="form-group">
-                        <label> Nom Usuari </label>
-                        <input type="text" name="nick_name" id="name" class="form-control"
-                               placeholder="Enter First Name">
+                        <label> Nom </label>
+                        <input type="text" name="name_user" id="name" class="form-control"
+                               placeholder="">
                     </div>
 
                     <div class="form-group">
-                        <label> Nom Empresa </label>
-                        <input type="text" name="name_company" id="company" class="form-control"
-                               placeholder="Enter Last Name">
+                        <label> Cognoms </label>
+                        <input type="text" name="last_name" id="last" class="form-control"
+                               placeholder="">
                     </div>
 
                     <div class="form-group">
                         <label> Email </label>
                         <input type="text" name="email" id="mail" class="form-control"
-                               placeholder="Enter Course">
+                               placeholder="">
                     </div>
 
                     <div class="form-group">
-                        <label> Tipus d'Usuari </label>
-                        <input type="text" name="type_user" id="type" class="form-control"
-                               placeholder="Enter Phone Number">
+                        <label> Telefon </label>
+                        <input type="text" name="phone_number" id="phone" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Nom Usuari </label>
+                        <input type="text" name="nick_name" id="nick" class="form-control"
+                               placeholder="">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -192,6 +260,31 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
     </div>
 </div>
 
+
+<script>
+    $(document).ready(function () {
+
+        $('.deletebtn').on('click', function () {
+
+            $('#unhabilitedmodal').modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#id').val(data[0]);
+            $('#name').val(data[1]);
+            $('#last').val(data[2]);
+            $('#mail').val(data[3]);
+            $('#phone').val(data[4]);
+            $('#nick').val(data[5]);
+        });
+    });
+</script>
 
 <script>
     $(document).ready(function () {
@@ -210,12 +303,14 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#company').val(data[2]);
+            $('#last').val(data[2]);
             $('#mail').val(data[3]);
-            $('#type').val(data[4]);
+            $('#phone').val(data[4]);
+            $('#nick').val(data[5]);
         });
     });
 </script>
+
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
