@@ -193,22 +193,26 @@ class User
 
         $conn = conn();
         //Consulta a la base de dades
-        $sql = "SELECT users.*, companies.name_company FROM users, companies WHERE users.id_company = companies.id_company";
+        $sql = "SELECT * FROM `users` WHERE users.hidden IS NULL";
         $result = mysqli_query($conn, $sql);
 
         return $result;
 
-        //Emmagatzema la consulta en una variable
-        //if ($result = $conn->query($sql)) {
-            //Comprova que el resultat te almenys una linia
-
-                //Bucle que converteix result en un array d'objectes
-                //i guarda les files en obj, despres es mostra en
-                //columnes d'una taula
-              //  while ($obj = $result->fetch_object()) {
-
-             //   }
         }
 
+    public static function llistatUsrUnhabilited()
+    {
+        include_once 'dbconn.php';
+        //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
+        // session_start();
+
+        $conn = conn();
+        //Consulta a la base de dades
+        $sql = "SELECT * FROM `users` WHERE users.hidden IS NOT NULL";
+        $result = mysqli_query($conn, $sql);
+
+        return $result;
+
+    }
 }
 ?>
