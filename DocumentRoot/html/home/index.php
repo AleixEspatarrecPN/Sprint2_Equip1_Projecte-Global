@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Informe</title>
+    <title>Home</title>
     <script src="../scripts/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <link href="../css/brands.min.css" rel="stylesheet">
     <link href="../css/solid.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <script src="../scripts/checkbox.js"></script>
 </head>
@@ -83,6 +84,44 @@
             </div>
     </nav>
     <!--Cos de la pàgina-->
+
+    <!--Carrousel-->
+    <div class="slide">
+            <div class="slide-inner">
+                <input class="slide-open" type="radio" id="slide-1" 
+                      name="slide" aria-hidden="true" hidden="" checked="checked">
+                <div class="slide-item">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNiz8gBf_tSYDxBRFj_fX9pw6VwH1T-yzs7ioAu=w1080-h608-p-no-v0">
+                </div>
+                <input class="slide-open" type="radio" id="slide-2" 
+                      name="slide" aria-hidden="true" hidden="">
+                <div class="slide-item">
+                    <img src="https://media.istockphoto.com/id/1334595508/photo/digital-padlock-icon-cyber-security-network-and-data-protection-technology-on-virtual.jpg?b=1&s=170667a&w=0&k=20&c=EOx2Xk3V00Trbd57bm3lfMgMSxIz3PSDHsr8HyHXApI=">
+                </div>
+                <input class="slide-open" type="radio" id="slide-3" 
+                      name="slide" aria-hidden="true" hidden="">
+                <div class="slide-item">
+                    <img src="https://revistapymes.es/wp-content/uploads/2021/04/Tu-empresa-segura-Revista-Pymes-Telef%C3%B3nica-Tech.jpg">
+                </div>
+                <label for="slide-3" class="slide-control prev control-1">‹</label>
+                <label for="slide-2" class="slide-control next control-1">›</label>
+                <label for="slide-1" class="slide-control prev control-2">‹</label>
+                <label for="slide-3" class="slide-control next control-2">›</label>
+                <label for="slide-2" class="slide-control prev control-3">‹</label>
+                <label for="slide-1" class="slide-control next control-3">›</label>
+                <ol class="slide-indicador">
+                    <li>
+                        <label for="slide-1" class="slide-circulo">•</label>
+                    </li>
+                    <li>
+                        <label for="slide-2" class="slide-circulo">•</label>
+                    </li>
+                    <li>
+                        <label for="slide-3" class="slide-circulo">•</label>
+                    </li>
+                </ol>
+            </div>
+        </div>
 
 
 

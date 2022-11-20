@@ -109,8 +109,6 @@
 
     <div class="d-flex align-items-end flex-column">
                     <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
-                    <p></p>
-                    <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
                 </div>
         <div class="p-2">
             
@@ -130,48 +128,38 @@
                     <div class="">
                         <div class="mb-1 flex-sm-column d-flex ">
                             <label for="recipient-name" class="col-form-label">Nom:</label>
-                            <input type="text" class="form-control" required maxlength="20" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-name">
                         </div>
                         <div class="mb-1 flex-sm-column d-flex ">
                             <label for="recipient-last-name" class="col-form-label">Cognoms:</label>
-                            <input type="text" class="form-control" required maxlength="45" id="recipient-last-name">
+                            <input type="text" class="form-control" id="recipient-last-name">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-dni" class="col-form-label">DNI:</label>
-                            <input type="text" class="form-control" required maxlength="9" id="recipient-dni">
-                            <script>
-                                function dniV(dni){ // Retorna: true | false
-                                    if (/^\d{8}[a-zA-Z]$/.test(dni)) {
-                                    var n = dni.substr(0,8);
-                                    var c = dni.substr(8,1);
-                                    return (c.toUpperCase() == ‘TRWAGMYFPDXBNJZSQVHLCKET’.charAt(n%23)); // DNI correcto ?
-                                    }
-                                    return false; // DNI incorrecto
-                                }
-                            </script>
+                            <input type="text" class="form-control " id="recipient-dni">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-empresa" class="col-form-label">Empresa:</label>
-                            <input type="text" class="form-control" required maxlength="45" id="recipient-empresa">
+                            <input class="form-control " id="recipient-empresa">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-user" class="col-form-label">Nom Usuari:</label>
-                            <input type="text" class="form-control" required maxlength="20" id="recipient-user">
+                            <input class="form-control " id="recipient-user">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-mail" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail">
+                            <input type="email" class="form-control " id="recipient-mail">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-telefon" class="col-form-label">Teléfon:</label>
-                            <input type="number" class="form-control" required maxlength="9" id="recipient-telefon">
+                            <input type="email" class="form-control" id="recipient-telefon">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="dniV(this.form.recipient-dni.value)">Guarda Canvis</button>
+                <button type="button" class="btn btn-primary">Guarda Canvis</button>
             </div>
         </div>
     </div>
@@ -186,47 +174,42 @@
             </div>
             <div class="modal-body">
                 <form action="./validacio.php" method="post" id=form>
-                <!-- Script JS per la validació del format de les crdencials -->
                 <script>
                     function validar(tx) 
-                    {
-                        var nMay = 0, nMin = 0, nNum = 0, nCar = 0
+                    { 
+                        var nMay = 0, nMin = 0, nNum = 0 
                         var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
                         var t2 = "abcdefghijklmnopqrstuvwxyz" 
                         var t3 = "0123456789"
-                        var t4 = "$#@€%&/()"
-                            if(pass1 != pass2){
-                                alert("La nova contrasenya no és igual que la nova repetida, comprova les contrasenyes");}
                             if (tx.length < 8) {
-                                alert("La contrasenya, ha de tenir almenys 8 lletres");
-                            } if (tx.length > 20) {
-                                alert("La contrasenya, ha de tenir menys de 20 lletres");
+                                        alert("La contrasenya, ha de tenir almenys 8 lletres");
+                            } if (tx.length > 50) {
+                                        alert("La contrasenya, ha de tenir menys de 50 lletres");
                             } else {
                                     //Aqui continua si la variable ya tiene mas de 5 letras
                             for (i=0;i<tx.length;i++) { 
                                 if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++} 
                                 if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
-                                if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
-                                if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
+                                if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++} 
                             } 
-                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) 
+                        if ( nMay>0 && nMin>0 && nNum>0 ) 
                         form.submit()
                         else 
-                        { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) "); form.passNew.focus(); return; }
+                        { alert("La seva contrasenya a de contenir almenys 5 caracters alfanumerics"); form.passNew.focus(); return; }
                         }
                     }
                 </script>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Contrasenya Actual:</label>
-                        <input type="password" name="passCurrent" class="form-control" id="recipient-actual-password" required maxlength="20" required minlength="8">
+                        <input type="password" name="passCurrent" class="form-control" id="recipient-actual-password" required maxlength="50" required minlength="8">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Nova Contrasenya:</label>
-                        <input type="password" name="passNew" class="form-control" id="new-password" required maxlength="20" required minlength="8">
+                        <input type="password" name="passNew" class="form-control" id="new-password" required maxlength="50" required minlength="8">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Confirma la Contrasenya:</label>
-                        <input type="password" name="passNewConfirmation" class="form-control" id="new-password-confirmation" required maxlength="20" required minlength="8">
+                        <input type="password" nem="passNewConfirmation" class="form-control" id="new-password-confirmation" required maxlength="50" required minlength="8">
                     </div>
             </div>
             <div class="modal-footer">

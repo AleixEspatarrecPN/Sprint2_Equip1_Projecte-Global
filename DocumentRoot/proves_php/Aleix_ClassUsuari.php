@@ -241,7 +241,8 @@ include_once('dbconn.php');
                     if (preg_match('/[\'^£$%&*().}{@#~?><>,|=_+¬-]/', $passNew)){
                         if(preg_match('/[A-Z]/', $passNew)){
 
-                            $currentUser = $_SESSION["idUSR"];
+                            //$currentUser = $_SESSION["idUSR"];
+                            $currentUser = 3;
 
                             $sql = "SELECT `password` FROM Usuaris WHERE id_user='$currentUser'";
                 
