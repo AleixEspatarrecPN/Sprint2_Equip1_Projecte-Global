@@ -256,24 +256,25 @@ include_once('dbconn.php');
                 
                                     //encriptar contrassenya
                 
-                                    $sqlPass = "UPDATE users SET `password`= $passNew WHERE id_user = $currentUser";
+                                    $sqlPass = "UPDATE users SET `password` = $passNew WHERE id_user = $currentUser";
                 
                                     if (mysqli_query($conn, $sqlPass)) {
-                                        return('<a>Canvi aplicat amb exit</a>');
+                                        header("Location: ../html/infoPerfil/perfil.php");
+                                         die();
+                                        
                                         die();
                                     } else {
-                                        return("Error updating record: " . mysqli_error($conn));
+                                        echo "Error updating record: ";
                                         die();
                                     }
-                                    mysqli_close($conn);
                                 }
                                 else{
-                                    return('<a>Les contrassenyes no coincideixen</a>');
+                                    echo 'Les contrassenyes no coincideixen2';
                                     die();
                                 }   
                             }
                             else{
-                                return('<a>La contrassenya no coincideix amb la del usuari</a>');
+                                echo 'La contrassenya no coincideix amb la del usuari ';
                                 die();
                         }
                 
