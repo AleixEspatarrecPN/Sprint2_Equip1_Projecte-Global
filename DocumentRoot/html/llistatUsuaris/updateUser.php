@@ -1,18 +1,19 @@
 <?php
-include_once '../../php/ClassUsuari.php';
-session_start();
+include_once '../../proves_php/Julia_ClassUsuari.php';
 
 if(isset($_POST['updatedata'])) {
 
-    $id_user = $_POST['id_user'];
-    $name_user = $_POST['name_user'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $phone_number = $_POST['phone_number'];
-    $nick_name = $_POST['nick_name'];
-
-    $updateUsr = new User();
-    $updateUsr->updateUser($id_user, $name_user, $last_name, $email, $phone_number, $nick_name);
-
-
+    $nomusuari = $_POST['nomusuari']; //el POST es referencia a través del "name" del HTML
+    $email= $_POST['email'];
+    $typeUsr = $_POST['type_user'];
+    $id = $_POST['id'];
+    $dni = $_POST['dni'];
+    $nom = $_POST['nom'];
+    $cognom = $_POST['cognom'];
+    $telefon = $_POST['telefon'];
+    $idEmpresa = $_POST['idEmpresa'];
+    $pass = $_POST['pass'];
+    
+    $changeInfo = new User();
+    $changeInfo->CrearUsuari3($nomusuari, $email, $pass, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $idEmpresa);
 }

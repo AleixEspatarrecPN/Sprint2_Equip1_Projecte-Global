@@ -1,5 +1,4 @@
 <?php
-
     class User {
         #Propietats
         private $id;
@@ -276,16 +275,19 @@
             
             }
 
-        public function CrearUsuari1($usuari, $email, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $insignies, $nomusuari, $idEmpresa, $ocult){
+        public function CrearUsuari1($usuari, $email, $pass, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $idEmpresa, $ocult){
             include_once 'dbconn.php';
     
             $conn = conn();
             // Check connection
             if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
+    
             }
-            
-            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$password', '$ocult', '$idEmpresa', '$typeUsr')";
+
+            //Transformar de 0 o 1 a sí
+
+            $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$pass', '0', '$idEmpresa', '$typeUsr')";
               
             if (mysqli_query($conn, $sql)) {
                 echo "Added successfully";
@@ -296,6 +298,26 @@
             
             }
 
+            public function CrearUsuari3($usuari, $email, $pass, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $idEmpresa){
+                include_once 'dbconn.php';
+        
+                $conn = conn();
+                // Check connection
+                if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+                }
+                //Transformar de 0 o 1 a sí
+    
+                $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$pass', 0, '$idEmpresa', '$typeUsr')";
+                  
+                if (mysqli_query($conn, $sql)) {
+                    echo "Added successfully";
+                } else {
+                    echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
+                }
+                mysqli_close($conn);
+                }
+                
             public function CrearUsuari2(){
                 if(isset($_POST['enviar'])) { 
                     if($_POST['usuario'] == '' or $_POST['password'] == '' or $_POST['repassword'] == '') { 
@@ -320,14 +342,10 @@
                                 echo 'Las claves no son iguales, intente nuevamente.'; 
                             } 
                         } else {
-                            echo 'Este usuario ya ha sido registrado anteriormente.'; 
+                           echo 'Este usuario ya ha sido registrado anteriormente.'; 
+                            } 
                         } 
-                    } 
-                }
-                
+                    }     
                 }
         }
-    
-
-
 ?>

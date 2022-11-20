@@ -263,7 +263,7 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Nou Usuari </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -273,40 +273,51 @@ include_once "../../php/ClassUsuari.php"
                 <div class="modal-body">
 
                     <input type="hidden" name="id_user" id="id">
-
-                    <div class="form-group mb-3">
-                        <label> Nom </label>
-                        <input type="text" name="name_user" id="name" class="form-control"
-                               placeholder="">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">ID:</label>
+                        <input class="form-control" name="id" id="id">
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label> Cognoms </label>
-                        <input type="text" name="last_name" id="last" class="form-control"
-                               placeholder="">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">DNI:</label>
+                        <input class="form-control" name="dni" id="dni">
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label> Email </label>
-                        <input type="text" name="email" id="mail" class="form-control"
-                               placeholder="">
+                <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Nom:</label>
+                        <input class="form-control" name="nom" id="nom">
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label> Teléfon </label>
-                        <input type="text" name="phone_number" id="phone" class="form-control"
-                               placeholder="">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Cognom:</label>
+                        <input class="form-control" name="cognom" id="cognom">
                     </div>
-
-                    <div class="form-group">
-                        <label> Nom Usuari </label>
-                        <input type="text" name="nick_name" id="nick" class="form-control"
-                               placeholder="">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Telèfon:</label>
+                        <input class="form-control" name="telefon" id="telefon">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Nom Usuari:</label>
+                        <input class="form-control" name="nomusuari" id="nomusuari">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">ID Empresa:</label>
+                        <input class="form-control" name="idEmpresa" id="idEmpresa">
+                    </div>
+                    <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">E-mail:</label>
+                        <input class="form-control" name="email" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Tipus usuari:</label>
+                        <input class="form-control" name="type_user" id="type_user">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Contrasenya:</label>
+                        <input class="form-control" name="pass" id="pass">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
-                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate">Guarda Canvis</button>
                 </div>
             </form>
 
