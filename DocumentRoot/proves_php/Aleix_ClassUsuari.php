@@ -219,16 +219,14 @@ include_once('dbconn.php');
 
 
         //PARTE DE ALEIX
+
         public function logout()
         {
-            session_start();
-
             //buidem les dades de la sessió previament a la seva destrucció
             session_unset();
             session_destroy();
 
-            
-            header("Location: login/index.php");
+            header("Location: ../login/index.php");
             die();
 
         }

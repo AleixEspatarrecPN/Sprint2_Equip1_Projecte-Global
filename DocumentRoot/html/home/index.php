@@ -1,3 +1,12 @@
+<?php 
+session_start(); //creem un inici de sessió que ha de anar com a primer pas del codi php
+if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
+} else {
+  header("Location: ../login/index.php"); //si el resultat de la condició del if es fals llavors ens dirigirà a index.html
+  die();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -43,7 +52,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i
+                                <li><a type="button" onclick="logout()" class="dropdown-item" href="#"><i
                                             class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -56,6 +65,14 @@
             </div>
         </div>
     </div>
+    <?php 
+    include_once '../../proves_php/Aleix_ClassUsuari.php';
+
+    // $logout = new User();
+    // $logout->logout();
+    
+
+    ?>
     <!--Header Logo-->
 
 
