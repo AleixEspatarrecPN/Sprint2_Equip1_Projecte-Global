@@ -14,6 +14,9 @@ include_once('dbconn.php');
         private $passUsuari;
         private $tipusUsuari;
         private $idEmpresa;
+        private $passOld;
+        private $passNew;
+        private $passNewConf;
 
         #Creem el constructor
         function __construct()
@@ -53,6 +56,12 @@ include_once('dbconn.php');
             $this->nomUsuari = $nomUsuari;
             $this->passUsuari = $passUsuari;
             $this->tipusUsuari = $tipusUsuari;
+        }
+        function __construct9($passOld, $passNew, $passNewConf)
+        {
+            $this->passOld = $passOld;
+            $this->passNew = $passNew;
+            $this->passNewConf = $passNewConf;
         }
 
 
