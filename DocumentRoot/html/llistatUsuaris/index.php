@@ -214,7 +214,7 @@ include_once "../../php/ClassUsuari.php"
 
                 <div class="modal-body">
 
-                    <input type="hidden" name="id_user" id="id">
+                    <!-- <input type="hidden" name="id_user" id="id"> -->
 
                     <div class="form-group mb-3">
                         <label> Nom </label>
@@ -258,8 +258,7 @@ include_once "../../php/ClassUsuari.php"
 
 
 <!--MODAL NOU USUARI-->
-<div class="modal fade" id="modalnousuari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="modalnousuari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -271,8 +270,8 @@ include_once "../../php/ClassUsuari.php"
             <form action="updateUser.php" method="POST">
 
                 <div class="modal-body">
-
-                    <input type="hidden" name="id_user" id="id">
+                <!-- Farem que el camp ID sigui autoincrementable automàticament -->
+                    <!-- <input type="hidden" name="id_user" id="id"> -->
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">ID:</label>
                         <input class="form-control" name="id" id="id">
