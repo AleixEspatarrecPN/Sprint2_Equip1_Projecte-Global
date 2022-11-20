@@ -242,7 +242,7 @@ include_once('dbconn.php');
                             //$currentUser = $_SESSION["idUSR"];
                             $currentUser = 3;
 
-                            $sql = "SELECT `password` FROM Usuaris WHERE id_user='$currentUser'";
+                            $sql = "SELECT `password` FROM users WHERE id_user='$currentUser'";
                 
                             $conn = conn();
                 
@@ -256,7 +256,7 @@ include_once('dbconn.php');
                 
                                     //encriptar contrassenya
                 
-                                    $sqlPass = "UPDATE Users SET `password`= $passNew WHERE id_usr = $currentUser";
+                                    $sqlPass = "UPDATE users SET `password`= $passNew WHERE id_user = $currentUser";
                 
                                     if (mysqli_query($conn, $sqlPass)) {
                                         return('<a>Canvi aplicat amb exit</a>');
