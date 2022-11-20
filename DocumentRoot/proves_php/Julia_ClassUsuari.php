@@ -311,7 +311,8 @@
                 $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$pass', 0, '$idEmpresa', '$typeUsr')";
                   
                 if (mysqli_query($conn, $sql)) {
-                    echo "Added successfully";
+                    header("Location: ../llistatUsuaris/index.php");
+
                 } else {
                     echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
                 }
