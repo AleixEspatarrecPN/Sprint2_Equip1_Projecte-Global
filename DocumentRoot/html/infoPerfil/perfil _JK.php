@@ -177,6 +177,7 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="modal-contrasenya" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -185,7 +186,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="./validacio.php" method="post" id=form>
+                <form action="validacio.php" method="post" id=form>
                 <!-- Script JS per la validació del format de les crdencials -->
                 <script>
                     function validar(tx) 
