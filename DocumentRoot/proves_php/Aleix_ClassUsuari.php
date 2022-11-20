@@ -256,19 +256,25 @@ include_once('dbconn.php');
                             $conn = conn();
                 
                             $passUser = mysqli_query($conn, $sql);
+
+                            if ($passUser -> num_rows > 0){
+
+                                $row = $passUser -> fetch_assoc();
+                                $passOG = $row["password"];
+                
                 
                             //desencriptar la contrassenya
                 
-                            if($passOld == $passUser){
+                            if($passOld == $passOG){
                 
                                 if($passNew == $passNewConf && $passNew != $passUser){
                 
                                     //encriptar contrassenya
                 
-                                    $sqlPass = "UPDATE users SET `password` = $passNew WHERE id_user = $currentUser";
+                                    $sqlPass = "UPDATE users SET `password` = '$passNew' WHERE id_user = '$currentUser'";
                 
                                     if (mysqli_query($conn, $sqlPass)) {
-                                        header("Location: ../html/infoPerfil/perfil.php");
+                                        header("Location: ../infoPerfil/perfil.php");
                                          die();
                                         
                                         die();
@@ -283,11 +289,12 @@ include_once('dbconn.php');
                                 }   
                             }
                             else{
-                                echo 'La contrassenya no coincideix amb la del usuari ';
+                                echo $passOG ;
                                 die();
                         }
                 
                             $conn->close();
+                        }
 
                         }
                         else{
