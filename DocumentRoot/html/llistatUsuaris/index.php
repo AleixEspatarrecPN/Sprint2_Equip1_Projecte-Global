@@ -4,6 +4,7 @@ include_once "../../php/ClassUsuari.php"
 <!DOCTYPE html>
 <html lang="es">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +22,6 @@ include_once "../../php/ClassUsuari.php"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
     <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 </head>
@@ -100,7 +100,7 @@ include_once "../../php/ClassUsuari.php"
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-dark mx-1" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou Usuari</button>
+            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou Usuari</button>
             <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">Usuaris Baixa</button>
         </div>
 
@@ -110,7 +110,6 @@ include_once "../../php/ClassUsuari.php"
             <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                 <thead>
                     <tr class="">
-                        <th><input type="checkbox"></th>
                         <th class="">Nom</th>
                         <th>Cognom</th>
                         <th>Correu</th>
@@ -127,7 +126,6 @@ include_once "../../php/ClassUsuari.php"
 
                     ?>
                     <tr>
-                        <th scope="row"><input type="checkbox"></th>
                         <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
                         <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
                         <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
@@ -155,14 +153,12 @@ include_once "../../php/ClassUsuari.php"
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="d-flex justify-content-around">
                 <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                     <thead>
                     <tr class="">
-                        <th><input type="checkbox"></th>
                         <th class="">Nom</th>
                         <th>Cognom</th>
                         <th>Correu</th>
@@ -179,7 +175,6 @@ include_once "../../php/ClassUsuari.php"
 
                         ?>
                         <tr>
-                            <th scope="row"><input type="checkbox"></th>
                             <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
                             <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
                             <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
@@ -220,26 +215,26 @@ include_once "../../php/ClassUsuari.php"
 
                     <input type="hidden" name="id_user" id="id">
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label> Nom </label>
                         <input type="text" name="name_user" id="name" class="form-control"
                                placeholder="">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label> Cognoms </label>
                         <input type="text" name="last_name" id="last" class="form-control"
                                placeholder="">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label> Email </label>
                         <input type="text" name="email" id="mail" class="form-control"
                                placeholder="">
                     </div>
 
-                    <div class="form-group">
-                        <label> Telefon </label>
+                    <div class="form-group mb-3">
+                        <label> Teléfon </label>
                         <input type="text" name="phone_number" id="phone" class="form-control"
                                placeholder="">
                     </div>
@@ -252,7 +247,7 @@ include_once "../../php/ClassUsuari.php"
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
-                    <button type="submit" name="updatedata" class="btn btn-success">Guarda Canvis</button>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
                 </div>
             </form>
 
@@ -261,6 +256,114 @@ include_once "../../php/ClassUsuari.php"
 </div>
 
 
+<!--MODAL NOU USUARI-->
+<div class="modal fade" id="modalnousuari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+            <form action="../../php/updateUser.php" method="POST">
+
+                <div class="modal-body">
+
+                    <input type="hidden" name="id_user" id="id">
+
+                    <div class="form-group mb-3">
+                        <label> Nom </label>
+                        <input type="text" name="name_user" id="name" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label> Cognoms </label>
+                        <input type="text" name="last_name" id="last" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label> Email </label>
+                        <input type="text" name="email" id="mail" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label> Teléfon </label>
+                        <input type="text" name="phone_number" id="phone" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Nom Usuari </label>
+                        <input type="text" name="nick_name" id="nick" class="form-control"
+                               placeholder="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    function validateEmail(){
+
+        // Get our input reference.
+        var emailField = document.getElementById('mail');
+        var borde = document.getElementById("mail");
+
+        // Define our regular expression.
+        var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+        // Using test we can check if the text match the pattern
+        if( validEmail.test(emailField.value) ){
+            return true;
+        }else{
+            alert('El Email No Es Valid');
+            borde.style.borderColor = "red";
+            return false;
+        }
+    }
+</script>
+
+<!--FUNCIO OBRI MODAL NOU USUARI-->
+<script>
+    $(document).ready(function () {
+
+        $('.noubtn').on('click', function () {
+
+            $('#modalnousuari').modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#id').val(data[0]);
+            $('#name').val(data[1]);
+            $('#last').val(data[2]);
+            $('#mail').val(data[3]);
+            $('#phone').val(data[4]);
+            $('#nick').val(data[5]);
+        });
+    });
+</script>
+
+
+<!--FUNCIO OBRI MODAL USUARIS DESHABILITATS-->
 <script>
     $(document).ready(function () {
 
@@ -286,6 +389,7 @@ include_once "../../php/ClassUsuari.php"
     });
 </script>
 
+<!--FUNCIO OBRI MODAL EDITAR USUARI-->
 <script>
     $(document).ready(function () {
 
