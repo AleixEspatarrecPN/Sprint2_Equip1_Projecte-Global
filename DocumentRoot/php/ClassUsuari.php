@@ -143,13 +143,6 @@ include_once('dbconn.php');
 
 
 
-        //PARTE DE SERGIO
-        public function updateUsr(){
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            session_start();
-
-
-        }
 
         //PARTE DE ALEIX
         public function login(){
@@ -274,12 +267,53 @@ include_once('dbconn.php');
 
             $conn = conn();
             //Consulta a la base de dades
-            $sql = "SELECT * FROM `users` WHERE users.hidden IS NOT NULL";
+            $sql = "SELECT * FROM `users` WHERE users.hidden IS NOT NULL ORDER BY users.hidden DESC ;";
             $result = mysqli_query($conn, $sql);
 
             return $result;
 
         }
+
+        public function unhabiliteUser($id_user)
+        {
+            include_once 'dbconn.php';
+            $discharge_date = date("Y-n-j");
+
+            $conn = conn();
+
+            $query = "UPDATE users SET  hidden='$discharge_date'  WHERE id_user='$id_user'";
+            $query_run = mysqli_query($conn, $query);
+
+            header('Location:./index.php');
+            die();
+        }
+
+        public function habiliteUser($id_user)
+        {
+            include_once 'dbconn.php';
+            $conn = conn();
+
+            $query = "UPDATE users SET  hidden=NULL  WHERE id_user='$id_user'";
+            $query_run = mysqli_query($conn, $query);
+
+            header('Location:./index.php');
+            die();
+        }
+
+        public function updateUser($id_user, $name_user, $last_name, $email, $phone_number, $nick_name)
+        {
+            include_once 'dbconn.php';
+            $conn = conn();
+
+            $query = "UPDATE users SET name_user='$name_user', last_name='$last_name', email='$email', phone_number=' $phone_number', nick_name='$nick_name'  WHERE id_user='$id_user'  ";
+            $query_run = mysqli_query($conn, $query);
+
+            header('Location:./index.php');
+        }
+
+
+
+
     }
 
 
