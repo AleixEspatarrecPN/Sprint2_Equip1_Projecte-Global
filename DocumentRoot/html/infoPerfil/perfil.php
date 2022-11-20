@@ -178,14 +178,15 @@
 </div>
 
 <div class="modal fade" id="modal-contrasenya" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Canviar la Contrasenya</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="validacio.php" method="POST" id=form>
+
             <div class="modal-body">
-                <form action="./validacio.php" method="post" id=form>
                 <!-- Script JS per la validació del format de les crdencials -->
                 <script>
                     function validar(tx) 
@@ -216,6 +217,7 @@
                         }
                     }
                 </script>
+
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Contrasenya Actual:</label>
                         <input type="password" name="passCurrent" class="form-control" id="recipient-actual-password" required maxlength="20" required minlength="8">
@@ -231,12 +233,14 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value)">Guarda Canvis</button>
+                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value)">Guarda Canvis</button>
             </div>
                 </form>
         </div>
     </div>
 </div>
+
+
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">

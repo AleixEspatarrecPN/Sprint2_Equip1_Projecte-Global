@@ -270,8 +270,9 @@ include_once "../../php/ClassUsuari.php"
             <form action="updateUser.php" method="POST">
 
                 <div class="modal-body">
-                <!-- Farem que el camp ID sigui autoincrementable automàticament -->
-                    <!-- <input type="hidden" name="id_user" id="id"> -->
+
+                    <input type="hidden" name="id_user" id="id">
+                    
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">ID:</label>
                         <input class="form-control" name="id" id="id">
