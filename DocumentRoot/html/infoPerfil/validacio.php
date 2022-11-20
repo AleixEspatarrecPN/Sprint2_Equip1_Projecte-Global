@@ -5,6 +5,5 @@
     $passNew = $_POST['passNew'];
     $passNewConf = $_POST['passNewConfirmation'];
     $changePass = new User();
-    $changePass->changePass($passOld,$passNew,$passNewConf);
-    
+    $changePass->changePass($passOld,$passNew,$passNewConf);    
 ?>
