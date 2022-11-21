@@ -31,7 +31,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
     <div class="navbar navbar-expand-sm p-0" id="header-logo">
         <div class="container-fluid d-flex flex-row justify-content-between navbar-nav ">
             <div class="p-2" id="logo">
-                <li class="nav-item"><a class="nav-link" href="#"><img src="../images/logo_pymeshield.png"
+                <li class="nav-item"><a class="nav-link" href="../home/index.php"><img src="../images/logo_pymeshield.png"
                                                                        alt="Logo" class="d-inline-block align-text-middle">
                         pymeshield</a></li>
             </div>
@@ -46,7 +46,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                                 <i class="fa-solid fa-user"></i>
                             </a>
                             <ul class="dropdown-menu" id="menu-user">
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-address-card"></i>Editar
+                                <li><a class="dropdown-item" href="../infoPerfil/perfil.php"><i class="fa-solid fa-address-card"></i>Editar
                                         Perfil</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i>Idioma</a>
                                 </li>
@@ -77,7 +77,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                     </button></span>
             <div class="collapse navbar-collapse p-0" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Inicio</a>
+                    <li class="nav-item"><a class="nav-link" href="../home/index.php"><i class="fa-solid fa-house"></i>Inicio</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
                                 class="fa-solid fa-clipboard"></i>Questionarios</a></li>
@@ -88,6 +88,9 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
                                 class="fa-solid fa-address-book"></i>Contacto</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../llistatUsuaris/index.php"><i
+                                class="fa-solid fa-list"></i>Listado Usuarios</a>
                     </li>
                 </ul>
             </div>
