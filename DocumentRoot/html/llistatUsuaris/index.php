@@ -172,6 +172,7 @@ include_once "../../php/ClassUsuari.php"
                         <th>Correu</th>
                         <th>Telefon</th>
                         <th>Nom Usuari</th>
+                        <th>Fecha Baixa</th>
                         <th>Editar</th>
                         <th>Alta</th>
                     </tr>
