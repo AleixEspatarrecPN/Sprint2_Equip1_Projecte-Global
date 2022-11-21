@@ -187,18 +187,18 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-mail" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail">
+                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-telefon" class="col-form-label">Teléfon:</label>
                             <input type="number" class="form-control" required maxlength="9" id="recipient-telefon">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
+                    <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
                 <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNI(this.form.dni.value)">Guarda Canvis</button>
+            </div>
+                </form>
             </div>
         </div>
     </div>
@@ -216,28 +216,30 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
             <div class="modal-body">
                 <!-- Script JS per la validació del format de les crdencials -->
                 <script>
-                    function validar(tx) 
+                    function validar(tx,tn) 
                     {
                         var nMay = 0, nMin = 0, nNum = 0, nCar = 0
                         var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
                         var t2 = "abcdefghijklmnopqrstuvwxyz" 
                         var t3 = "0123456789"
                         var t4 = "$#@€%&/()"
-                            if (tx.length < 8) {
+                            if (tx != tn){
+                                alert("Las contrasenyas novas no coincideixen amb la confirmació!")
+                            } if (tx.length < 8) {
                                 alert("La contrasenya, ha de tenir almenys 8 lletres");
                             } if (tx.length > 20) {
                                 alert("La contrasenya, ha de tenir menys de 20 lletres");
                             } else {
-                                    //Aqui continua si la variable ya tiene mas de 5 letras
+                                    //Aqui continua si la variable te més o igual 8 lletres
                             for (i=0;i<tx.length;i++) { 
                                 if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++} 
                                 if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
                                 if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
                                 if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
                             } 
-                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) 
+                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) {
                         form.submit()
-                        else 
+                        }else 
                         { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) "); form.passNew.focus(); return; }
                         }
                     }
@@ -258,7 +260,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value)">Guarda Canvis</button>
+                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value,this.form.passNewConfirmation.value)">Guarda Canvis</button>
             </div>
                 </form>
         </div>
