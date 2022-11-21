@@ -1,5 +1,5 @@
 <?php
-    include_once '../../proves_php/Aleix_ClassUsuari.php';
+    include_once '../../php/ClassUsuari.php';
 
     $passOld = $_POST['passCurrent'];
     $passNew = $_POST['passNew'];
