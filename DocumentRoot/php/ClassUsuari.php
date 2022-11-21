@@ -143,13 +143,6 @@ include_once('dbconn.php');
 
 
 
-        //PARTE DE SERGIO
-        public function updateUsr(){
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            session_start();
-
-
-        }
 
         //PARTE DE ALEIX
         public function login(){
@@ -250,6 +243,49 @@ include_once('dbconn.php');
         
         }
 
+        public function MostrarUsuari(){
+            include_once 'dbconn.php';
+    
+            $conn = conn();
+            // Check connection
+            if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+            }
+              
+            $sql = "UPDATE `users` SET `hidden` = NULL WHERE `users`.`id_user` = 1";
+              
+            if (mysqli_query($conn, $sql)) {
+                echo "updated successfully";
+            } else {
+                echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
+            }
+            mysqli_close($conn);
+            
+            }
+
+
+            public function CrearUsuari3($usuari, $email, $pass, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $idEmpresa){
+                include_once 'dbconn.php';
+        
+                $conn = conn();
+                // Check connection
+                if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+                }
+                //Transformar de 0 o 1 a sí
+    
+                $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$pass', 0, '$idEmpresa', '$typeUsr')";
+                  
+                if (mysqli_query($conn, $sql)) {
+                    header("Location: ../llistatUsuaris/index.php");
+
+                } else {
+                    echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
+                }
+                mysqli_close($conn);
+                }      
+
+
         //SERGIO
         public static function llistatUsr()
         {
@@ -274,12 +310,53 @@ include_once('dbconn.php');
 
             $conn = conn();
             //Consulta a la base de dades
-            $sql = "SELECT * FROM `users` WHERE users.hidden IS NOT NULL";
+            $sql = "SELECT * FROM `users` WHERE users.hidden IS NOT NULL ORDER BY users.hidden DESC ;";
             $result = mysqli_query($conn, $sql);
 
             return $result;
 
         }
+
+        public function unhabiliteUser($id_user)
+        {
+            include_once 'dbconn.php';
+            $discharge_date = date("Y-n-j");
+
+            $conn = conn();
+
+            $query = "UPDATE users SET  hidden='$discharge_date'  WHERE id_user='$id_user'";
+            $query_run = mysqli_query($conn, $query);
+
+            header('Location:./index.php');
+            die();
+        }
+
+        public function habiliteUser($id_user)
+        {
+            include_once 'dbconn.php';
+            $conn = conn();
+
+            $query = "UPDATE users SET  hidden=NULL  WHERE id_user='$id_user'";
+            $query_run = mysqli_query($conn, $query);
+
+            header('Location:./index.php');
+            die();
+        }
+
+        public function updateUser($id_user, $name_user, $last_name, $email, $phone_number, $nick_name)
+        {
+            include_once 'dbconn.php';
+            $conn = conn();
+
+            $query = "UPDATE users SET name_user='$name_user', last_name='$last_name', email='$email', phone_number=' $phone_number', nick_name='$nick_name'  WHERE id_user='$id_user'  ";
+            $query_run = mysqli_query($conn, $query);
+
+            header('Location:./index.php');
+        }
+
+
+
+
     }
 
 

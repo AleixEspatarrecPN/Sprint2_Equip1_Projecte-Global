@@ -1,3 +1,12 @@
+<?php 
+session_start(); //creem un inici de sessió que ha de anar com a primer pas del codi php
+if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
+} else {
+  header("Location: ../login/index.php"); //si el resultat de la condició del if es fals llavors ens dirigirà a index.html
+  die();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -43,7 +52,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i
+                                <li><a type="button" onclick="logout()" class="dropdown-item" href="#"><i
                                             class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -56,6 +65,14 @@
             </div>
         </div>
     </div>
+    <?php 
+    include_once '../../proves_php/Aleix_ClassUsuari.php';
+
+    // $logout = new User();
+    // $logout->logout();
+    
+
+    ?>
     <!--Header Logo-->
 
 
@@ -83,6 +100,7 @@
                 </ul>
             </div>
     </nav>
+</header>
     <!--Cos de la pàgina-->
 
     <!--Carrousel-->
@@ -91,17 +109,17 @@
                 <input class="slide-open" type="radio" id="slide-1" 
                       name="slide" aria-hidden="true" hidden="" checked="checked">
                 <div class="slide-item">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipNiz8gBf_tSYDxBRFj_fX9pw6VwH1T-yzs7ioAu=w1080-h608-p-no-v0">
+                    <img src="https://i.ibb.co/nrtCskR/aaa.png">
                 </div>
                 <input class="slide-open" type="radio" id="slide-2" 
                       name="slide" aria-hidden="true" hidden="">
                 <div class="slide-item">
-                    <img src="https://media.istockphoto.com/id/1334595508/photo/digital-padlock-icon-cyber-security-network-and-data-protection-technology-on-virtual.jpg?b=1&s=170667a&w=0&k=20&c=EOx2Xk3V00Trbd57bm3lfMgMSxIz3PSDHsr8HyHXApI=">
+                    <img src="https://i.ibb.co/DkKSLZV/ert.png">
                 </div>
                 <input class="slide-open" type="radio" id="slide-3" 
                       name="slide" aria-hidden="true" hidden="">
                 <div class="slide-item">
-                    <img src="https://revistapymes.es/wp-content/uploads/2021/04/Tu-empresa-segura-Revista-Pymes-Telef%C3%B3nica-Tech.jpg">
+                    <img src="https://limpiezasbrimo.es/wp-content/uploads/2021/03/oficinas.jpg">
                 </div>
                 <label for="slide-3" class="slide-control prev control-1">‹</label>
                 <label for="slide-2" class="slide-control next control-1">›</label>
@@ -122,6 +140,15 @@
                 </ol>
             </div>
         </div>
+
+    <div id="iniciat" class="col-8 container-fluid col-md-7" style="margin:6%">
+        <h3 id="intro" style=" color: #000000; font-weight:  bolder;"> Gaudeix de la millor seguretat per la teva empressa amb sols un clic, comença ara </h3>
+        <hr>
+        <div class="d-flex align-items-start flex-column">
+            <button type="button" class="btn"> Iniciar qüestionari <i class="fa-regular fa-arrow-right"></i></button> 
+        </div>
+    </div>
+
 
 
 

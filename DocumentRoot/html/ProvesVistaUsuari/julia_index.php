@@ -145,10 +145,7 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                                     <label for="recipient-name" class="col-form-label">Nom Usuari:</label>
                                     <input type="text" name="nick_name" class="form-control" id="nick_name">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Nom Empresa:</label>
-                                    <input class="form-control" name="name_company" id="name_company">
-                                </div>
+       
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Correu:</label>
                                     <input class="form-control" name="email" id="email">
@@ -157,11 +154,50 @@ include_once "../../proves_php/Sergio_ClassUsuari.php"
                                     <label for="message-text" class="col-form-label">Tipus Usuari:</label>
                                     <input class="form-control" name="type_user" id="type_user">
                                 </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
-                            <button type="submit" class="btn btn-success">Guarda Canvis</button>
-                        </div>
+                                <div class="mb-4">
+                                <label for="message-text" class="col-form-label">ID:</label>
+                                <input class="form-control" name="id" id="id">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="message-text" class="col-form-label">DNI:</label>
+                                <input class="form-control" name="dni" id="dni">
+                            </div>
+                        <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Nom:</label>
+                                <input class="form-control" name="nom" id="nom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Cognom:</label>
+                                <input class="form-control" name="cognom" id="cognom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Telèfon:</label>
+                                <input class="form-control" name="telefon" id="telefon">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">ID Empresa:</label>
+                                <input class="form-control" name="idEmpresa" id="idEmpresa">
+                            </div>
+                            <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">E-mail:</label>
+                                <input class="form-control" name="email" id="email">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Contrasenya:</label>
+                                <input class="form-control" name="pass" id="pass">
+                            </div>
+                                <label for="message-text" class="col-form-label">Ocult:</label>
+                                <input class="form-control" name="ocult" id="ocult">
+                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tanca</button>
+                                    <button type="submit" class="btn btn-success">Guarda Canvis</button>
+                                </div>
                         </form>
 
         </div>

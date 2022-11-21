@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body { 
     margin: 0;
-    background-color: #dcdcdc;
+    background-color: #e20000;
     color: black;
     font-family: 'Montserrat';
 }
@@ -43,6 +43,11 @@ body {
   h3{
     color: #FF6720;
     font-family: 'Montserrat';
+  }
+  #intro{
+    color: #000000;
+    font-family: 'Montserrat';
+    font-weight:  bolder;
   }
   dt { 
     color: #FF6720;

@@ -133,8 +133,8 @@ include_once "../../php/ClassUsuari.php"
                         <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
                         <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
                         <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
-                        <form action="../../php/unhabiliteUsr.php" method="post">
-                            <td><a href="../../php/unhabiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-danger" value="<?= $mostrar['id_user'];?>">Eliminar</a></td>
+                        <form action="unhabiliteUsr.php" method="post">
+                            <td><a href="unhabiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-danger" value="<?= $mostrar['id_user'];?>">Eliminar</a></td>
                         </form>
                     </tr>
                     <?php
@@ -181,9 +181,10 @@ include_once "../../php/ClassUsuari.php"
                             <td id="email"><?php echo $mostrar['email'] ?></td>
                             <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
                             <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
+                            <td id="type_user"><?php echo $mostrar['hidden'] ?></td>
                             <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
-                            <form action="../../php/habiliteUsr.php" method="post">
-                                <td><a href="../../php/habiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-success" value="<?= $mostrar['id_user'];?>">Donar d'Alta</a></td>
+                            <form action="habiliteUsr.php" method="post">
+                                <td><a href="habiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-success" value="<?= $mostrar['id_user'];?>">Donar d'Alta</a></td>
                             </form>
                         </tr>
                         <?php
@@ -209,7 +210,7 @@ include_once "../../php/ClassUsuari.php"
                 </button>
             </div>
 
-            <form action="../../php/updateUser.php" method="POST">
+            <form action="updateUser.php" method="POST">
 
                 <div class="modal-body">
 
@@ -267,7 +268,7 @@ include_once "../../php/ClassUsuari.php"
                 </button>
             </div>
 
-            <form action="../../php/updateUser.php" method="POST">
+            <form action="updateUser.php" method="POST">
 
                 <div class="modal-body">
 

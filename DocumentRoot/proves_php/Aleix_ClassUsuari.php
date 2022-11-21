@@ -14,6 +14,9 @@ include_once('dbconn.php');
         private $passUsuari;
         private $tipusUsuari;
         private $idEmpresa;
+        private $passOld;
+        private $passNew;
+        private $passNewConf;
 
         #Creem el constructor
         function __construct()
@@ -53,6 +56,12 @@ include_once('dbconn.php');
             $this->nomUsuari = $nomUsuari;
             $this->passUsuari = $passUsuari;
             $this->tipusUsuari = $tipusUsuari;
+        }
+        function __construct9($passOld, $passNew, $passNewConf)
+        {
+            $this->passOld = $passOld;
+            $this->passNew = $passNew;
+            $this->passNewConf = $passNewConf;
         }
 
 
@@ -219,16 +228,14 @@ include_once('dbconn.php');
 
 
         //PARTE DE ALEIX
+
         public function logout()
         {
-            session_start();
-
             //buidem les dades de la sessió previament a la seva destrucció
             session_unset();
             session_destroy();
 
-            
-            header("Location: login/index.php");
+            header("Location: ../login/index.php");
             die();
 
         }
@@ -244,42 +251,50 @@ include_once('dbconn.php');
                             //$currentUser = $_SESSION["idUSR"];
                             $currentUser = 3;
 
-                            $sql = "SELECT `password` FROM Usuaris WHERE id_user='$currentUser'";
+                            $sql = "SELECT `password` FROM users WHERE id_user='$currentUser'";
                 
                             $conn = conn();
                 
                             $passUser = mysqli_query($conn, $sql);
+
+                            if ($passUser -> num_rows > 0){
+
+                                $row = $passUser -> fetch_assoc();
+                                $passOG = $row["password"];
+                
                 
                             //desencriptar la contrassenya
                 
-                            if($passOld == $passUser){
+                            if($passOld == $passOG){
                 
                                 if($passNew == $passNewConf && $passNew != $passUser){
                 
                                     //encriptar contrassenya
                 
-                                    $sqlPass = "UPDATE Users SET `password`= $passNew WHERE id_usr = $currentUser";
+                                    $sqlPass = "UPDATE users SET `password` = '$passNew' WHERE id_user = '$currentUser'";
                 
                                     if (mysqli_query($conn, $sqlPass)) {
-                                        return('<a>Canvi aplicat amb exit</a>');
+                                        header("Location: ../infoPerfil/perfil.php");
+                                         die();
+                                        
                                         die();
                                     } else {
-                                        return("Error updating record: " . mysqli_error($conn));
+                                        echo "Error updating record: ";
                                         die();
                                     }
-                                    mysqli_close($conn);
                                 }
                                 else{
-                                    return('<a>Les contrassenyes no coincideixen</a>');
+                                    echo 'Les contrassenyes no coincideixen2';
                                     die();
                                 }   
                             }
                             else{
-                                return('<a>La contrassenya no coincideix amb la del usuari</a>');
+                                echo $passOG ;
                                 die();
                         }
                 
                             $conn->close();
+                        }
 
                         }
                         else{
