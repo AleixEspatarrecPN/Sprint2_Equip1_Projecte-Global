@@ -183,7 +183,7 @@ include_once "../../php/ClassEmpresa.php"
                             <td id="type_cpmpany"><?php echo $mostrar['hidden'] ?></td>
                             <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_company'];?>" data-bs-target="#modal">Editar</a></button></td>
                             <form action="habiliteEmp.php" method="post">
-                                <td><a href="habiliteEmp.php?id_user=<?= $mostrar['id_company'];?>" class="btn btn-success" value="<?= $mostrar['id_company'];?>">Donar d'Alta</a></td>
+                                <td><a href="habiliteEmp.php?id_company=<?= $mostrar['id_company'];?>" class="btn btn-success" value="<?= $mostrar['id_company'];?>">Donar d'Alta</a></td>
                             </form>
                         </tr>
                         <?php
@@ -213,11 +213,11 @@ include_once "../../php/ClassEmpresa.php"
 
                 <div class="modal-body">
 
-                    <input type="hidden" name="id_user" id="id">
+                    <input type="hidden" name="id_company" value="13" id="id">
 
                     <div class="form-group mb-3">
                         <label> Nom </label>
-                        <input type="text" name="name_user" id="name" class="form-control"
+                        <input type="text" name="name_company" id="name" class="form-control"
                                placeholder="">
                     </div>
 
@@ -229,7 +229,7 @@ include_once "../../php/ClassEmpresa.php"
 
                     <div class="form-group mb-3">
                         <label> Teléfon </label>
-                        <input type="text" name="phone_number" id="phonr" class="form-control"
+                        <input type="text" name="phone_number" id="phone" class="form-control"
                                placeholder="">
                     </div>
 
@@ -251,7 +251,7 @@ include_once "../../php/ClassEmpresa.php"
 </div>
 
 
-<!--MODAL NOU USUARI-->
+<!--MODAL NOVA EMPRESSA-->
 <div class="modal fade" id="modalnousuari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -262,11 +262,11 @@ include_once "../../php/ClassEmpresa.php"
                 </button>
             </div>
 
-            <form action="updateemp.php" method="POST">
+            <form action="createEmp.php" method="POST">
 
                 <div class="modal-body">
 
-                    <input type="hidden" name="id_user" id="id">
+                    <input type="hidden" name="id_company" id="id">
 
                     <div class="form-group mb-3">
                         <label> Nom </label>
@@ -294,7 +294,7 @@ include_once "../../php/ClassEmpresa.php"
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
-                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
+                    <button type="submit" name="createEmp" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
                 </div>
             </form>
 

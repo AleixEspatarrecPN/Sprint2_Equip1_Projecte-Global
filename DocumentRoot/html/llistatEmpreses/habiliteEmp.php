@@ -1,9 +1,10 @@
 <?php
-include_once '../../php/ClassUsuari.php';
+include_once '../../php/ClassEmpresa.php';
 session_start();
 
 
-$id_user = $_GET['id_user'];
+$id_company = $_GET['id_company'];
 
-$unhabiliteUsr = new User();
-$unhabiliteUsr->habiliteUser($id_user);
+$unhabiliteEmp = new Empresa();
+$unhabiliteEmp->habiliteEmp($id_company);
+?>
