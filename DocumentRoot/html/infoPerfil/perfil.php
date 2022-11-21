@@ -147,9 +147,10 @@
                             <label for="recipient-dni" class="col-form-label">DNI:</label>
                             <input type="text" class="form-control" name="dni" required maxlength="9" id="recipient-dni">
                             <script>
-                                function validateDNI(dni) {
+                                function validateDNIiEmail(dni, email) {
                                     var numero, letr, letra;
                                     var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+                                    re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
                                     dni = dni.toUpperCase();
 
@@ -163,14 +164,18 @@
                                         letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
                                         letra = letra.substring(numero, numero+1);
                                         if (letra != letr) {
-                                            alert('Dni erroneo, la letra del NIF no se corresponde');
+                                            alert('Dni incorrecte');
                                             return false;
                                         }else{
-                                            alert('Dni correcto');
-                                            return true;
+                                            if(!re.exec(email)){
+                                                    alert('email no valid');
+                                                }else {
+                                                    return true;
+                                                }
                                         }
-                                    }else{
-                                        alert('Dni erroneo, formato no válido');
+                                    }
+                                    else{
+                                        alert('Dni erroni, format no valid');
                                         return false;
                                     }
                                 }
@@ -186,7 +191,7 @@
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-mail" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            <input type="email" class="form-control " name="email" title="Invalid email address" required maxlength="50" id="recipient-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-telefon" class="col-form-label">Teléfon:</label>
@@ -195,7 +200,7 @@
                     </div>
                     <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNI(this.form.dni.value)">Guarda Canvis</button>
+                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNIiEmail(this.form.dni.value, this.form.email.value)">Guarda Canvis</button>
             </div>
                 </form>
             </div>
@@ -236,12 +241,15 @@
                                 if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
                                 if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
                             } 
-                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) {
+                            
+                            
+                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0){ 
                         form.submit()
-                        }else 
-                        { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) "); form.passNew.focus(); return; }
+                        }else
+                        { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) ")}
                         }
-                    }
+                    
+                }    
                 </script>
 
                     <div class="mb-3">
