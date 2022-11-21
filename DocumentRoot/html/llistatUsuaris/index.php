@@ -262,9 +262,7 @@ include_once "../../php/ClassUsuari.php"
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
-                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate"
-                            onclick="return validateEmail()">Guarda Canvis
-                    </button>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
                 </div>
             </form>
         </div>
@@ -355,17 +353,15 @@ include_once "../../php/ClassUsuari.php"
     </div>
 </div>
 
-<!-- Mensajes de Verificación -->
-<div hidden id="error" class="alert alert-danger ocultar" role="alert">
-    Email Incorrecte
-</div>
 
 
 <script type="text/javascript">
     function validateEmail() {
 
         // Get our input reference.
-        var emailField = document.getElementById('email-create').value;
+        var emailField = document.getElementById('mail');
+        var borde = document.getElementById("mail");
+
 
         // Define our regular expression.
         var validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
