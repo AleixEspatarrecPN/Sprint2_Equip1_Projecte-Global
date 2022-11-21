@@ -1,6 +1,6 @@
 <?php
 include_once '../../php/securitySession.php';
-include_once "../../php/ClassUsuari.php"
+include_once "../../php/ClassEmpresa.php"
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,16 +10,21 @@ include_once "../../php/ClassUsuari.php"
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Vista Informe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../scripts/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <link href="../css/brands.min.css" rel="stylesheet">
     <link href="../css/solid.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <script src="../scripts/checkbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color:#dcdcdc">
@@ -73,7 +78,7 @@ include_once "../../php/ClassUsuari.php"
                     </button></span>
             <div class="collapse navbar-collapse p-0" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../home/index.php"><i class="fa-solid fa-house"></i>Inicio</a>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Inicio</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
                                     class="fa-solid fa-clipboard"></i>Questionarios</a></li>
@@ -91,58 +96,51 @@ include_once "../../php/ClassUsuari.php"
                 </ul>
             </div>
     </nav>
+    <!--Header Menu-->
+
 </header>
 
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou
-                Usuari
-            </button>
-            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">
-                Usuaris Baixa
-            </button>
+            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nova Empresa</button>
+            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">Empreses Baixa</button>
         </div>
+
 
 
         <div class="d-flex justify-content-around">
             <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                 <thead>
-                <tr class="">
-                    <th class="">Nom</th>
-                    <th>Cognom</th>
-                    <th>Correu</th>
-                    <th>Telefon</th>
-                    <th>Nom Usuari</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
+                    <tr class="">
+                        <th class="">Nom</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>CIF</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <?php
-                $result = User::llistatUsr();
-                while ($mostrar = mysqli_fetch_array($result)) {
+                    <?php
+                        $result = Empresa::llistatEmp();
+                        while($mostrar = mysqli_fetch_array($result)){
 
                     ?>
                     <tr>
-                        <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
-                        <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
-                        <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
+                        <td hidden id="id_company"><?php echo $mostrar['id_company'] ?></td>
+                        <td id="name_company"><?php echo $mostrar['name_company'] ?></td>
                         <td id="email"><?php echo $mostrar['email'] ?></td>
-                        <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
-                        <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
-                        <td>
-                            <button type="button" class="btn btn-warning editbtn" data-bs-toggle="modal"
-                                    data-bs-id="<?= $mostrar['id_user']; ?>" data-bs-target="#modal">Editar</a></button>
-                        </td>
-                        <form action="unhabiliteUsr.php" method="post">
-                            <td><a href="unhabiliteUsr.php?id_user=<?= $mostrar['id_user']; ?>" class="btn btn-danger"
-                                   value="<?= $mostrar['id_user']; ?>">Eliminar</a></td>
+                        <td id="phone"><?php echo $mostrar['phone_number'] ?></td>
+                        <td id="cif"><?php echo $mostrar['cif'] ?></td>
+                        <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_company'];?>" data-bs-target="#modal">Editar</a></button></td>
+                        <form action="unhabiliteEmp.php" method="post">
+                            <td><a href="unhabiliteEmp.php?id_user=<?= $mostrar['id_company'];?>" class="btn btn-danger" value="<?= $mostrar['id_company'];?>">Eliminar</a></td>
                         </form>
                     </tr>
                     <?php
-                }
-                ?>
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -151,12 +149,11 @@ include_once "../../php/ClassUsuari.php"
 
 <!--MODAL USUARIOS DESHABILITADOS-->
 
-<div class="modal modal-lg fade " id="unhabilitedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal modal-lg fade " id="unhabilitedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Usuaris Deshabilitats </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Empressa </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="d-flex justify-content-around">
@@ -164,37 +161,29 @@ include_once "../../php/ClassUsuari.php"
                     <thead>
                     <tr class="">
                         <th class="">Nom</th>
-                        <th>Cognom</th>
-                        <th>Correu</th>
+                        <th>Email</th>
                         <th>Telefon</th>
-                        <th>Nom Usuari</th>
-                        <th>Fecha Baixa</th>
+                        <th>CIF</th>
                         <th>Editar</th>
                         <th>Alta</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    $result = User::llistatUsrUnhabilited();
-                    while ($mostrar = mysqli_fetch_array($result)) {
+                    $result = Empresa::llistatEmpUnhabilited();
+                    while($mostrar = mysqli_fetch_array($result)){
 
                         ?>
                         <tr>
-                            <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
-                            <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
-                            <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
+                            <td hidden id="id_company"><?php echo $mostrar['id_company'] ?></td>
+                            <td id="name_company"><?php echo $mostrar['name_company'] ?></td>
                             <td id="email"><?php echo $mostrar['email'] ?></td>
-                            <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
-                            <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
-                            <td id="type_user"><?php echo $mostrar['hidden'] ?></td>
-                            <td>
-                                <button type="button" class="btn btn-warning editbtn" data-bs-toggle="modal"
-                                        data-bs-id="<?= $mostrar['id_user']; ?>" data-bs-target="#modal">
-                                    Editar</a></button>
-                            </td>
-                            <form action="habiliteUsr.php" method="post">
-                                <td><a href="habiliteUsr.php?id_user=<?= $mostrar['id_user']; ?>"
-                                       class="btn btn-success" value="<?= $mostrar['id_user']; ?>">Donar d'Alta</a></td>
+                            <td id="phone"><?php echo $mostrar['phone_number'] ?></td>
+                            <td id="cif"><?php echo $mostrar['cif'] ?></td>
+                            <td id="type_cpmpany"><?php echo $mostrar['hidden'] ?></td>
+                            <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_company'];?>" data-bs-target="#modal">Editar</a></button></td>
+                            <form action="habiliteEmp.php" method="post">
+                                <td><a href="habiliteEmp.php?id_user=<?= $mostrar['id_company'];?>" class="btn btn-success" value="<?= $mostrar['id_company'];?>">Donar d'Alta</a></td>
                             </form>
                         </tr>
                         <?php
@@ -215,12 +204,12 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Empressa </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
 
-            <form action="updateUser.php" method="POST">
+            <form action="updateEmp.php" method="POST">
 
                 <div class="modal-body">
 
@@ -233,8 +222,55 @@ include_once "../../php/ClassUsuari.php"
                     </div>
 
                     <div class="form-group mb-3">
-                        <label> Cognoms </label>
-                        <input type="text" name="last_name" id="last" class="form-control"
+                        <label> Email </label>
+                        <input type="text" name="email" id="email" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label> Teléfon </label>
+                        <input type="text" name="phone_number" id="phonr" class="form-control"
+                               placeholder="">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label> CIF </label>
+                        <input type="text" name="cif" id="cif" class="form-control"
+                               placeholder="">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL NOU USUARI-->
+<div class="modal fade" id="modalnousuari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Afegeix l'empresa </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+            <form action="updateemp.php" method="POST">
+
+                <div class="modal-body">
+
+                    <input type="hidden" name="id_user" id="id">
+
+                    <div class="form-group mb-3">
+                        <label> Nom </label>
+                        <input type="text" name="name_company" id="name" class="form-control"
                                placeholder="">
                     </div>
 
@@ -251,8 +287,8 @@ include_once "../../php/ClassUsuari.php"
                     </div>
 
                     <div class="form-group">
-                        <label> Nom Usuari </label>
-                        <input type="text" name="nick_name" id="nick" class="form-control"
+                        <label> CIF </label>
+                        <input type="text" name="cif" id="cif" class="form-control"
                                placeholder="">
                     </div>
                 </div>
@@ -261,90 +297,7 @@ include_once "../../php/ClassUsuari.php"
                     <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
 
-
-<!--MODAL NOU USUARI-->
-<div class="modal fade" id="modalnousuari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Nou Usuari </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                </button>
-            </div>
-
-            <form action="createUsr.php" method="POST">
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <input class="col" type="hidden" name="id_user" id="id">
-
-                            <div class="form-group mb-3 ">
-                                <label> Nom </label>
-                                <input type="text" name="name_user" id="name" class="form-control"
-                                       placeholder="">
-                            </div>
-
-                            <div class="form-group mb-3 ">
-                                <label> Cognoms </label>
-                                <input type="text" name="last_name" id="last" class="form-control"
-                                       placeholder="">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label> DNI </label>
-                                <input type="text" name="dni" id="dni" class="form-control"
-                                       placeholder="">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label> Email </label>
-                                <input type="text" name="email" id="email-create" class="form-control"
-                                       placeholder="">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group mb-3">
-                                <label> Teléfon </label>
-                                <input type="text" name="phone_number" id="phone" class="form-control"
-                                       placeholder="">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label> Nom Usuari </label>
-                                <input type="text" name="nick_name" id="nick" class="form-control"
-                                       placeholder="">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label> Tipus d'usuari </label>
-                                <select class="form-control" type="text" name="type_user" id="type_user" placeholder="">
-                                    <option value="1">Admin</option>
-                                    <option value="2">Worker</option>
-                                    <option value="3">Client</option>
-                                </select>
-                               <!-- <input type="text" name="type_user" id="type_user" class="form-control"
-                                       placeholder="">-->
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label> Contrasenya </label>
-                                <input type="text" name="password" id="password" class="form-control"
-                                       placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
-                    <button type="submit" name="createUser" class="btn btn-success" value="Validate"
-                            onclick="return validateEmailCreate()">Guarda Canvis
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
@@ -352,48 +305,25 @@ include_once "../../php/ClassUsuari.php"
 
 
 <script type="text/javascript">
-    function validateEmail() {
+    function validateEmail(){
 
         // Get our input reference.
         var emailField = document.getElementById('mail');
         var borde = document.getElementById("mail");
 
-
         // Define our regular expression.
-        var validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+        var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
         // Using test we can check if the text match the pattern
-        if (validEmail.test(emailField.value)) {
+        if( validEmail.test(emailField.value) ){
             return true;
-        } else {
+        }else{
             alert('El Email No Es Valid');
             borde.style.borderColor = "red";
             return false;
         }
     }
 </script>
-
-<script type="text/javascript">
-    function validateEmailCreate() {
-
-        // Get our input reference.
-        var emailField = document.getElementById('email-create');
-        var borde = document.getElementById("email-create");
-
-        // Define our regular expression.
-        var validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-
-        // Using test we can check if the text match the pattern
-        if (validEmail.test(emailField.value)) {
-            return true;
-        } else {
-            alert('El Email No Es Valid');
-            borde.style.borderColor = "red";
-            return false;
-        }
-    }
-</script>
-
 
 <!--FUNCIO OBRI MODAL NOU USUARI-->
 <script>
@@ -413,10 +343,9 @@ include_once "../../php/ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
+            $('#mail').val(data[2]);
+            $('#phone').val(data[3]);
+            $('#cif').val(data[4]);
         });
     });
 </script>
@@ -440,10 +369,9 @@ include_once "../../php/ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
+            $('#mail').val(data[2]);
+            $('#phone').val(data[3]);
+            $('#cif').val(data[4]);
         });
     });
 </script>
@@ -466,10 +394,9 @@ include_once "../../php/ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
+            $('#mail').val(data[2]);
+            $('#phone').val(data[3]);
+            $('#cif').val(data[4]);
         });
     });
 </script>
@@ -526,6 +453,7 @@ include_once "../../php/ClassUsuari.php"
         </div>
     </div>
 </footer>
+
 
 
 </body>

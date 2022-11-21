@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+    height: 100vh;
+    font-family: 'Montserrat';
+    margin: 0;
+
+    background: #dcdcdc;
+}
+
+#perfil-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5em;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 0 auto;
+}
+
+#basic-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30vw;
+}
+
+#full-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 50vw;
+
+    background: white;
+
+    padding: 2em 0;
+    margin: 0 2em;
+    border-radius: 20px;
+}
+
+#full-info > #dades-container {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    padding: 0 2em
+}
+
+
+#profile-img {
+    height: 75px;
+    width: 75px;
+}
+
+#name {
+    margin-top: 0.5em;
+    font-size: 2em;
+}
+
+#last-name {
+    font-size: 1.3em;
+}
+
+#dni {
+    margin-top: 0.1em;
+    font-size: 1em;
+    color: #302f2f;
+}
+
+#empresa {
+    margin-top: 1em;
+    font-size: 1.3em;
+}
+
+.header-with-toggable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-edit, .button-cancel {
+    width: fit-content;
+    height: fit-content;
+
+    font-size: 1.3em;
+
+    margin: 0 0.2em;
+
+    background: none;
+    color: black;
+    border: none;
+
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.button-edit:hover, .button-cancel:hover {
+    color: #6b6b6b;
+}
+
+#cancel-username, #cancel-email, #cancel-phone {
+    display: none;
+}
+
+.button-change {
+    border: none;
+    background: #FF6720;
+    color: white;
+    border-radius: 10px;
+
+    width: fit-content;
+
+    padding: 0.5em;
+    margin-top: 1.5em;
+    font-size: 1em;
+
+    align-self: center;
+
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.button-change:hover {
+    background: #ff9e71;
+}
+
+#username-container, #email-container, #phone-container, 
+#original-password-container, #new-password-container, #confirm-password-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.input-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+.input-container > input {
+    font-family: Montserrat;
+    width: 100%;
+    border: none;
+    background: #dcdcdc;
+    border-radius: 20px;
+    padding: 0.2em 0.5em;
+}
+
+.input-container > input:disabled {
+    background: white;
+    color: black;
+}
+
+.input-container > label {
+    margin-bottom: 0.2em;
+}
+
+@media screen and (max-width: 1200px) {
+    #full-info {
+        flex-direction: column;
+        width: 60vw;
+    }
+
+    #full-info > #dades-container, #full-info > #password-container{
+        width: calc(100% - 4em);
+        padding: 0 2em;
+        margin: 0;
+    }
+
+    #full-info #dades-container  {
+        border: none;
+        padding: 0 0 2em 0;
+        margin: 0 2em;
+    }
+
+    
+
+    #perfil-container {
+        justify-content: center;
+        padding: 2em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #perfil-container {
+        flex-direction: column;
+    }
+
+    #basic-info {
+        padding-bottom: 2em;
+        min-width: 80vw;
+    }
+
+    #full-info {
+        min-width: 90vw;
+    }
+}
