@@ -9,17 +9,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Informe</title>
+    <title>Home</title>
     <script src="../scripts/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="style.css">
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <link href="../css/brands.min.css" rel="stylesheet">
     <link href="../css/solid.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <script src="../scripts/checkbox.js"></script>
-    
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color:#dcdcdc">
@@ -27,8 +26,8 @@
     <div class="navbar navbar-expand-sm p-0" id="header-logo">
         <div class="container-fluid d-flex flex-row justify-content-between navbar-nav ">
             <div class="p-2" id="logo">
-                <li class="nav-item"><a class="nav-link" href="#"><img src="../images/logo_pymeshield.png"
-                                                                       alt="Logo" class="d-inline-block align-text-middle">
+                <li class="nav-item"><a class="nav-link" href="../home/index.php"><img src="../images/logo_pymeshield.png"
+                                                                                       alt="Logo" class="d-inline-block align-text-middle">
                         pymeshield</a></li>
             </div>
 
@@ -41,21 +40,23 @@
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-user"></i>
                             </a>
-                            <ul class="dropdown-menu" id="menu-user">
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-address-card"></i>Editar
-                                        Perfil</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i>Idioma</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="../cliente/index.html"><i
-                                            class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
-                            </ul>
+                            <form action="../../php/validateLogout.php" method="POST" id=form>
+                                <ul class="dropdown-menu" id="menu-user">
+                                    <li><a class="dropdown-item" href="../infoPerfil/perfil.php"><i class="fa-solid fa-address-card"></i>Perfil Personal</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i>Idioma</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
+                                    </li>
+                                    <li><a type="submit" class="dropdown-item" ><i
+                                                    class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="../cliente/index.html"><i
+                                                    class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
+                                </ul>
+                            </form>
                         </li>
                 </div>
             </div>
@@ -73,24 +74,26 @@
                     </button></span>
             <div class="collapse navbar-collapse p-0" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Inicio</a>
+                    <li class="nav-item"><a class="nav-link" href="../home/index.php"><i class="fa-solid fa-house"></i>Inicio</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fa-solid fa-clipboard"></i>Questionarios</a></li>
+                                    class="fa-solid fa-clipboard"></i>Questionarios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-book"></i>Informes</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fa-solid fa-graduation-cap"></i>Formación</a>
+                                    class="fa-solid fa-graduation-cap"></i>Formación</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fa-solid fa-address-book"></i>Contacto</a>
+                                    class="fa-solid fa-address-book"></i>Contacto</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../llistatUsuaris/index.php"><i
+                                    class="fa-solid fa-list"></i>Listado Usuarios</a>
                     </li>
                 </ul>
             </div>
     </nav>
-    <!--Header Menu-->
-
 </header>
+
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 row bg-light p-2" style="background-color:#ffffff">
             <h3 id="title-footer">DADES USUARI</h3>

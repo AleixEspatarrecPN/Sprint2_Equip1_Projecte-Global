@@ -214,5 +214,28 @@ class User
         return $result;
 
     }
+
+    public function createUser($dni, $name_user, $last_name, $phone_number, $email, $nick_name, $password, $type_user){
+        include_once 'dbconn.php';
+
+        $conn = conn();
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        //Transformar de 0 o 1 a sí
+
+        $sql =  "INSERT INTO `users` (`dni`, `name_user`, `last_name`, `phone_number`, `email`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) 
+        VALUES ('$dni', '$name_user', '$last_name', '$phone_number', '$email', '$nick_name', '$password', NULL, NULL, '$type_user')";
+
+        if (mysqli_query($conn, $sql)) {
+            header('Location: /html/llistatUsuaris/index.php');
+
+        } else {
+            echo "<a id='error'>Error updating record: " . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+    }
+
 }
 ?>
