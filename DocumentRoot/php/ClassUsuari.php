@@ -420,7 +420,7 @@ include_once('dbconn.php');
             //Transformar de 0 o 1 a sí
 
             $sql =  "INSERT INTO `users` (`dni`, `name_user`, `last_name`, `phone_number`, `email`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) 
-        VALUES ('$dni', '$name_user', '$last_name', '$phone_number', '$email', '$nick_name', '$password', NULL, NULL, '$type_user')";
+                VALUES ('$dni', '$name_user', '$last_name', '$phone_number', '$email', '$nick_name', '$password', NULL, NULL, '$type_user')";
 
             if (mysqli_query($conn, $sql)) {
                 header('Location: /html/llistatUsuaris/index.php');
