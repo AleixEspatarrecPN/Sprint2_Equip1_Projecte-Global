@@ -102,11 +102,10 @@ include_once "../../php/ClassUsuari.php"
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou
-                Usuari
+            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nuevo Usuario
             </button>
             <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">
-                Usuaris Baixa
+                Usuarios Baja
             </button>
         </div>
 
@@ -115,11 +114,11 @@ include_once "../../php/ClassUsuari.php"
             <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                 <thead>
                 <tr class="">
-                    <th class="">Nom</th>
-                    <th>Cognom</th>
-                    <th>Correu</th>
-                    <th>Telefon</th>
-                    <th>Nom Usuari</th>
+                    <th class="">Nombre</th>
+                    <th>Cognombres</th>
+                    <th>Correo</th>
+                    <th>Telèfono</th>
+                    <th>Nombre Usuario</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -157,7 +156,7 @@ include_once "../../php/ClassUsuari.php"
 
 <!--MODAL USUARIOS DESHABILITADOS-->
 
-<div class="modal modal-lg fade " id="unhabilitedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal modal-xl fade " id="unhabilitedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -169,12 +168,12 @@ include_once "../../php/ClassUsuari.php"
                 <table class="table table-striped align-middle container overflow-hidden text-center py-3">
                     <thead>
                     <tr class="">
-                        <th class="">Nom</th>
-                        <th>Cognom</th>
-                        <th>Correu</th>
-                        <th>Telefon</th>
-                        <th>Nom Usuari</th>
-                        <th>Fecha Baixa</th>
+                        <th class="">Nombre</th>
+                        <th>Cognombre</th>
+                        <th>Correo</th>
+                        <th>Telèfono</th>
+                        <th>Nombre Usuario</th>
+                        <th>Fecha Baja</th>
                         <th>Editar</th>
                         <th>Alta</th>
                     </tr>
@@ -200,7 +199,7 @@ include_once "../../php/ClassUsuari.php"
                             </td>
                             <form action="habiliteUsr.php" method="post">
                                 <td><a href="habiliteUsr.php?id_user=<?= $mostrar['id_user']; ?>"
-                                       class="btn btn-success" value="<?= $mostrar['id_user']; ?>">Donar d'Alta</a></td>
+                                       class="btn btn-success" value="<?= $mostrar['id_user']; ?>">Dar de Alta</a></td>
                             </form>
                         </tr>
                         <?php
@@ -263,8 +262,8 @@ include_once "../../php/ClassUsuari.php"
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
-                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guarda Canvis</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guardar Cambios</button>
                 </div>
             </form>
         </div>
@@ -278,7 +277,7 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Nou Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Nuevo Usuario </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -345,9 +344,9 @@ include_once "../../php/ClassUsuari.php"
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" name="createUser" class="btn btn-success" value="Validate"
-                            onclick="return validateEmailCreate()">Guarda Canvis
+                            onclick="return validateEmailCreate()">Guardar Cambios
                     </button>
                 </div>
             </form>
