@@ -1,3 +1,7 @@
+<?php 
+    include_once '../../php/securitySession.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 

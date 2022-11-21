@@ -1,11 +1,7 @@
 <?php 
-session_start(); //creem un inici de sessió que ha de anar com a primer pas del codi php
-if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
-} else {
-  header("Location: ../login/index.php"); //si el resultat de la condició del if es fals llavors ens dirigirà a index.html
-  die();
-}
+    include_once '../../php/securitySession.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,7 +27,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
     <div class="navbar navbar-expand-sm p-0" id="header-logo">
         <div class="container-fluid d-flex flex-row justify-content-between navbar-nav ">
             <div class="p-2" id="logo">
-                <li class="nav-item"><a class="nav-link" href="#"><img src="../images/logo_pymeshield.png"
+                <li class="nav-item"><a class="nav-link" href="../home/index.php"><img src="../images/logo_pymeshield.png"
                                                                        alt="Logo" class="d-inline-block align-text-middle">
                         pymeshield</a></li>
             </div>
@@ -46,7 +42,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                                 <i class="fa-solid fa-user"></i>
                             </a>
                             <ul class="dropdown-menu" id="menu-user">
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-address-card"></i>Editar
+                                <li><a class="dropdown-item" href="../infoPerfil/perfil.php"><i class="fa-solid fa-address-card"></i>Editar
                                         Perfil</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i>Idioma</a>
                                 </li>
@@ -77,7 +73,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                     </button></span>
             <div class="collapse navbar-collapse p-0" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Inicio</a>
+                    <li class="nav-item"><a class="nav-link" href="../home/index.php"><i class="fa-solid fa-house"></i>Inicio</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
                                 class="fa-solid fa-clipboard"></i>Questionarios</a></li>
@@ -88,6 +84,9 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i
                                 class="fa-solid fa-address-book"></i>Contacto</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../llistatUsuaris/index.php"><i
+                                class="fa-solid fa-list"></i>Listado Usuarios</a>
                     </li>
                 </ul>
             </div>
@@ -146,15 +145,34 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-dni" class="col-form-label">DNI:</label>
-                            <input type="text" class="form-control" required maxlength="9" id="recipient-dni">
+                            <input type="text" class="form-control" name="dni" required maxlength="9" id="recipient-dni">
                             <script>
-                                function dniV(dni){ // Retorna: true | false
-                                    if (/^\d{8}[a-zA-Z]$/.test(dni)) {
-                                    var n = dni.substr(0,8);
-                                    var c = dni.substr(8,1);
-                                    return (c.toUpperCase() == ‘TRWAGMYFPDXBNJZSQVHLCKET’.charAt(n%23)); // DNI correcto ?
+                                function validateDNI(dni) {
+                                    var numero, letr, letra;
+                                    var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+                                    dni = dni.toUpperCase();
+
+                                    if(expresion_regular_dni.test(dni) === true){
+                                        numero = dni.substr(0,dni.length-1);
+                                        numero = numero.replace('X', 0);
+                                        numero = numero.replace('Y', 1);
+                                        numero = numero.replace('Z', 2);
+                                        letr = dni.substr(dni.length-1, 1);
+                                        numero = numero % 23;
+                                        letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+                                        letra = letra.substring(numero, numero+1);
+                                        if (letra != letr) {
+                                            alert('Dni erroneo, la letra del NIF no se corresponde');
+                                            return false;
+                                        }else{
+                                            alert('Dni correcto');
+                                            return true;
+                                        }
+                                    }else{
+                                        alert('Dni erroneo, formato no válido');
+                                        return false;
                                     }
-                                    return false; // DNI incorrecto
                                 }
                             </script>
                         </div>
@@ -168,18 +186,18 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-mail" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail">
+                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-telefon" class="col-form-label">Teléfon:</label>
                             <input type="number" class="form-control" required maxlength="9" id="recipient-telefon">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
+                    <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="dniV(this.form.recipient-dni.value)">Guarda Canvis</button>
+                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNI(this.form.dni.value)">Guarda Canvis</button>
+            </div>
+                </form>
             </div>
         </div>
     </div>
@@ -197,30 +215,30 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
             <div class="modal-body">
                 <!-- Script JS per la validació del format de les crdencials -->
                 <script>
-                    function validar(tx) 
+                    function validar(tx,tn) 
                     {
                         var nMay = 0, nMin = 0, nNum = 0, nCar = 0
                         var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
                         var t2 = "abcdefghijklmnopqrstuvwxyz" 
                         var t3 = "0123456789"
                         var t4 = "$#@€%&/()"
-                            if(pass1 != pass2){
-                                alert("La nova contrasenya no és igual que la nova repetida, comprova les contrasenyes");}
-                            if (tx.length < 8) {
+                            if (tx != tn){
+                                alert("Las contrasenyas novas no coincideixen amb la confirmació!")
+                            } if (tx.length < 8) {
                                 alert("La contrasenya, ha de tenir almenys 8 lletres");
                             } if (tx.length > 20) {
                                 alert("La contrasenya, ha de tenir menys de 20 lletres");
                             } else {
-                                    //Aqui continua si la variable ya tiene mas de 5 letras
+                                    //Aqui continua si la variable te més o igual 8 lletres
                             for (i=0;i<tx.length;i++) { 
                                 if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++} 
                                 if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
                                 if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
                                 if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
                             } 
-                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) 
+                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) {
                         form.submit()
-                        else 
+                        }else 
                         { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) "); form.passNew.focus(); return; }
                         }
                     }
@@ -241,7 +259,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value)">Guarda Canvis</button>
+                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value,this.form.passNewConfirmation.value)">Guarda Canvis</button>
             </div>
                 </form>
         </div>

@@ -145,43 +145,55 @@ include_once('dbconn.php');
 
 
         //PARTE DE ALEIX
-        public function login(){
+        public function login($login, $pass){
+            include_once 'dbconn.php';
+
+
             session_start();
-            include_once('dbconn.php');
 
-            $conn = conn();
             //comprovació entrada de dades.
-            if (isset($_POST["login"]) && isset($_POST["pass"])) {
+            if (isset ($login) && isset($pass)) {
 
-            $login = $_POST["login"];
-            $pass = $_POST["pass"];
             //utilització de la funció password_hash per a encriptar la contrasenya.
-            $cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
+            //$cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
 
             //es guarda a la variable global $_SESSION el correu de l'usuari.
-            $_SESSION['correu_sessio'] = $login;
+            $_SESSION['mail_session'] = $login;
 
             //es guarda la consulta sql en una variable per fer la consulta.
-            $sql = "SELECT email, Contrasenya, TipusUsuari FROM Usuaris WHERE email = '$login'";
+            $sql = "SELECT id_user, email, `password`, type_user, `hidden` FROM users WHERE email='$login'";
+            $conn = conn();
             $result = mysqli_query($conn, $sql);
 
             if ($result -> num_rows > 0){
 
                 $row = $result -> fetch_assoc();
+                $id_db = $row["id_user"];
                 $email_db = $row["email"];
                 $pass_db = $row["password"];
+                $tipusUsr_db = $row["type_user"];
+                $hidden_db = $row["hidden"];
+
+
+                //guardem el tipus d'usuari a _SESSION
+                $_SESSION["idUsr_session"] = $id_db;
+                $_SESSION["tipusUsr_session"] = $tipusUsr_db;
+                $_SESSION["ocult_session"] = $hidden_db;
+
+
                 //condicionar l'inci si l'usuari està ocult
+                //verificació de contrassenya quan l'encriptem:
+                    //(password_verify($pass, $pass_db) && $login == $email_db)
+                if($pass == $pass_db && $login == $email_db){
 
-                if(password_verify($pass, $pass_db) && $login == $email_db){
-
-                    header("Location: home/index.php");
+                    header("Location: ../home/index.php");
                     die();
 
                 }
-    
-            }
+
                 else{
-                    header("Location: login/index.php");
+                    header("Location: index.php");
+                    return ("<a>No s'han omplert els camps nescessaris</a>");
                     die();
                 }
             
@@ -190,37 +202,99 @@ include_once('dbconn.php');
             
             else{
                 //redirecció al login al introduir credencials incorrectes
-                header("Location: login/index.php");
+                header("Location: index.php");
+                return ("<a>Les crendencials introduides són incorrectes</a>");
                 die();
             }
-
         }
 
-        //PARTE DE ALEIX
-        public function logOut()
-        {
-            session_start();
+    }
 
+        //PARTE DE ALEIX
+        public function logout()
+        {
             //buidem les dades de la sessió previament a la seva destrucció
             session_unset();
             session_destroy();
 
-            header("Location: login/index.php");
+            header("Location: ../login/index.php");
             die();
 
         }
 
         //PARTE ALEIX
-        public function changePass(){
-            
-            $currentUser = //id usuari actual
-            $sql = "SELECT email FROM Usuaris WHERE id_user='$currentUser'";
-            $emailUser = mysqli_query(conn, $sql);
+        public function changePass($passOld, $passNew, $passNewConf){
 
-            if($_POST['emailOG']== $emailUser && $_POST['emailNew'] == $_POST['emailNewConf'] ){
+            if (strlen($passNew)>8 || strlen($passNew)<20){
+                if (preg_match('~[0-9]+~', $passNew)){
+                    if (preg_match('/[\'^£$%&*().}{@#~?><>,|=_+¬-]/', $passNew)){
+                        if(preg_match('/[A-Z]/', $passNew)){
+
+                            //$currentUser = $_SESSION["idUSR"];
+                            $currentUser = 3;
+
+                            $sql = "SELECT `password` FROM users WHERE id_user='$currentUser'";
                 
-            }
+                            $conn = conn();
+                
+                            $passUser = mysqli_query($conn, $sql);
 
+                            if ($passUser -> num_rows > 0){
+
+                                $row = $passUser -> fetch_assoc();
+                                $passOG = $row["password"];
+                
+                
+                            //desencriptar la contrassenya
+                
+                            if($passOld == $passOG){
+                
+                                if($passNew == $passNewConf && $passNew != $passUser){
+                
+                                    //encriptar contrassenya
+                
+                                    $sqlPass = "UPDATE users SET `password` = '$passNew' WHERE id_user = '$currentUser'";
+                
+                                    if (mysqli_query($conn, $sqlPass)) {
+                                        header("Location: ../infoPerfil/perfil.php");
+                                         die();
+                                        
+                                        die();
+                                    } else {
+                                        echo "Error updating record: ";
+                                        die();
+                                    }
+                                }
+                                else{
+                                    echo 'Les contrassenyes no coincideixen2';
+                                    die();
+                                }   
+                            }
+                            else{
+                                echo $passOG ;
+                                die();
+                        }
+                
+                            $conn->close();
+                        }
+
+                        }
+                        else{
+                            return ("La contrassenya ha d'incloure com a mínim una majuscula.");
+                        }
+                    }
+                    else{
+                        return ("La contrassenya ha de contenir com a  mínim un caracter especial valid.");
+                    }
+                }
+                else{
+                    return ("La contrassenya com a mínim ha de tenir un numero.");
+                }
+
+            }
+            else{
+                return ("La contrassenya ha de contenir entre 8 i 20 cracters.");
+            }
             }
 
         //PARTE JULIA
