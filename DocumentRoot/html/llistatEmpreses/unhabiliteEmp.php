@@ -2,7 +2,7 @@
 include_once '../../php/ClassEmpresa.php';
 session_start();
 
-    $id_user = $_GET['id_user'];
+    $id_company = $_GET['id_company'];
 
-    $unhabiliteUsr = new User();
-    $unhabiliteUsr->unhabiliteUser($id_user);
+    $unhabiliteEmp = new Empresa();
+    $unhabiliteEmp->unhabiliteEmp($id_company);

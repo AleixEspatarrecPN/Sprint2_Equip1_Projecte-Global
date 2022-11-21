@@ -151,7 +151,7 @@ include_once('dbconn.php');
             if (isset ($login) && isset($pass)) {
 
             //utilització de la funció password_hash per a encriptar la contrasenya.
-            $cryptPass = password_hash($pass, PASSWORD_BCRYPT); 
+            //$cryptPass = password_hash($pass, PASSWORD_BCRYPT); 
 
             //es guarda a la variable global $_SESSION el correu de l'usuari.
             $_SESSION['mail_session'] = $login;
@@ -179,7 +179,8 @@ include_once('dbconn.php');
 
                 //condicionar l'inci si l'usuari està ocult
                 //verificació de contrassenya quan l'encriptem:
-                if(password_verify($pass, $pass_db) && $login == $email_db){
+                    //password_verify($pass, $pass_db)
+                if($pass == $pass_db && $login == $email_db){
 
                     header("Location: ../home/index.php");
                     die();

@@ -103,8 +103,8 @@ include_once "../../php/ClassEmpresa.php"
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nova Empresa</button>
-            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">Empreses Baixa</button>
+            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nova-empresa">Nova Empresa</button>
+            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-empresa">Empreses Baixa</button>
         </div>
 
 
@@ -135,7 +135,7 @@ include_once "../../php/ClassEmpresa.php"
                         <td id="cif"><?php echo $mostrar['cif'] ?></td>
                         <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_company'];?>" data-bs-target="#modal">Editar</a></button></td>
                         <form action="unhabiliteEmp.php" method="post">
-                            <td><a href="unhabiliteEmp.php?id_user=<?= $mostrar['id_company'];?>" class="btn btn-danger" value="<?= $mostrar['id_company'];?>">Eliminar</a></td>
+                            <td><a href="unhabiliteEmp.php?id_company=<?= $mostrar['id_company'];?>" class="btn btn-danger" value="<?= $mostrar['id_company'];?>">Eliminar</a></td>
                         </form>
                     </tr>
                     <?php
