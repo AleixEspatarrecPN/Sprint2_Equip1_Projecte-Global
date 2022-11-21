@@ -106,11 +106,9 @@
 
                     <?php
                     include_once'../../php/ClassUsuari.php';
-                    $user = new User("joanpasqualalmudeve@iesmontsia.org");
+                    $user = new User($_SESSION['mail_session']);
                     $user->mostrarUsr();
                     ?>
-                    
-
         </div>
     </div>
 
@@ -240,16 +238,14 @@
                                 if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
                                 if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
                                 if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
-                            } 
-                            
-                            
-                        if ( nMay>0 && nMin>0 && nNum>0 && nCar>0){ 
-                        form.submit()
-                        }else
-                        { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) ")}
+                            }     
+                            if ( nMay>0 && nMin>0 && nNum>0 && nCar>0){ 
+                                form.submit()
+                            }else{
+                                alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) ")
+                            }
                         }
-                    
-                }    
+                    }    
                 </script>
 
                     <div class="mb-3">
