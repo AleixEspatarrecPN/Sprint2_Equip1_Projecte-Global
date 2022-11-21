@@ -149,15 +149,34 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-dni" class="col-form-label">DNI:</label>
-                            <input type="text" class="form-control" required maxlength="9" id="recipient-dni">
+                            <input type="text" class="form-control" name="dni" required maxlength="9" id="recipient-dni">
                             <script>
-                                function dniV(dni){ // Retorna: true | false
-                                    if (/^\d{8}[a-zA-Z]$/.test(dni)) {
-                                    var n = dni.substr(0,8);
-                                    var c = dni.substr(8,1);
-                                    return (c.toUpperCase() == ‘TRWAGMYFPDXBNJZSQVHLCKET’.charAt(n%23)); // DNI correcto ?
+                                function validateDNI(dni) {
+                                    var numero, letr, letra;
+                                    var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+                                    dni = dni.toUpperCase();
+
+                                    if(expresion_regular_dni.test(dni) === true){
+                                        numero = dni.substr(0,dni.length-1);
+                                        numero = numero.replace('X', 0);
+                                        numero = numero.replace('Y', 1);
+                                        numero = numero.replace('Z', 2);
+                                        letr = dni.substr(dni.length-1, 1);
+                                        numero = numero % 23;
+                                        letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+                                        letra = letra.substring(numero, numero+1);
+                                        if (letra != letr) {
+                                            alert('Dni erroneo, la letra del NIF no se corresponde');
+                                            return false;
+                                        }else{
+                                            alert('Dni correcto');
+                                            return true;
+                                        }
+                                    }else{
+                                        alert('Dni erroneo, formato no válido');
+                                        return false;
                                     }
-                                    return false; // DNI incorrecto
                                 }
                             </script>
                         </div>
@@ -182,7 +201,7 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="dniV(this.form.recipient-dni.value)">Guarda Canvis</button>
+                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNI(this.form.dni.value)">Guarda Canvis</button>
             </div>
         </div>
     </div>
@@ -207,8 +226,6 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                         var t2 = "abcdefghijklmnopqrstuvwxyz" 
                         var t3 = "0123456789"
                         var t4 = "$#@€%&/()"
-                            if(pass1 != pass2){
-                                alert("La nova contrasenya no és igual que la nova repetida, comprova les contrasenyes");}
                             if (tx.length < 8) {
                                 alert("La contrasenya, ha de tenir almenys 8 lletres");
                             } if (tx.length > 20) {
