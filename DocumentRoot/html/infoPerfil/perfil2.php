@@ -115,7 +115,7 @@ include_once '../../php/securitySession.php';
         </div>
 
         <div class="d-flex align-items-end flex-column">
-            <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
+            <button id="editaPerfil" type="button" class="btn editbtn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
             <p></p>
             <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
         </div>
@@ -135,17 +135,18 @@ include_once '../../php/securitySession.php';
             <div class="modal-body container">
                 <form>
                     <div class="">
+                        <input class="col" type="hidden" name="id_user" id="id">
                         <div class="mb-1 flex-sm-column d-flex ">
                             <label for="recipient-name" class="col-form-label">Nom:</label>
-                            <input type="text" class="form-control" required maxlength="20" id="recipient-name">
+                            <input type="text" class="form-control" required maxlength="20" id="name">
                         </div>
                         <div class="mb-1 flex-sm-column d-flex ">
                             <label for="recipient-last-name" class="col-form-label">Cognoms:</label>
-                            <input type="text" class="form-control" required maxlength="45" id="recipient-last-name">
+                            <input type="text" class="form-control" required maxlength="45" id="last">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-dni" class="col-form-label">DNI:</label>
-                            <input type="text" class="form-control" name="dni" required maxlength="9" id="recipient-dni">
+                            <input type="text" class="form-control" name="dni" required maxlength="9" id="dni">
                             <script>
                                 function validateDNI(dni) {
                                     var numero, letr, letra;
@@ -177,20 +178,16 @@ include_once '../../php/securitySession.php';
                             </script>
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
-                            <label for="recipient-empresa" class="col-form-label">Empresa:</label>
-                            <input type="text" class="form-control" required maxlength="45" id="recipient-empresa">
-                        </div>
-                        <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-user" class="col-form-label">Nom Usuari:</label>
-                            <input type="text" class="form-control" required maxlength="20" id="recipient-user">
+                            <input type="text" class="form-control" required maxlength="20" id="nick">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-mail" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control " required maxlength="50" id="recipient-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            <input type="email" class="form-control " required maxlength="50" id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-telefon" class="col-form-label">Teléfon:</label>
-                            <input type="number" class="form-control" required maxlength="9" id="recipient-telefon">
+                            <input type="number" class="form-control" id="phone" required maxlength="9" id="recipient-telefon">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -266,7 +263,31 @@ include_once '../../php/securitySession.php';
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
 
+        $('.editbtn').on('click', function () {
+
+            $('#editmodal').modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#id').val(data[0]);
+            $('#name').val(data[1]);
+            $('#last').val(data[2]);
+            $('#dni').val(data[3]);
+            $('#mail').val(data[4]);
+            $('#phone').val(data[5]);
+            $('#nick').val(data[6]);
+        });
+    });
+</script>
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
