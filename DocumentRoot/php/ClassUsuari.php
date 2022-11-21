@@ -293,24 +293,6 @@ include_once('dbconn.php');
             }
             }
 
-        // public function OcultarUsuari(){
-        // include_once '../php_metodes/dbconn.php';
-        // include_once '../php/dbconn.php';
-        // // Check connection
-        // if (!$conn) {
-        // die("Connection failed: " . mysqli_connect_error());
-        // }
-          
-        // $sql = "UPDATE Usuaris SET Ocult=1 WHERE id=1";
-          
-        // if (mysqli_query($conn, $sql)) {
-        //     echo "updated successfully";
-        // } else {
-        //     echo "Error updating record: " . mysqli_error($conn);
-        // }
-        // mysqli_close($conn);
-        
-        // }
 
         public function MostrarUsuari(){
             include_once 'dbconn.php';
@@ -333,26 +315,6 @@ include_once('dbconn.php');
             }
 
 
-            public function CrearUsuari3($usuari, $email, $pass, $typeUsr, $id, $dni, $nom, $cognom, $telefon, $idEmpresa){
-                include_once 'dbconn.php';
-        
-                $conn = conn();
-                // Check connection
-                if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-                }
-                //Transformar de 0 o 1 a sí
-    
-                $sql =  "INSERT INTO `users` (`id_user`, `dni`, `name_user`, `last_name`, `phone_number`, `email`, `emblems`, `nick_name`, `password`, `hidden`, `id_company`, `type_user`) VALUES ('$id', '$email', '$nom', '$cognom', '$telefon',  '$email', NULL, '$usuari', '$pass', 0, '$idEmpresa', '$typeUsr')";
-                  
-                if (mysqli_query($conn, $sql)) {
-                    header("Location: ../llistatUsuaris/index.php");
-
-                } else {
-                    echo "<a id='error'>Error updating record: " . mysqli_error($conn); 
-                }
-                mysqli_close($conn);
-                }      
 
 
         public static function llistatUsr()
