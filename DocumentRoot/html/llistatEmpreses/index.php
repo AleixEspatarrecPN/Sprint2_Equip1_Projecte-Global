@@ -1,6 +1,6 @@
 <?php
 include_once '../../php/securitySession.php';
-include_once "../../php/ClassUsuari.php"
+include_once "../../php/ClassEmpresa.php"
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -103,8 +103,8 @@ include_once "../../php/ClassUsuari.php"
 <div class="container overflow-hidden text-center col-lg-9">
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 " style="background-color:#ffffff">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nou Usuari</button>
-            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">Usuaris Baixa</button>
+            <button class="btn btn-dark mx-1 noubtn" data-bs-toggle="modal" data-bs-target="#modal-nou-user">Nova Empresa</button>
+            <button class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#modal-unhabilited-users">Empreses Baixa</button>
         </div>
 
 
@@ -114,30 +114,28 @@ include_once "../../php/ClassUsuari.php"
                 <thead>
                     <tr class="">
                         <th class="">Nom</th>
-                        <th>Cognom</th>
-                        <th>Correu</th>
+                        <th>Email</th>
                         <th>Telefon</th>
-                        <th>Nom Usuari</th>
+                        <th>CIF</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $result = User::llistatUsr();
+                        $result = Empresa::llistatEmp();
                         while($mostrar = mysqli_fetch_array($result)){
 
                     ?>
                     <tr>
-                        <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
-                        <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
-                        <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
+                        <td hidden id="id_company"><?php echo $mostrar['id_company'] ?></td>
+                        <td id="name_company"><?php echo $mostrar['name_company'] ?></td>
                         <td id="email"><?php echo $mostrar['email'] ?></td>
-                        <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
-                        <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
-                        <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
-                        <form action="unhabiliteUsr.php" method="post">
-                            <td><a href="unhabiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-danger" value="<?= $mostrar['id_user'];?>">Eliminar</a></td>
+                        <td id="phone"><?php echo $mostrar['phone_number'] ?></td>
+                        <td id="cif"><?php echo $mostrar['cif'] ?></td>
+                        <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_company'];?>" data-bs-target="#modal">Editar</a></button></td>
+                        <form action="unhabiliteEmp.php" method="post">
+                            <td><a href="unhabiliteEmp.php?id_user=<?= $mostrar['id_company'];?>" class="btn btn-danger" value="<?= $mostrar['id_company'];?>">Eliminar</a></td>
                         </form>
                     </tr>
                     <?php
@@ -155,7 +153,7 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Empressa </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="d-flex justify-content-around">
@@ -163,31 +161,29 @@ include_once "../../php/ClassUsuari.php"
                     <thead>
                     <tr class="">
                         <th class="">Nom</th>
-                        <th>Cognom</th>
-                        <th>Correu</th>
+                        <th>Email</th>
                         <th>Telefon</th>
-                        <th>Nom Usuari</th>
+                        <th>CIF</th>
                         <th>Editar</th>
                         <th>Alta</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    $result = User::llistatUsrUnhabilited();
+                    $result = Empresa::llistatEmpUnhabilited();
                     while($mostrar = mysqli_fetch_array($result)){
 
                         ?>
                         <tr>
-                            <td hidden id="id_user"><?php echo $mostrar['id_user'] ?></td>
-                            <td id="nick_name"><?php echo $mostrar['name_user'] ?></td>
-                            <td id="id_company"><?php echo $mostrar['last_name'] ?></td>
+                            <td hidden id="id_company"><?php echo $mostrar['id_company'] ?></td>
+                            <td id="name_company"><?php echo $mostrar['name_company'] ?></td>
                             <td id="email"><?php echo $mostrar['email'] ?></td>
-                            <td id="type_user"><?php echo $mostrar['phone_number'] ?></td>
-                            <td id="type_user"><?php echo $mostrar['nick_name'] ?></td>
-                            <td id="type_user"><?php echo $mostrar['hidden'] ?></td>
-                            <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_user'];?>" data-bs-target="#modal">Editar</a></button></td>
-                            <form action="habiliteUsr.php" method="post">
-                                <td><a href="habiliteUsr.php?id_user=<?= $mostrar['id_user'];?>" class="btn btn-success" value="<?= $mostrar['id_user'];?>">Donar d'Alta</a></td>
+                            <td id="phone"><?php echo $mostrar['phone_number'] ?></td>
+                            <td id="cif"><?php echo $mostrar['cif'] ?></td>
+                            <td id="type_cpmpany"><?php echo $mostrar['hidden'] ?></td>
+                            <td><button  type="button" class="btn btn-warning editbtn" data-bs-toggle="modal" data-bs-id="<?= $mostrar['id_company'];?>" data-bs-target="#modal">Editar</a></button></td>
+                            <form action="habiliteEmp.php" method="post">
+                                <td><a href="habiliteEmp.php?id_user=<?= $mostrar['id_company'];?>" class="btn btn-success" value="<?= $mostrar['id_company'];?>">Donar d'Alta</a></td>
                             </form>
                         </tr>
                         <?php
@@ -208,12 +204,12 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Empressa </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
 
-            <form action="updateUser.php" method="POST">
+            <form action="updateEmp.php" method="POST">
 
                 <div class="modal-body">
 
@@ -226,28 +222,23 @@ include_once "../../php/ClassUsuari.php"
                     </div>
 
                     <div class="form-group mb-3">
-                        <label> Cognoms </label>
-                        <input type="text" name="last_name" id="last" class="form-control"
-                               placeholder="">
-                    </div>
-
-                    <div class="form-group mb-3">
                         <label> Email </label>
-                        <input type="text" name="email" id="mail" class="form-control"
+                        <input type="text" name="email" id="email" class="form-control"
                                placeholder="">
                     </div>
 
                     <div class="form-group mb-3">
                         <label> Teléfon </label>
-                        <input type="text" name="phone_number" id="phone" class="form-control"
+                        <input type="text" name="phone_number" id="phonr" class="form-control"
                                placeholder="">
                     </div>
 
-                    <div class="form-group">
-                        <label> Nom Usuari </label>
-                        <input type="text" name="nick_name" id="nick" class="form-control"
+                    <div class="form-group mb-3">
+                        <label> CIF </label>
+                        <input type="text" name="cif" id="cif" class="form-control"
                                placeholder="">
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tanca</button>
@@ -266,12 +257,12 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Afegeix l'empresa </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
 
-            <form action="updateUser.php" method="POST">
+            <form action="updateemp.php" method="POST">
 
                 <div class="modal-body">
 
@@ -279,13 +270,7 @@ include_once "../../php/ClassUsuari.php"
 
                     <div class="form-group mb-3">
                         <label> Nom </label>
-                        <input type="text" name="name_user" id="name" class="form-control"
-                               placeholder="">
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label> Cognoms </label>
-                        <input type="text" name="last_name" id="last" class="form-control"
+                        <input type="text" name="name_company" id="name" class="form-control"
                                placeholder="">
                     </div>
 
@@ -302,8 +287,8 @@ include_once "../../php/ClassUsuari.php"
                     </div>
 
                     <div class="form-group">
-                        <label> Nom Usuari </label>
-                        <input type="text" name="nick_name" id="nick" class="form-control"
+                        <label> CIF </label>
+                        <input type="text" name="cif" id="cif" class="form-control"
                                placeholder="">
                     </div>
                 </div>
@@ -358,10 +343,9 @@ include_once "../../php/ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
+            $('#mail').val(data[2]);
+            $('#phone').val(data[3]);
+            $('#cif').val(data[4]);
         });
     });
 </script>
@@ -385,10 +369,9 @@ include_once "../../php/ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
+            $('#mail').val(data[2]);
+            $('#phone').val(data[3]);
+            $('#cif').val(data[4]);
         });
     });
 </script>
@@ -411,10 +394,9 @@ include_once "../../php/ClassUsuari.php"
 
             $('#id').val(data[0]);
             $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
+            $('#mail').val(data[2]);
+            $('#phone').val(data[3]);
+            $('#cif').val(data[4]);
         });
     });
 </script>

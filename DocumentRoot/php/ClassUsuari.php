@@ -140,10 +140,6 @@ include_once('dbconn.php');
         }
     
 
-
-
-
-
         //PARTE DE ALEIX
         public function login($login, $pass){
             include_once 'dbconn.php';
@@ -155,7 +151,7 @@ include_once('dbconn.php');
             if (isset ($login) && isset($pass)) {
 
             //utilització de la funció password_hash per a encriptar la contrasenya.
-            //$cryptPass = password_hash(pass, PASSWORD_BCRYPT); 
+            $cryptPass = password_hash($pass, PASSWORD_BCRYPT); 
 
             //es guarda a la variable global $_SESSION el correu de l'usuari.
             $_SESSION['mail_session'] = $login;
@@ -183,8 +179,7 @@ include_once('dbconn.php');
 
                 //condicionar l'inci si l'usuari està ocult
                 //verificació de contrassenya quan l'encriptem:
-                    //(password_verify($pass, $pass_db) && $login == $email_db)
-                if($pass == $pass_db && $login == $email_db){
+                if(password_verify($pass, $pass_db) && $login == $email_db){
 
                     header("Location: ../home/index.php");
                     die();
@@ -297,25 +292,24 @@ include_once('dbconn.php');
             }
             }
 
-        //PARTE JULIA
-        public function OcultarUsuari(){
-        include_once '../php_metodes/dbconn.php';
-        include_once '../php/dbconn.php';
-        // Check connection
-        if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        }
+        // public function OcultarUsuari(){
+        // include_once '../php_metodes/dbconn.php';
+        // include_once '../php/dbconn.php';
+        // // Check connection
+        // if (!$conn) {
+        // die("Connection failed: " . mysqli_connect_error());
+        // }
           
-        $sql = "UPDATE Usuaris SET Ocult=1 WHERE id=1";
+        // $sql = "UPDATE Usuaris SET Ocult=1 WHERE id=1";
           
-        if (mysqli_query($conn, $sql)) {
-            echo "updated successfully";
-        } else {
-            echo "Error updating record: " . mysqli_error($conn);
-        }
-        mysqli_close($conn);
+        // if (mysqli_query($conn, $sql)) {
+        //     echo "updated successfully";
+        // } else {
+        //     echo "Error updating record: " . mysqli_error($conn);
+        // }
+        // mysqli_close($conn);
         
-        }
+        // }
 
         public function MostrarUsuari(){
             include_once 'dbconn.php';
@@ -360,7 +354,6 @@ include_once('dbconn.php');
                 }      
 
 
-        //SERGIO
         public static function llistatUsr()
         {
             include_once 'dbconn.php';
