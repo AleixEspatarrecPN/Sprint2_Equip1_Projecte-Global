@@ -297,25 +297,6 @@ include_once('dbconn.php');
             }
             }
 
-        //PARTE JULIA
-        public function OcultarUsuari(){
-        include_once '../php_metodes/dbconn.php';
-        include_once '../php/dbconn.php';
-        // Check connection
-        if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        }
-          
-        $sql = "UPDATE Usuaris SET Ocult=1 WHERE id=1";
-          
-        if (mysqli_query($conn, $sql)) {
-            echo "updated successfully";
-        } else {
-            echo "Error updating record: " . mysqli_error($conn);
-        }
-        mysqli_close($conn);
-        
-        }
 
         public function MostrarUsuari(){
             include_once 'dbconn.php';
