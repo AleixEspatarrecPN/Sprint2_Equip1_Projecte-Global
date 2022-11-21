@@ -53,24 +53,6 @@ class Empresa {
     function setCIF($CIF) { $this->CIF = $CIF; }
 
     #Preparació de les funcions
-    public function createEmp( ){
-
-        //INSERT INTO `companies` (`id_company`, `name_company`, `email`, `phone_number`, `cif`, `hidden`) VALUES ('1', 'Disi', 'disi@gmail.com', '977554110', '42080', NULL);
-    
-    }
-
-    // public function LlistarEmp( ){
-    //     include 'dbconn.php';
-    //     //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-    //    // session_start();
-
-    //     $conn = conn();
-    //     //Consulta a la base de dades
-    //     $sql = "SELECT * FROM `companies`";
-    //     $result = mysqli_query($conn, $sql);
-
-    //     return $result;
-    // }
 
     public static function llistatEmp()
     {
@@ -115,40 +97,49 @@ class Empresa {
         die();
     }
 
-    public function habiliteEmp($id_emp)
+    public function habiliteEmp($id_company)
     {
         include_once 'dbconn.php';
         $conn = conn();
 
-        $query = "UPDATE companies SET  hidden=NULL  WHERE  id_company ='$id_emp'";
+        $query = "UPDATE companies SET  hidden=NULL  WHERE  id_company ='$id_company'";
         $query_run = mysqli_query($conn, $query);
 
         header('Location:./index.php');
         die();
     }
 
-    public function updateEmp( ){
-    //     include_once 'dbconn.php';
+    public function createEmp($name_company, $email, $phone_number, $cif){
+        include_once 'dbconn.php';
 
-    //     $conn = conn();
-    //     // Check connection
-    //     if (!$conn) {
-    //     die("Connection failed: " . mysqli_connect_error());
-    //     }
-          
-          
-    //     if (mysqli_query($conn, $sql)) {
-    //         echo "updated successfully";
-    //     } else {
-    //         echo "Error updating record: " . mysqli_error($conn);
-    //     }
-    //     mysqli_close($conn);
-               
-    // }
+        $conn = conn();
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        //Transformar de 0 o 1 a sí
 
-    // public function deleteEmp( ){
-    //     $sql = "UPDATE `users` SET `hidden` = '2022-11-15' WHERE `users`.`id_user` = 1";
+        $sql =  "INSERT INTO `companies` (`name_company`, `email`, `phone_number`, `cif`, `hidden`) 
+            VALUES ('$name_company', '$email', '$phone_number', '$cif', NULL)";
 
+        if (mysqli_query($conn, $sql)) {
+            header('Location: /html/llistatEmpreses/index.php');
+
+        } else {
+            echo "<a id='error'>Error updating record: " . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+    }
+
+    public function updateEmp($id_company, $name_company, $email, $phone_number, $cif)
+    {
+        include_once 'dbconn.php';
+        $conn = conn();
+
+        $query = "UPDATE companies SET name_company='$name_company', email='$email', phone_number='$phone_number', cif=' $cif' WHERE id_company='$id_company'  ";
+        $query_run = mysqli_query($conn, $query);
+
+        header('Location:./index.php');
     }
 
     
