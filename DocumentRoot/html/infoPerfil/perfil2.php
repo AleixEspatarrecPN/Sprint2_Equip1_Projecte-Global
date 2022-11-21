@@ -1,5 +1,5 @@
-<?php 
-    include_once '../../php/securitySession.php';
+<?php
+include_once '../../php/securitySession.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,22 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista Informe</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../scripts/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="style.css">
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <link href="../css/brands.min.css" rel="stylesheet">
     <link href="../css/solid.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="../scripts/checkbox.js"></script>
-    
+
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color:#dcdcdc">
@@ -34,7 +28,7 @@
         <div class="container-fluid d-flex flex-row justify-content-between navbar-nav ">
             <div class="p-2" id="logo">
                 <li class="nav-item"><a class="nav-link" href="../home/index.php"><img src="../images/logo_pymeshield.png"
-                                                                       alt="Logo" class="d-inline-block align-text-middle">
+                                                                                       alt="Logo" class="d-inline-block align-text-middle">
                         pymeshield</a></li>
             </div>
 
@@ -102,29 +96,31 @@
 </header>
 <div class="container overflow-hidden text-center col-lg-12" >
     <div class="overflow-hidden text-center m-4 p-2 rounded-3 row bg-light p-2" style="background-color:#ffffff">
-            <h3 id="title-footer">DADES USUARI</h3>
+        <h3 id="title-footer">DADES USUARI</h3>
 
-    <div class="card border-0 " style="background-color: #dcdcdc">
-        <div class="d-flex justify-content-around " id="title-footer">
-                    <div class="d-flex align-items-center" >
-                        <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
-                    </div>
-
-                    <?php
-                    include_once'../../php/ClassUsuari.php';
-                    $user = new User($_SESSION['mail_session']);
-                    $user->mostrarUsr();
-                    ?>
-        </div>
-    </div>
-
-    <div class="d-flex align-items-end flex-column">
-                    <button id="editaPerfil" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
-                    <p></p>
-                    <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
+        <div class="card border-0 " style="background-color: #dcdcdc">
+            <div class="d-flex justify-content-around " id="title-footer">
+                <div class="d-flex align-items-center" >
+                    <img class="mx-3" src="../../demo_img/bot.png" style="height: 100px; width: 100px">
                 </div>
+
+                <?php
+                include_once'../../php/ClassUsuari.php';
+                $user = new User("joanpasqualalmudeve@iesmontsia.org");
+                $user->mostrarUsr();
+                ?>
+
+
+            </div>
+        </div>
+
+        <div class="d-flex align-items-end flex-column">
+            <button id="editaPerfil" type="button" class="btn editbtn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-perfil">Editar Perfil</button>
+            <p></p>
+            <button id="canviarContrasenya" type="button" class="btn" style="border-bottom: 1px solid black" data-bs-toggle="modal" data-bs-target="#modal-contrasenya">Canvia Contrasenya</button>
+        </div>
         <div class="p-2">
-            
+
         </div>
     </div>
 </div>
@@ -139,22 +135,22 @@
             <div class="modal-body container">
                 <form>
                     <div class="">
+                        <input class="col" type="hidden" name="id_user" id="id">
                         <div class="mb-1 flex-sm-column d-flex ">
                             <label for="recipient-name" class="col-form-label">Nom:</label>
-                            <input type="text" class="form-control" required maxlength="20" id="recipient-name">
+                            <input type="text" class="form-control" required maxlength="20" id="name">
                         </div>
                         <div class="mb-1 flex-sm-column d-flex ">
                             <label for="recipient-last-name" class="col-form-label">Cognoms:</label>
-                            <input type="text" class="form-control" required maxlength="45" id="recipient-last-name">
+                            <input type="text" class="form-control" required maxlength="45" id="last">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-dni" class="col-form-label">DNI:</label>
-                            <input type="text" class="form-control" name="dni" required maxlength="9" id="recipient-dni">
+                            <input type="text" class="form-control" name="dni" required maxlength="9" id="dni">
                             <script>
-                                function validateDNIiEmail(dni, email) {
+                                function validateDNI(dni) {
                                     var numero, letr, letra;
                                     var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
-                                    re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
                                     dni = dni.toUpperCase();
 
@@ -168,44 +164,36 @@
                                         letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
                                         letra = letra.substring(numero, numero+1);
                                         if (letra != letr) {
-                                            alert('Dni incorrecte');
+                                            alert('Dni erroneo, la letra del NIF no se corresponde');
                                             return false;
                                         }else{
-                                            if(!re.exec(email)){
-                                                    alert('email no valid');
-                                                }else {
-                                                    return true;
-                                                }
+                                            alert('Dni correcto');
+                                            return true;
                                         }
-                                    }
-                                    else{
-                                        alert('Dni erroni, format no valid');
+                                    }else{
+                                        alert('Dni erroneo, formato no válido');
                                         return false;
                                     }
                                 }
                             </script>
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
-                            <label for="recipient-empresa" class="col-form-label">Empresa:</label>
-                            <input type="text" class="form-control" required maxlength="45" id="recipient-empresa">
-                        </div>
-                        <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-user" class="col-form-label">Nom Usuari:</label>
-                            <input type="text" class="form-control" required maxlength="20" id="recipient-user">
+                            <input type="text" class="form-control" required maxlength="20" id="nick">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-mail" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control " name="email" title="Invalid email address" required maxlength="50" id="recipient-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            <input type="email" class="form-control " required maxlength="50" id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                         <div class="mb-1 flex-column d-flex align-items-start">
                             <label for="recipient-telefon" class="col-form-label">Teléfon:</label>
-                            <input type="number" class="form-control" required maxlength="9" id="recipient-telefon">
+                            <input type="number" class="form-control" id="phone" required maxlength="9" id="recipient-telefon">
                         </div>
                     </div>
                     <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNIiEmail(this.form.dni.value, this.form.email.value)">Guarda Canvis</button>
-            </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
+                        <button type="button" value="value" class="btn btn-primary" id="submit2" onClick="validateDNI(this.form.dni.value)">Guarda Canvis</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -221,38 +209,37 @@
             </div>
             <form action="validacio.php" method="POST" id=form>
 
-            <div class="modal-body">
-                <!-- Script JS per la validació del format de les crdencials -->
-                <script>
-                    function validar(tx,tn) 
-                    {
-                        var nMay = 0, nMin = 0, nNum = 0, nCar = 0
-                        var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
-                        var t2 = "abcdefghijklmnopqrstuvwxyz" 
-                        var t3 = "0123456789"
-                        var t4 = "$#@€%&/()"
+                <div class="modal-body">
+                    <!-- Script JS per la validació del format de les crdencials -->
+                    <script>
+                        function validar(tx,tn)
+                        {
+                            var nMay = 0, nMin = 0, nNum = 0, nCar = 0
+                            var t1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            var t2 = "abcdefghijklmnopqrstuvwxyz"
+                            var t3 = "0123456789"
+                            var t4 = "$#@€%&/()"
                             if (tx != tn){
                                 alert("Las contrasenyas novas no coincideixen amb la confirmació!")
                             } if (tx.length < 8) {
-                                alert("La contrasenya, ha de tenir almenys 8 lletres");
-                            } if (tx.length > 20) {
-                                alert("La contrasenya, ha de tenir menys de 20 lletres");
-                            } else {
-                                    //Aqui continua si la variable te més o igual 8 lletres
-                            for (i=0;i<tx.length;i++) { 
-                                if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++} 
-                                if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
+                            alert("La contrasenya, ha de tenir almenys 8 lletres");
+                        } if (tx.length > 20) {
+                            alert("La contrasenya, ha de tenir menys de 20 lletres");
+                        } else {
+                            //Aqui continua si la variable te més o igual 8 lletres
+                            for (i=0;i<tx.length;i++) {
+                                if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++}
+                                if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++}
                                 if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
                                 if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
-                            }     
-                            if ( nMay>0 && nMin>0 && nNum>0 && nCar>0){ 
-                                form.submit()
-                            }else{
-                                alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) ")
                             }
+                            if ( nMay>0 && nMin>0 && nNum>0 && nCar>0) {
+                                form.submit()
+                            }else
+                            { alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) "); form.passNew.focus(); return; }
                         }
-                    }    
-                </script>
+                        }
+                    </script>
 
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Contrasenya Actual:</label>
@@ -266,17 +253,41 @@
                         <label for="message-text" class="col-form-label">Confirma la Contrasenya:</label>
                         <input type="password" name="passNewConfirmation" class="form-control" id="new-password-confirmation" required maxlength="20" required minlength="8">
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value,this.form.passNewConfirmation.value)">Guarda Canvis</button>
-            </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
+                    <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value,this.form.passNewConfirmation.value)">Guarda Canvis</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
 
+        $('.editbtn').on('click', function () {
+
+            $('#editmodal').modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#id').val(data[0]);
+            $('#name').val(data[1]);
+            $('#last').val(data[2]);
+            $('#dni').val(data[3]);
+            $('#mail').val(data[4]);
+            $('#phone').val(data[5]);
+            $('#nick').val(data[6]);
+        });
+    });
+</script>
 
 <footer class="bg-black text-center text-lg-center mt-auto">
     <div class="text-center p-3">
