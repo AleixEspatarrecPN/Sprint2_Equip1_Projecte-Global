@@ -1,10 +1,5 @@
 <?php 
-session_start(); //creem un inici de sessió que ha de anar com a primer pas del codi php
-if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
-} else {
-  header("Location: ../login/index.php"); //si el resultat de la condició del if es fals llavors ens dirigirà a index.html
-  die();
-}
+    include_once '../../php/securitySession.php';
 ?>
 
 <!DOCTYPE html>
@@ -45,34 +40,28 @@ if(isset($_SESSION['idUsr_session'])){ //compara que la variable está definida
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-user"></i>
                             </a>
-                            <ul class="dropdown-menu" id="menu-user">
-                                <li><a class="dropdown-item" href="../infoPerfil/perfil.php"><i class="fa-solid fa-address-card"></i>Perfil Personal</a> 
-                                </li>
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i>Idioma</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
-                                </li>
-                                <li><a type="button" onclick="logout()" class="dropdown-item" href="#"><i
-                                            class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="../cliente/index.html"><i
-                                            class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
-                            </ul>
+                            <form action="../../php/validateLogout.php" method="POST" id=form>
+                                <ul class="dropdown-menu" id="menu-user">
+                                    <li><a class="dropdown-item" href="../infoPerfil/perfil.php"><i class="fa-solid fa-address-card"></i>Perfil Personal</a> 
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i>Idioma</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
+                                    </li>
+                                    <li><a type="submit" class="dropdown-item" ><i
+                                                class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="../cliente/index.html"><i
+                                                class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
+                                </ul>
+                            </from>
                         </li>
                 </div>
             </div>
         </div>
     </div>
-    <?php 
-    include_once '../../proves_php/Aleix_ClassUsuari.php';
-
-    // $logout = new User();
-    // $logout->logout();
-    
-
-    ?>
     <!--Header Logo-->
 
 
