@@ -161,7 +161,7 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Usuaris Deshabilitats </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Usuarios Deshabilitados </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="d-flex justify-content-around">
@@ -220,7 +220,7 @@ include_once "../../php/ClassUsuari.php"
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Edita l'Usuari </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Edita el Usuario </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -232,13 +232,13 @@ include_once "../../php/ClassUsuari.php"
                     <input type="hidden" name="id_user" id="id">
 
                     <div class="form-group mb-3">
-                        <label> Nom </label>
+                        <label> Nombre </label>
                         <input type="text" name="name_user" id="name" class="form-control"
                                placeholder="">
                     </div>
 
                     <div class="form-group mb-3">
-                        <label> Cognoms </label>
+                        <label> Cognombre </label>
                         <input type="text" name="last_name" id="last" class="form-control"
                                placeholder="">
                     </div>
@@ -250,13 +250,13 @@ include_once "../../php/ClassUsuari.php"
                     </div>
 
                     <div class="form-group mb-3">
-                        <label> Teléfon </label>
+                        <label> Teléfono </label>
                         <input type="text" name="phone_number" id="phone" class="form-control"
                                placeholder="">
                     </div>
 
                     <div class="form-group">
-                        <label> Nom Usuari </label>
+                        <label> Nombre Usuario </label>
                         <input type="text" name="nick_name" id="nick" class="form-control"
                                placeholder="">
                     </div>
@@ -290,13 +290,13 @@ include_once "../../php/ClassUsuari.php"
                             <input class="col" type="hidden" name="id_user" id="id">
 
                             <div class="form-group mb-3 ">
-                                <label> Nom </label>
+                                <label> Nombre </label>
                                 <input type="text" name="name_user" id="name" class="form-control"
                                        placeholder="">
                             </div>
 
                             <div class="form-group mb-3 ">
-                                <label> Cognoms </label>
+                                <label> Cognombre </label>
                                 <input type="text" name="last_name" id="last" class="form-control"
                                        placeholder="">
                             </div>
@@ -313,19 +313,19 @@ include_once "../../php/ClassUsuari.php"
                         </div>
                         <div class="col">
                             <div class="form-group mb-3">
-                                <label> Teléfon </label>
+                                <label> Teléfono </label>
                                 <input type="text" name="phone_number" id="phone" class="form-control"
                                        placeholder="">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label> Nom Usuari </label>
+                                <label> Nombre Usuario </label>
                                 <input type="text" name="nick_name" id="nick" class="form-control"
                                        placeholder="">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label> Tipus d'usuari </label>
+                                <label> Tipo de Usuario </label>
                                 <select class="form-control" type="text" name="type_user" id="type_user" placeholder="">
                                     <option value="1">Admin</option>
                                     <option value="2">Worker</option>
@@ -336,7 +336,7 @@ include_once "../../php/ClassUsuari.php"
                             </div>
 
                             <div class="form-group mb-3">
-                                <label> Contrasenya </label>
+                                <label> Contraseña </label>
                                 <input type="text" name="password" id="password" class="form-control"
                                        placeholder="">
                             </div>
