@@ -32,13 +32,13 @@ class MainApp(MDApp):
     ########################################################################
     def build(self):
         # Set App Title
-        self.title="E-LEGANT"
+        self.title=""
         # Set App Theme
         self.theme_cls.primary_palette='BlueGray'
         
         # Load kv screen files to builder
         screen_manager.add_widget(Builder.load_file("splashScreen.kv"))
-        screen_manager.add_widget(Builder.load_file("MainScreen.kv"))
+        screen_manager.add_widget(Builder.load_file("mainScreen.kv"))
         
         # Return screen manager
         return screen_manager
