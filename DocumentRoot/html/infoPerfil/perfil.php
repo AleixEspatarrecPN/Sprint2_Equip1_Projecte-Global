@@ -222,7 +222,7 @@
             <form action="validacio.php" method="POST" id=form>
 
             <div class="modal-body">
-                <!-- Script JS per la validació del format de les crdencials -->
+                <!-- Script JS per la validació del format de les credencials -->
                 <script>
                     function validar(tx,tn) 
                     {
@@ -231,27 +231,45 @@
                         var t2 = "abcdefghijklmnopqrstuvwxyz" 
                         var t3 = "0123456789"
                         var t4 = "$#@€%&/()"
-                            if (tx != tn){
+                            if (tx != tn)
+                            {
                                 alert("Las contrasenyas novas no coincideixen amb la confirmació!")
-                            } if (tx.length < 8) {
+                            } 
+                            else if (tx.length < 8) {
                                 alert("La contrasenya, ha de tenir almenys 8 lletres");
-                            } if (tx.length > 20) {
+                            } 
+                            else if (tx.length > 20) {
                                 alert("La contrasenya, ha de tenir menys de 20 lletres");
-                            } else {
-                                    //Aqui continua si la variable te més o igual 8 lletres
-                            for (i=0;i<tx.length;i++) { 
-                                if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++} 
-                                if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
-                                if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
-                                if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
-                            }     
-                            if ( nMay>0 && nMin>0 && nNum>0 && nCar>0){ 
-                                form.submit()
-                            }else{
-                                alert("La nova contrasenya a de contenir almenys 1a lletra majuscula i minuscula, 1n numeo i un caracter especial com $ # @ € % & / ( ) ")
+                            } 
+                            else {
+                                //Aqui continua si la variable te més o igual 8 lletres
+                                for (i=0;i<tx.length;i++) { 
+                                    if ( t1.indexOf(tx.charAt(i)) != -1 ) {nMay++} 
+                                    if ( t2.indexOf(tx.charAt(i)) != -1 ) {nMin++} 
+                                    if ( t3.indexOf(tx.charAt(i)) != -1 ) {nNum++}
+                                    if ( t4.indexOf(tx.charAt(i)) != -1 ) {nCar++}
+                                }     
+                                if ( nMay>0 && nMin>0 && nNum>0 && nCar>0){ 
+                                    form.submit()
+                                } 
+                                else{
+                                    //Configura els missatges d'alerta
+                                    var msg="";
+                                    if(nMay<1){
+                                        msg +="- Falta almenys una majuscula \r\n";}
+                                    if(nMin<1){
+                                        msg +="- Falta almenys una minuscula \r\n";}
+                                    if(nNum<1){
+                                        msg +="- Falta almenys un numero \r\n";}
+                                    if(nCar<1){
+                                        msg +="- Falta almenys un caracter especial com: $ # @ € % & / ( ) \r\n"}  
+                                                             
+                                    alert (msg);
+                            
+                                }
                             }
                         }
-                    }    
+                       
                 </script>
 
                     <div class="mb-3">
@@ -269,7 +287,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-                <button type="submit" value="valida" id="submit" class="btn btn-primary" onClick="validar(this.form.passNew.value,this.form.passNewConfirmation.value)">Guarda Canvis</button>
+                <button type="button" value="valida" id="" class="btn btn-primary" onClick="validar(this.form.passNew.value,this.form.passNewConfirmation.value)">Guarda Canvis</button>
             </div>
                 </form>
         </div>
