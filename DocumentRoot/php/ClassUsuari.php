@@ -320,8 +320,6 @@ include_once('dbconn.php');
         public static function llistatUsr()
         {
             include_once 'dbconn.php';
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            // session_start();
 
             $conn = conn();
             //Consulta a la base de dades
@@ -335,8 +333,6 @@ include_once('dbconn.php');
         public static function llistatUsrUnhabilited()
         {
             include_once 'dbconn.php';
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            // session_start();
 
             $conn = conn();
             //Consulta a la base de dades
@@ -378,7 +374,8 @@ include_once('dbconn.php');
             include_once 'dbconn.php';
             $conn = conn();
 
-            $query = "UPDATE users SET name_user='$name_user', last_name='$last_name', email='$email', phone_number=' $phone_number', nick_name='$nick_name'  WHERE id_user='$id_user'  ";
+            $query = "UPDATE users SET name_user='$name_user', last_name='$last_name', email='$email',
+                 phone_number=' $phone_number', nick_name='$nick_name'  WHERE id_user='$id_user'  ";
             $query_run = mysqli_query($conn, $query);
 
             header('Location:./index.php');

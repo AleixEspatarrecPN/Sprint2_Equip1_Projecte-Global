@@ -263,8 +263,9 @@ include_once "../../php/ClassUsuari.php"
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guardar Cambios</button>
-                </div>
+                    <button type="submit" name="updateData" class="btn btn-success" value="Validate"
+                            onclick="return validateEmail()">Guardar Cambios
+                    </button></div>
             </form>
         </div>
     </div>
