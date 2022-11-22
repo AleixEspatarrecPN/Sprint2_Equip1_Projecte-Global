@@ -54,13 +54,14 @@ include_once "../../php/ClassUsuari.php"
                                 </li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i
-                                                class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                                <li>
+                                     <a class="dropdown-item" href="../../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../cliente/index.html"><i
-                                                class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="../cliente/index.html"><i class="fa-solid fa-shield-halved"></i>Modo Usuario</a>
+                                </li>
                             </ul>
                         </li>
                 </div>
@@ -263,8 +264,8 @@ include_once "../../php/ClassUsuari.php"
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guardar Cambios</button>
-                </div>
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guardar Cambios
+                    </button></div>
             </form>
         </div>
     </div>
@@ -408,20 +409,6 @@ include_once "../../php/ClassUsuari.php"
 
             $('#modalnousuari').modal('show');
 
-            $tr = $(this).closest('tr');
-
-            var data = $tr.children("td").map(function () {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#id').val(data[0]);
-            $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
         });
     });
 </script>

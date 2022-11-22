@@ -213,7 +213,7 @@ include_once('dbconn.php');
             session_unset();
             session_destroy();
 
-            header("Location: ../login/index.php");
+            header('Location: /html/login/index.php');
             die();
 
         }
@@ -320,8 +320,6 @@ include_once('dbconn.php');
         public static function llistatUsr()
         {
             include_once 'dbconn.php';
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            // session_start();
 
             $conn = conn();
             //Consulta a la base de dades
@@ -335,8 +333,6 @@ include_once('dbconn.php');
         public static function llistatUsrUnhabilited()
         {
             include_once 'dbconn.php';
-            //aquesta funció revisarà si hi ha canvis i en cas afirmatiu aplicarà els canivs
-            // session_start();
 
             $conn = conn();
             //Consulta a la base de dades
@@ -375,6 +371,7 @@ include_once('dbconn.php');
 
         public function updateUser($id_user, $name_user, $last_name, $email, $phone_number, $nick_name)
         {
+
             include_once 'dbconn.php';
             $conn = conn();
 
