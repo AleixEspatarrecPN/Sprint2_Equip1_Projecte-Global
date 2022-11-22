@@ -63,7 +63,7 @@ class MyApp (MDApp):
 
 
 
-class DemoApp(MDApp):
+class LlistatUsuaris(MDApp):
 
     def build(self):
         screen = Screen()
@@ -125,7 +125,7 @@ from kivymd.uix.button import MDRectangleFlatButton, MDFlatButton
 from helpers import contrasenya_input
 from kivymd.uix.dialog import MDDialog
 
-class demoLogin3(MDApp):
+class Login(MDApp):
 
     def build(self):
         screen = Screen()
@@ -221,7 +221,7 @@ class ExampleBackdrop(Screen):
     pass
 
 
-class TestBackdrop(MDApp):
+class Perfil(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -276,8 +276,8 @@ class MainApp(MDApp):
 ## RUN APP
 ########################################################################      
 MainApp().run()
-demoLogin3().run()
+Login().run()
 MyApp().run()
-DemoApp().run()
+LlistatUsuaris().run()
 MyApp2().run()
-TestBackdrop().run()
+Perfil().run()
