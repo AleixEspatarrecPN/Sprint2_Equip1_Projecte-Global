@@ -263,8 +263,7 @@ include_once "../../php/ClassUsuari.php"
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" name="updateData" class="btn btn-success" value="Validate"
-                            onclick="return validateEmail()">Guardar Cambios
+                    <button type="submit" name="updatedata" class="btn btn-success" value="Validate" onclick="return validateEmail()">Guardar Cambios
                     </button></div>
             </form>
         </div>
@@ -409,20 +408,6 @@ include_once "../../php/ClassUsuari.php"
 
             $('#modalnousuari').modal('show');
 
-            $tr = $(this).closest('tr');
-
-            var data = $tr.children("td").map(function () {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#id').val(data[0]);
-            $('#name').val(data[1]);
-            $('#last').val(data[2]);
-            $('#mail').val(data[3]);
-            $('#phone').val(data[4]);
-            $('#nick').val(data[5]);
         });
     });
 </script>

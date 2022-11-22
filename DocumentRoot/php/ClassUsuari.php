@@ -371,11 +371,11 @@ include_once('dbconn.php');
 
         public function updateUser($id_user, $name_user, $last_name, $email, $phone_number, $nick_name)
         {
+
             include_once 'dbconn.php';
             $conn = conn();
 
-            $query = "UPDATE users SET name_user='$name_user', last_name='$last_name', email='$email',
-                 phone_number=' $phone_number', nick_name='$nick_name'  WHERE id_user='$id_user'  ";
+            $query = "UPDATE users SET name_user='$name_user', last_name='$last_name', email='$email', phone_number=' $phone_number', nick_name='$nick_name'  WHERE id_user='$id_user'  ";
             $query_run = mysqli_query($conn, $query);
 
             header('Location:./index.php');
