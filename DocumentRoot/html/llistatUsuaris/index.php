@@ -54,13 +54,14 @@ include_once "../../php/ClassUsuari.php"
                                 </li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i
-                                                class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                                <li>
+                                     <a class="dropdown-item" href="../../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../cliente/index.html"><i
-                                                class="fa-solid fa-shield-halved"></i>Modo Usuario</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="../cliente/index.html"><i class="fa-solid fa-shield-halved"></i>Modo Usuario</a>
+                                </li>
                             </ul>
                         </li>
                 </div>

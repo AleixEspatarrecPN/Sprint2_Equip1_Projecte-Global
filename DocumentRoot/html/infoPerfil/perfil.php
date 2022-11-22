@@ -54,8 +54,9 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-palette"></i>Tema</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="../../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a>
+                                <li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
