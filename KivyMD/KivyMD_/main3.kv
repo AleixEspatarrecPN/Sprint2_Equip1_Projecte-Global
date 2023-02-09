@@ -1,0 +1,99 @@
+MDScreen:
+    MDTopAppBar:
+        title: "PymeShield"
+        elevation: 4
+        pos_hint: {"top": 1}
+        md_bg_color: "#ff6720"
+        specific_text_color: "black"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+    
+#menu desplegable
+    MDNavigationLayout:
+
+        MDScreenManager:
+            id: screen_manager
+            MDScreen:
+                name: "Inici"
+                MDLabel:
+                    text:"Screen 1"
+                    halign: "center"
+            MDScreen:
+                name: "Llistat usuaris"
+                MDLabel:
+                    text:"Llistat usuaris"
+                    halign: "center"
+
+            MDScreen:
+                name: "Perfil personal"
+                MDLabel:
+                    text:"Screen 3"
+                    halign: "center"
+
+            MDScreen:
+                name: "Contacte"
+                MDLabel:
+                    text:"Adreça: Av. dels Esports, 18, 43540 La Ràpita, Tarragona Telèfon: 977 74 40 87. Web: pymeralia.com"
+                    halign: "center"
+            MDScreen:
+                name: "Desconnecta"
+                MDLabel:
+                    text:" "
+                    halign: "center"
+        
+                    
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation: 'vertical' 
+                ContentNavigationDrawer:
+                    manager: screen_manager
+                    nav_drawer: nav_drawer
+<ContentNavigationDrawer>:
+    MDNavigationDrawerMenu:
+        MDNavigationDrawerHeader:
+            source: 'ImgProva/Captura2.png'
+        DrawerClickableItem:
+            text: "Inicio"
+            on_release: 
+                root.nav_drawer.set_state("close")
+                root.manager.current="Inicio"     
+
+        DrawerClickableItem:
+            text: "Llistat usuaris"
+            on_release: 
+                root.nav_drawer.set_state("close")
+                root.manager.current="Llistat usuaris"  
+
+        DrawerClickableItem:
+            text: "Perfil personal"
+            on_release: 
+                root.nav_drawer.set_state("close")
+                root.manager.current="Perfil personal"  
+        
+        DrawerClickableItem:
+            text: "Contacte"
+            on_release: 
+                root.nav_drawer.set_state("close")
+                root.manager.current="Contacte"  
+
+        DrawerClickableItem:
+            text: "Desconnecta"
+            on_release: 
+                root.nav_drawer.set_state("close")
+                root.manager.current="Desconnecta"  
+
+        MDNavigationDrawerDivider:
+
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
