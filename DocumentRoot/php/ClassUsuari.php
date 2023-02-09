@@ -92,7 +92,7 @@ include_once('dbconn.php');
         #Preparació de les funcions
         public function createUsr($id, $dni, $nom, $cognom, $telefon, $email, $insignies, $nomusuari,$tipusUsuari, $idEmpresa){
             $this->id = $id;
-            $this->DNI = $dni;
+            $this->dni = $dni;
             $this->nom = $nom;
             $this->cognom = $cognom;
             $this->telefon = $telefon;
